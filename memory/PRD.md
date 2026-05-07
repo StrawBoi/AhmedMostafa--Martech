@@ -37,6 +37,16 @@ Visual direction: editorial premium, brighter than old all-black site, light mod
 
 ## Implementation log
 - **2026-05-07**: Initial MVP shipped — full design system + backend contact endpoint + 5 pages + 7 home sections. Tested 100% backend (8/8 pytest), 100% frontend (22 checkpoints). Minor refactor: logger hoisted above route definitions; ThemeToggle uses lazy initializer to avoid first-paint flicker.
+- **2026-05-07 (iter 2 — launch readiness)**:
+  - Real LinkedIn URL wired (`linkedin.com/in/ahmed-mohsen-hanafy`).
+  - Email kept private — every visible mailto link removed; contact form is now the sole inbound channel; the address lives in `data.js` for backend / future use only.
+  - New `<CVButton>` component — replaces every dead `#` link with a polished disabled `<button aria-disabled="true">` that swaps the icon + label to "Coming soon" on hover and exposes a `[SOON]` badge in compact variants. Variants: primary / ghost / header / footer / inverted.
+  - Backend `/api/contact` hardened: hidden `website` honeypot field (silent 201 + no persistence), IP-based rate limit (max 5 / hour, 429 response, supports `x-forwarded-for`/`x-real-ip`), `_ip` field excluded from public reads, compound index `(_ip, created_at)` ensured on startup.
+  - PostHog analytics wired via `lib/analytics.js` on hero View Projects, every CV touch, every LinkedIn click, contact submit (intent / success / error), featured project card clicks.
+  - Custom 404 page (`NotFoundPage`) added at catch-all route with home + projects CTAs.
+  - SEO/social: `<title>`, `meta description`, OpenGraph + Twitter Card meta, editorial SVG OG image, "AM" terracotta SVG favicon.
+  - Tested 100% backend (9/9 pytest) + 100% frontend (38/38 + 7 regression).
+  - Post-test polish: unified analytics events (single `cv_download_clicked` with `source` + `variant` props instead of per-source event names).
 
 ## What's been implemented
 - ✅ Home with all 8 ordered sections
@@ -53,24 +63,21 @@ Visual direction: editorial premium, brighter than old all-black site, light mod
 ## Backlog — prioritized
 
 ### P0 — required before sharing with recruiters
-- Replace placeholder CV `#` with the real PDF (frontend/public + update `profile.cvUrl` in `data.js`).
-- Replace Ahmed's email placeholder in `data.js` with the real address.
-- Replace the 5 project images and write the real challenge/role/takeaway copy per project.
-- Real LinkedIn URL (currently `linkedin.com/in/ahmed-mostafa/` — verify slug).
+- Upload the real CV PDF to `/app/frontend/public/Ahmed-Mostafa-CV.pdf`, then flip `profile.cvAvailable = true` and `profile.cvUrl = "/Ahmed-Mostafa-CV.pdf"` in `/app/frontend/src/lib/data.js`. Every CV button across the site will switch from "Coming soon" to a real download in one edit.
+- Replace the 5 project images and write the real challenge/role/takeaway copy per project in `data.js`.
+- Replace the editorial OG image (`/app/frontend/public/og-image.svg`) with a real branded preview when ready.
 
 ### P1 — strongly recommended polish
-- Hero portrait slot (currently no photo — design intentionally clean — add when photo is ready).
-- Full case-study body content per project (Approach + Outcome currently say "coming soon").
-- SEO: og:image, og:title, og:description, JSON-LD `Person` schema, sitemap.xml, robots.txt.
-- Favicon set + apple-touch-icon.
-- Custom 404 route.
+- Hero portrait slot (currently no photo — design is intentionally clean — add when photo is ready).
+- Full case-study Approach + Outcome bodies per project (currently surfaces an honest "draft / on request" message instead of fictional content).
+- JSON-LD `Person` schema, sitemap.xml, robots.txt.
+- Real apple-touch-icon PNG (favicon.svg currently does double-duty).
 
 ### P2 — growth / lead-quality wins
 - Email forwarding/notification on new `/api/contact` submission (Resend integration) so Ahmed gets notified instantly.
-- Anti-spam: simple honeypot field + rate-limit by IP on `/api/contact`.
-- Analytics events (PostHog already loaded) on hero CTAs, FAQ opens, project clicks, contact submit.
-- Featured testimonial / endorsement strip when Ahmed has 1–2 quotes.
+- Analytics dashboard / weekly digest from PostHog of hero CTA → contact conversion.
 - "What I'm reading / writing" mini journal — keeps the site fresh between job searches.
+- Featured testimonial / endorsement strip when Ahmed has 1–2 quotes.
 
 ## Known limitations
 - Project images are Unsplash slot placeholders.

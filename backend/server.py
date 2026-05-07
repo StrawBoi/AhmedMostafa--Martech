@@ -163,6 +163,17 @@ app.add_middleware(
 )
 
 
+@app.on_event("startup")
+async def ensure_indexes():
+    # Compound index supports rate-limit count_documents on (_ip, created_at).
+    try:
+        await db.contact_messages.create_index(
+            [("_ip", 1), ("created_at", -1)], name="ip_createdat_idx"
+        )
+    except Exception:
+        logger.exception("Failed to ensure contact_messages index")
+
+
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()

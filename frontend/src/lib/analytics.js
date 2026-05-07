@@ -19,9 +19,7 @@ export function track(event, props = {}) {
 // Stable event names for the recruiter-first portfolio.
 export const Events = {
   HERO_VIEW_PROJECTS: "hero_view_projects_clicked",
-  HERO_DOWNLOAD_CV: "hero_download_cv_clicked",
-  HEADER_DOWNLOAD_CV: "header_download_cv_clicked",
-  ABOUT_DOWNLOAD_CV: "about_download_cv_clicked",
+  CV_DOWNLOAD: "cv_download_clicked",
   LINKEDIN_CLICKED: "linkedin_clicked",
   CONTACT_SUBMIT: "contact_submit",
   CONTACT_SUBMIT_SUCCESS: "contact_submit_success",

@@ -30,7 +30,7 @@ export default function CVButton({
   };
 
   const handleClick = () => {
-    track(Events.HEADER_DOWNLOAD_CV, { source, available });
+    track(Events.CV_DOWNLOAD, { source, variant });
   };
 
   if (available) {
