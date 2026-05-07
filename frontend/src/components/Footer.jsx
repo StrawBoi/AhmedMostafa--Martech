@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { profile } from "@/lib/data";
+import CVButton from "@/components/CVButton";
+import { track, Events } from "@/lib/analytics";
 
 export default function Footer() {
+  const onLinkedIn = () => track(Events.LINKEDIN_CLICKED, { source: "footer" });
+
   return (
     <footer
       data-testid="site-footer"
@@ -31,32 +35,33 @@ export default function Footer() {
           <p className="overline mb-4">Reach me</p>
           <ul className="space-y-2 text-sm">
             <li>
-              <a
-                href={`mailto:${profile.email}`}
-                data-testid="footer-email"
+              <Link
+                to="/contact"
+                data-testid="footer-contact-link"
                 className="link-underline"
               >
-                {profile.email}
-              </a>
+                Contact form
+              </Link>
+              <span className="text-subtle"> — replies within 48h</span>
             </li>
             <li>
               <a
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer noopener"
+                onClick={onLinkedIn}
+                data-testid="footer-linkedin"
                 className="inline-flex items-center gap-1.5 link-underline"
               >
                 LinkedIn <ArrowUpRight size={12} />
               </a>
             </li>
             <li>
-              <a
-                href={profile.cvUrl}
-                data-testid="footer-download-cv"
-                className="inline-flex items-center gap-1.5 link-underline"
-              >
-                Download CV <ArrowUpRight size={12} />
-              </a>
+              <CVButton
+                variant="footer"
+                source="footer"
+                testId="footer-download-cv"
+              />
             </li>
           </ul>
         </div>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { featuredProjects } from "@/lib/data";
+import { track, Events } from "@/lib/analytics";
 
 function ProjectImage({ src, alt, ratio = "aspect-[4/3]" }) {
   return (
@@ -82,6 +83,13 @@ function FeaturedCard({ project, dominant = false }) {
   return (
     <Link
       to={`/projects/${project.slug}`}
+      onClick={() =>
+        track(Events.PROJECT_CARD_CLICKED, {
+          slug: project.slug,
+          source: "home_featured",
+          dominant,
+        })
+      }
       className="reveal"
     >
       {Body}

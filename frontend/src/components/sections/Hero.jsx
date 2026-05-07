@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Download, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { profile } from "@/lib/data";
+import CVButton from "@/components/CVButton";
+import { track, Events } from "@/lib/analytics";
 
 export default function Hero() {
+  const onViewProjects = () =>
+    track(Events.HERO_VIEW_PROJECTS, { source: "hero" });
+
   return (
     <section
       data-testid="hero-section"
@@ -45,6 +50,7 @@ export default function Hero() {
           >
             <Link
               to="/projects"
+              onClick={onViewProjects}
               data-testid="hero-cta-projects"
               className="btn-primary group"
             >
@@ -54,13 +60,7 @@ export default function Hero() {
                 className="transition-transform group-hover:translate-x-1"
               />
             </Link>
-            <a
-              href={profile.cvUrl}
-              data-testid="hero-cta-cv"
-              className="btn-ghost"
-            >
-              <Download size={14} /> Download CV
-            </a>
+            <CVButton variant="ghost" source="hero" testId="hero-cta-cv" />
           </div>
         </div>
 
@@ -89,7 +89,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Editorial scroll cue */}
       <div className="container-editorial mt-20 hidden md:flex items-center gap-4 text-subtle">
         <span className="h-px w-16 bg-hairline" />
         <span className="overline">Scroll — recruiter snapshot below</span>

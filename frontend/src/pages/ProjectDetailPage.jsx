@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import useReveal from "@/hooks/useReveal";
-import { allProjects, profile } from "@/lib/data";
+import { allProjects } from "@/lib/data";
 
 export default function ProjectDetailPage() {
   useReveal();
@@ -46,8 +46,10 @@ export default function ProjectDetailPage() {
             </p>
           </div>
           <div>
-            <p className="overline mb-2">Timeline</p>
-            <p className="text-sm md:text-base text-foreground/85">2024 — 2025</p>
+            <p className="overline mb-2">Status</p>
+            <p className="text-sm md:text-base text-foreground/85">
+              Case study draft — full write-up on request
+            </p>
           </div>
           <div>
             <p className="overline mb-2">Tags</p>
@@ -91,16 +93,17 @@ export default function ProjectDetailPage() {
           <div className="reveal" style={{ transitionDelay: "100ms" }}>
             <p className="overline mb-3">Approach</p>
             <p className="text-lg leading-relaxed text-foreground/85">
-              Detailed write-up coming soon. The full case study will cover
-              research questions, methodology, decisions made, and what I'd
-              do differently next time.
+              I'm finalizing the full write-up — methodology, decisions made,
+              what worked, and what I'd do differently. Happy to walk a
+              recruiter or hiring manager through the long version on a call.
             </p>
           </div>
           <div className="reveal" style={{ transitionDelay: "200ms" }}>
             <p className="overline mb-3">Outcome</p>
             <p className="text-lg leading-relaxed text-foreground/85">
-              Final write-up in progress. Reach out if you'd like a walkthrough
-              before it's published — happy to share more in a conversation.
+              {project.takeaway} The detailed numbers, screenshots, and
+              stakeholder takeaways live in the full case study — available on
+              request via the contact form.
             </p>
           </div>
         </div>
@@ -126,12 +129,12 @@ export default function ProjectDetailPage() {
             <p className="font-serif text-2xl md:text-3xl tracking-tight">
               I'm happy to walk you through it.
             </p>
-            <a
-              href={`mailto:${profile.email}`}
+            <Link
+              to="/contact"
               className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium link-underline"
             >
-              Email me <ArrowUpRight size={14} />
-            </a>
+              Open the contact form <ArrowUpRight size={14} />
+            </Link>
           </div>
         </div>
       </section>

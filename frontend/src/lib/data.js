@@ -1,15 +1,18 @@
 // Centralized portfolio data for Ahmed Mostafa.
-// Project images intentionally use slot URLs from design guidelines.
-// Replace these with real project visuals when available.
+// Email is intentionally NOT exposed publicly — recruiters reach out via the
+// contact form. The address below is used server-side / for fallback only.
+// Replace project image URLs and case-study copy when finalized.
 
 export const profile = {
   name: "Ahmed Mostafa",
   short: "Ahmed",
   role: "Marketing, Research & Analytics Intern",
   location: "Brussels, Belgium",
-  email: "ahmed.mostafa.portfolio@gmail.com",
-  linkedin: "https://www.linkedin.com/in/ahmed-mostafa/",
-  cvUrl: "#",
+  // Private — not rendered as a visible mailto in the UI.
+  email: "ahmed.ha.mahmoud@outlook.com",
+  linkedin: "https://www.linkedin.com/in/ahmed-mohsen-hanafy/",
+  cvAvailable: false, // Toggle to true when the PDF is uploaded
+  cvUrl: null,        // Will become "/Ahmed-Mostafa-CV.pdf" once available
   status: "Available — Summer 2026 internship",
 };
 
@@ -42,7 +45,7 @@ export const featuredProjects = [
     eyebrow: "Marketing analytics",
     title: "From scattered data to a single growth view",
     challenge:
-      "A multi-channel campaign was running across LinkedIn, search, and content — but no one could agree on what was actually working.",
+      "A multi-channel campaign was running across LinkedIn, paid search, and content — but stakeholders couldn't agree on which channel was actually working.",
     role: "Research & analytics — built the attribution model and weekly readout",
     takeaway:
       "Surfaced the two channels driving 78% of qualified leads, redirecting spend within one cycle.",

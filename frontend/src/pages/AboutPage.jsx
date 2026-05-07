@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Download } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import useReveal from "@/hooks/useReveal";
 import { capabilities, journeyChapters, profile } from "@/lib/data";
+import CVButton from "@/components/CVButton";
+import { track, Events } from "@/lib/analytics";
 
 export default function AboutPage() {
   useReveal();
+  const onLinkedIn = () => track(Events.LINKEDIN_CLICKED, { source: "about" });
+
   return (
     <main data-testid="about-page" className="pt-12 md:pt-20">
       <section className="container-editorial pb-20 md:pb-28">
@@ -39,17 +43,13 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-10 flex flex-col gap-3">
-            <a
-              href={profile.cvUrl}
-              data-testid="about-download-cv"
-              className="btn-primary"
-            >
-              <Download size={14} /> Download CV
-            </a>
+            <CVButton variant="primary" source="about" testId="about-download-cv" />
             <a
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer noopener"
+              onClick={onLinkedIn}
+              data-testid="about-linkedin"
               className="btn-ghost"
             >
               LinkedIn <ArrowUpRight size={14} />

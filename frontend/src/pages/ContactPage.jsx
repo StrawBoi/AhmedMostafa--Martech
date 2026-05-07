@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
-import { ArrowUpRight, Mail, Loader2, Download } from "lucide-react";
+import { ArrowUpRight, Loader2, Clock } from "lucide-react";
 import { toast } from "sonner";
 import useReveal from "@/hooks/useReveal";
 import { profile } from "@/lib/data";
+import CVButton from "@/components/CVButton";
+import { track, Events } from "@/lib/analytics";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -14,6 +16,8 @@ const initialForm = {
   company: "",
   role_type: "",
   message: "",
+  // Honeypot — humans should leave this empty.
+  website: "",
 };
 
 export default function ContactPage() {
@@ -39,28 +43,37 @@ export default function ContactPage() {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
+    track(Events.CONTACT_SUBMIT, {
+      has_company: Boolean(form.company),
+      role_type: form.role_type || "unspecified",
+    });
     setLoading(true);
     try {
       await axios.post(`${API}/contact`, form);
+      track(Events.CONTACT_SUBMIT_SUCCESS);
       toast.success("Message sent — I'll reply within 48 hours.");
       setForm(initialForm);
     } catch (err) {
+      const status = err?.response?.status;
       const detail = err?.response?.data?.detail;
-      toast.error(
-        typeof detail === "string"
-          ? detail
-          : "Couldn't send through the form. Try the email link below."
-      );
+      track(Events.CONTACT_SUBMIT_ERROR, { status });
+      if (status === 429) {
+        toast.error(
+          typeof detail === "string"
+            ? detail
+            : "Too many submissions — please try again later."
+        );
+      } else {
+        toast.error(
+          typeof detail === "string"
+            ? detail
+            : "Something went wrong sending your message. Please try again in a moment."
+        );
+      }
     } finally {
       setLoading(false);
     }
   };
-
-  const mailtoFallback = `mailto:${profile.email}?subject=${encodeURIComponent(
-    "Internship opportunity"
-  )}&body=${encodeURIComponent(
-    `Hi Ahmed,\n\n${form.message || "I'd like to talk about an internship opportunity."}\n\n— ${form.name || ""}`
-  )}`;
 
   return (
     <main data-testid="contact-page" className="pt-12 md:pt-20">
@@ -76,9 +89,9 @@ export default function ContactPage() {
           className="mt-6 max-w-2xl text-base md:text-lg text-foreground/75 leading-relaxed reveal"
           style={{ transitionDelay: "120ms" }}
         >
-          Drop a few lines about the team, the timing, and what kind of intern
-          you're looking for. I read everything personally and reply within
-          48 hours.
+          The form below is the fastest way to reach me. A few lines about
+          the team, the timing, and what kind of intern you're looking for is
+          enough — I read everything personally and reply within 48 hours.
         </p>
       </section>
 
@@ -89,6 +102,29 @@ export default function ContactPage() {
           className="lg:col-span-7 space-y-7 reveal"
           noValidate
         >
+          {/* Honeypot — visually hidden, ignored by humans, often filled by bots. */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              left: "-9999px",
+              top: "auto",
+              width: 1,
+              height: 1,
+              overflow: "hidden",
+            }}
+          >
+            <label htmlFor="website">Website (leave empty)</label>
+            <input
+              id="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={form.website}
+              onChange={update("website")}
+            />
+          </div>
+
           <Field
             id="name"
             label="Your name"
@@ -164,29 +200,22 @@ export default function ContactPage() {
                 </>
               )}
             </button>
-            <a
-              href={mailtoFallback}
-              data-testid="contact-mailto-fallback"
-              className="text-sm link-underline text-foreground/80"
-            >
-              Or send via email instead
-            </a>
+            <p className="text-xs text-subtle">
+              Your details are stored privately. Replies go out within 48 hours.
+            </p>
           </div>
         </form>
 
         <aside className="lg:col-span-5 lg:pl-10 lg:border-l border-hairline">
           <div className="space-y-10 reveal" style={{ transitionDelay: "100ms" }}>
             <div>
-              <p className="overline mb-3">Direct</p>
-              <a
-                href={`mailto:${profile.email}`}
-                data-testid="contact-email-direct"
-                className="font-serif text-2xl link-underline"
-              >
-                {profile.email}
-              </a>
-              <p className="text-sm text-subtle mt-2 inline-flex items-center gap-2">
-                <Mail size={14} /> Replies within 48 hours
+              <p className="overline mb-3">How to reach me</p>
+              <p className="font-serif text-2xl leading-snug">
+                The contact form is the primary channel — it routes straight
+                to me.
+              </p>
+              <p className="text-sm text-subtle mt-3">
+                Direct email is available on request once we've connected.
               </p>
             </div>
 
@@ -198,18 +227,21 @@ export default function ContactPage() {
                     href={profile.linkedin}
                     target="_blank"
                     rel="noreferrer noopener"
+                    onClick={() =>
+                      track(Events.LINKEDIN_CLICKED, { source: "contact_page" })
+                    }
+                    data-testid="contact-linkedin"
                     className="inline-flex items-center gap-1.5 link-underline"
                   >
                     LinkedIn <ArrowUpRight size={14} />
                   </a>
                 </li>
                 <li>
-                  <a
-                    href={profile.cvUrl}
-                    className="inline-flex items-center gap-1.5 link-underline"
-                  >
-                    <Download size={14} /> Download CV
-                  </a>
+                  <CVButton
+                    variant="footer"
+                    source="contact_page"
+                    testId="contact-download-cv"
+                  />
                 </li>
               </ul>
             </div>
@@ -220,6 +252,10 @@ export default function ContactPage() {
                 Marketing, growth, research or analytics internships across
                 Belgium and Europe — Summer 2026.
               </p>
+            </div>
+
+            <div className="flex items-center gap-2 text-xs text-subtle">
+              <Clock size={12} /> Replies within 48 hours, including weekends.
             </div>
           </div>
         </aside>

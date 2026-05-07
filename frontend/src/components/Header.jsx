@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, ArrowUpRight, Download } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import CVButton from "@/components/CVButton";
 import { profile } from "@/lib/data";
+import { track, Events } from "@/lib/analytics";
 
 const NAV = [
   { to: "/projects", label: "Projects" },
@@ -25,6 +27,8 @@ export default function Header() {
   useEffect(() => {
     setOpen(false);
   }, [location.pathname]);
+
+  const onLinkedIn = () => track(Events.LINKEDIN_CLICKED, { source: "header" });
 
   return (
     <header
@@ -73,18 +77,17 @@ export default function Header() {
             href={profile.linkedin}
             target="_blank"
             rel="noreferrer noopener"
+            onClick={onLinkedIn}
             data-testid="header-linkedin-link"
             className="inline-flex items-center gap-1.5 text-sm text-foreground/80 hover:text-terracotta transition-colors"
           >
             LinkedIn <ArrowUpRight size={14} />
           </a>
-          <a
-            href={profile.cvUrl}
-            data-testid="header-download-cv"
-            className="inline-flex items-center gap-2 border border-foreground/80 px-4 py-2 text-sm hover:bg-foreground hover:text-background transition-all"
-          >
-            <Download size={14} /> Download CV
-          </a>
+          <CVButton
+            variant="header"
+            source="header"
+            testId="header-download-cv"
+          />
           <ThemeToggle />
         </div>
 
@@ -115,21 +118,17 @@ export default function Header() {
                 {item.label}
               </NavLink>
             ))}
-            <div className="flex items-center gap-3 pt-3 border-t border-hairline">
+            <div className="flex items-center flex-wrap gap-3 pt-3 border-t border-hairline">
               <a
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer noopener"
+                onClick={onLinkedIn}
                 className="inline-flex items-center gap-1.5 text-sm"
               >
                 LinkedIn <ArrowUpRight size={14} />
               </a>
-              <a
-                href={profile.cvUrl}
-                className="inline-flex items-center gap-2 border border-foreground/80 px-4 py-2 text-sm"
-              >
-                <Download size={14} /> Download CV
-              </a>
+              <CVButton variant="header" source="mobile-menu" testId="mobile-download-cv" />
               <ThemeToggle />
             </div>
           </div>

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException, Request
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -8,7 +8,7 @@ from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List, Optional
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 
 ROOT_DIR = Path(__file__).parent
@@ -26,6 +26,11 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+
+# Rate limit: max RATE_LIMIT_MAX submissions per IP within RATE_LIMIT_WINDOW_MIN minutes.
+RATE_LIMIT_MAX = 5
+RATE_LIMIT_WINDOW_MIN = 60
 
 
 # ---------- Models ----------
@@ -46,6 +51,8 @@ class ContactCreate(BaseModel):
     company: Optional[str] = Field(default=None, max_length=160)
     role_type: Optional[str] = Field(default=None, max_length=120)
     message: str = Field(min_length=10, max_length=4000)
+    # Honeypot — humans should leave this empty.
+    website: Optional[str] = Field(default=None, max_length=240)
 
 
 class ContactMessage(BaseModel):
@@ -57,6 +64,17 @@ class ContactMessage(BaseModel):
     role_type: Optional[str] = None
     message: str
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+
+# ---------- Helpers ----------
+def _client_ip(request: Request) -> str:
+    fwd = request.headers.get("x-forwarded-for")
+    if fwd:
+        return fwd.split(",")[0].strip()
+    real = request.headers.get("x-real-ip")
+    if real:
+        return real.strip()
+    return request.client.host if request.client else "unknown"
 
 
 # ---------- Routes ----------
@@ -84,21 +102,50 @@ async def get_status_checks():
 
 
 @api_router.post("/contact", response_model=ContactMessage, status_code=201)
-async def submit_contact(payload: ContactCreate):
+async def submit_contact(payload: ContactCreate, request: Request):
+    # Honeypot — bots fill the hidden 'website' field. Quietly drop the request
+    # but return a 201 so the bot thinks it succeeded (no signal back).
+    if payload.website:
+        logger.info("Honeypot triggered for contact submission — silently dropping.")
+        return ContactMessage(**payload.model_dump(exclude={"website"}))
+
+    ip = _client_ip(request)
+    now = datetime.now(timezone.utc)
+    window_start = now - timedelta(minutes=RATE_LIMIT_WINDOW_MIN)
+
     try:
-        obj = ContactMessage(**payload.model_dump())
+        recent = await db.contact_messages.count_documents(
+            {"_ip": ip, "created_at": {"$gte": window_start.isoformat()}}
+        )
+    except Exception:
+        recent = 0
+
+    if recent >= RATE_LIMIT_MAX:
+        raise HTTPException(
+            status_code=429,
+            detail="Too many submissions from this network. Please try again in a little while.",
+        )
+
+    try:
+        obj = ContactMessage(**payload.model_dump(exclude={"website"}))
         doc = obj.model_dump()
         doc['created_at'] = doc['created_at'].isoformat()
+        doc['_ip'] = ip  # internal field; never returned to clients
         await db.contact_messages.insert_one(doc)
         return obj
-    except Exception as e:
+    except HTTPException:
+        raise
+    except Exception:
         logger.exception("Failed to save contact message")
         raise HTTPException(status_code=500, detail="Could not save your message. Please try again.")
 
 
 @api_router.get("/contact", response_model=List[ContactMessage])
 async def list_contact_messages():
-    rows = await db.contact_messages.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
+    # Exclude both _id (Mongo) and _ip (internal). Sort newest first.
+    rows = await db.contact_messages.find(
+        {}, {"_id": 0, "_ip": 0}
+    ).sort("created_at", -1).to_list(500)
     for r in rows:
         if isinstance(r.get('created_at'), str):
             r['created_at'] = datetime.fromisoformat(r['created_at'])
@@ -114,8 +161,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-logger = logging.getLogger(__name__)
 
 
 @app.on_event("shutdown")

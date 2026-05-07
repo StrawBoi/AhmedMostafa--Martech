@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Mail, Download } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { profile } from "@/lib/data";
+import CVButton from "@/components/CVButton";
+import { track, Events } from "@/lib/analytics";
 
 export default function ContactCTA() {
+  const onLinkedIn = () =>
+    track(Events.LINKEDIN_CLICKED, { source: "home_cta" });
+
   return (
     <section
       data-testid="contact-cta"
@@ -19,8 +24,8 @@ export default function ContactCTA() {
               <br />I'd love to hear about it.
             </h2>
             <p className="mt-8 text-background/70 text-lg max-w-xl leading-relaxed">
-              I respond to every recruiter and hiring manager email within
-              48 hours, including weekends.
+              The contact form is the fastest way to reach me — I read every
+              message personally and reply within 48 hours.
             </p>
           </div>
 
@@ -38,32 +43,24 @@ export default function ContactCTA() {
                 />
               </Link>
               <a
-                href={`mailto:${profile.email}`}
-                data-testid="cta-mailto"
-                className="inline-flex items-center justify-between gap-4 border border-background/30 hover:border-background text-background px-6 py-5 transition-colors"
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer noopener"
+                onClick={onLinkedIn}
+                data-testid="cta-linkedin"
+                className="inline-flex items-center justify-between gap-4 border border-background/30 hover:border-background text-background px-6 py-5 transition-colors group"
               >
-                <span className="inline-flex items-center gap-3 text-sm">
-                  <Mail size={16} /> {profile.email}
-                </span>
-                <ArrowUpRight size={16} />
+                <span className="font-serif text-xl">Connect on LinkedIn</span>
+                <ArrowUpRight
+                  size={18}
+                  className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                />
               </a>
-              <div className="flex items-center gap-3 pt-2">
-                <a
-                  href={profile.linkedin}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-1.5 text-sm text-background/80 hover:text-background"
-                >
-                  LinkedIn <ArrowUpRight size={14} />
-                </a>
-                <span className="h-3 w-px bg-background/30" />
-                <a
-                  href={profile.cvUrl}
-                  className="inline-flex items-center gap-1.5 text-sm text-background/80 hover:text-background"
-                >
-                  <Download size={14} /> Download CV
-                </a>
-              </div>
+              <CVButton
+                variant="inverted"
+                source="home_cta"
+                testId="cta-download-cv"
+              />
             </div>
           </div>
         </div>
