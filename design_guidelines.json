@@ -1,0 +1,101 @@
+{
+  "project_name": "Ahmed Mostafa Recruiter-First Portfolio",
+  "theme": "light",
+  "archetype": "1_organic_earthy",
+  "visual_direction": "Modern, premium, clear, restrained, editorial. Emphasizes typography and whitespace over gimmicky animations.",
+  "colors": {
+    "light": {
+      "background": "#F5F3E9",
+      "surface": "#EFECE0",
+      "primary_text": "#1E1C1A",
+      "secondary_text": "#595652",
+      "accent": "#C45532",
+      "accent_hover": "#A84525",
+      "border": "#E2DFD3"
+    },
+    "dark": {
+      "background": "#121110",
+      "surface": "#1C1A19",
+      "primary_text": "#F2F0EA",
+      "secondary_text": "#A6A39E",
+      "accent": "#C45532",
+      "accent_hover": "#DF6C48",
+      "border": "#2E2B29"
+    }
+  },
+  "typography": {
+    "heading_font": "Fraunces, serif",
+    "body_font": "DM Sans, sans-serif",
+    "scales": {
+      "h1": "text-5xl md:text-6xl tracking-tight leading-none",
+      "h2": "text-3xl md:text-4xl tracking-tight leading-tight",
+      "h3": "text-2xl md:text-3xl tracking-tight",
+      "h4": "text-xl font-medium",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm uppercase tracking-[0.15em] font-medium"
+    },
+    "pairing_rules": "Use Fraunces in Light or Regular weights for headers to maintain editorial elegance. Use DM Sans for body copy and dense data/information. Overlines should be DM Sans, tiny, uppercase, and widely spaced."
+  },
+  "spacing_and_layout": {
+    "container": "max-w-7xl mx-auto px-6 md:px-12",
+    "section_gap": "py-24 md:py-32",
+    "grid_system": "Bento-style asymmetric grid for featured work. Generous negative space.",
+    "border_radius": "rounded-none or max rounded-sm for a sharp, editorial feel."
+  },
+  "motion_principles": {
+    "scroll": "Smooth scrolling using Lenis.",
+    "interactions": "Restrained. Micro-interactions on buttons (slight scale or color transition). Hover states on project cards reveal brief meta-data or slight image zoom.",
+    "reveals": "Staggered fade-up for lists (Capability pillars, Proof strip). Avoid extreme rotations or heavy 3D transforms."
+  },
+  "components_strategy": {
+    "header": "Sticky with crystal glassmorphism (backdrop-blur-xl bg-[#F5F3E9]/80). Delicate 1px bottom border (border-black/5).",
+    "buttons": {
+      "primary": "Solid accent background (#C45532), white text, no border radius (sharp edges), subtle hover lift.",
+      "secondary": "Transparent background, 1px solid border (#1E1C1A), text (#1E1C1A), hover fills with text color inversion."
+    },
+    "cards": "Flat surfaces with 1px delicate borders (border-[#E2DFD3]), no default shadow. Hover triggers subtle ambient shadow (shadow-md).",
+    "accordion": "Minimalist lines. 1px top/bottom borders. No background containers. Large typography for questions."
+  },
+  "media_and_images": {
+    "guidelines": "Images should feel warm, editorial, and professional. Use muted, warm overlays if text needs to go on top.",
+    "slots": [
+      {
+        "category": "hero_portrait",
+        "description": "Placeholder for Ahmed's professional photo.",
+        "url": "https://images.unsplash.com/photo-1585240975858-7264fd020798?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHByb2Zlc3Npb25hbCUyMHBvcnRyYWl0JTIwbWFya2V0aW5nJTIwbmV1dHJhbCUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzc4MTU5MDA5fDA&ixlib=rb-4.1.0&q=85"
+      },
+      {
+        "category": "project_1_featured",
+        "description": "Marketing campaign analytics / dashboard visual (visually dominant).",
+        "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2OTV8MHwxfHNlYXJjaHwzfHxtYXJrZXRpbmclMjBjYW1wYWlnbiUyMGFuYWx5c2lzJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwcmVzZWFyY2h8ZW58MHx8fHwxNzc4MTU5MDEwfDA&ixlib=rb-4.1.0&q=85"
+      },
+      {
+        "category": "project_2",
+        "description": "Monitor screengrab / analytics.",
+        "url": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2OTV8MHwxfHNlYXJjaHwyfHxtYXJrZXRpbmclMjBjYW1wYWlnbiUyMGFuYWx5c2lzJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwcmVzZWFyY2h8ZW58MHx8fHwxNzc4MTU5MDEwfDA&ixlib=rb-4.1.0&q=85"
+      },
+      {
+        "category": "project_3",
+        "description": "Office workspace / editorial context.",
+        "url": "https://images.unsplash.com/photo-1648912869366-b89a51f52d44?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTN8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwb2ZmaWNlJTIwd29ya3NwYWNlJTIwZWRpdG9yaWFsfGVufDB8fHx8MTc3ODE1OTAwOXww&ixlib=rb-4.1.0&q=85"
+      }
+    ]
+  },
+  "homepage_layout_direction": {
+    "1_header": "Sticky, glassmorphism, right-aligned nav links, minimalist logo/name on left.",
+    "2_hero": "Split layout or asymmetric composition. Massive Fraunces headline for role positioning. Warm neutral background. Include 'View Projects' (primary) and 'Download CV' (secondary) buttons. Place hero portrait dynamically to break the grid.",
+    "3_proof_strip": "Horizontal ticker or 4-column minimal grid showing key stats/proof points. Use overline text (uppercase, spaced) with large numerals.",
+    "4_featured_work": "Bento grid, 3 items. First item spans col-span-full md:col-span-8 row-span-2. The other two items span col-span-4. Ensure rich image placeholders with subtle overlay.",
+    "5_capability_pillars": "Interactive accordion or vertical tabs. Emphasize: Research & Insight, Campaign & Content, Data & Automation. Keep UI chrome minimal—let typography drive hierarchy.",
+    "6_selected_journey": "Short narrative. Use a two-column editorial layout: wide column for narrative text, narrow column for key dates/roles. Avoid traditional timelines.",
+    "7_recruiter_faq": "Shadcn accordion component, highly customized. Remove borders on sides, use only bottom border separators. Large typography for questions.",
+    "8_contact_block": "Solid background container (perhaps the accent color inverted, or dark surface). High contrast. Form fields using Shadcn but customized for editorial sharpness (no rounded corners). Include mailto fallback link prominently."
+  },
+  "instructions_to_main_agent": [
+    "Use standard Tailwind CSS with React and Shadcn components for complex interactions (accordion, form).",
+    "Ensure all components are fully responsive and accessible (aria labels, contrast checks).",
+    "Install and configure Lenis for smooth scrolling.",
+    "Use lucide-react for necessary minimal iconography (keep icons sparse to maintain the editorial vibe).",
+    "Apply `data-testid` to all interactive and key informational elements."
+  ]
+}
