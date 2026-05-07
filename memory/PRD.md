@@ -47,6 +47,17 @@ Visual direction: editorial premium, brighter than old all-black site, light mod
   - SEO/social: `<title>`, `meta description`, OpenGraph + Twitter Card meta, editorial SVG OG image, "AM" terracotta SVG favicon.
   - Tested 100% backend (9/9 pytest) + 100% frontend (38/38 + 7 regression).
   - Post-test polish: unified analytics events (single `cv_download_clicked` with `source` + `variant` props instead of per-source event names).
+- **2026-05-07 (iter 3 — design polish)**:
+  - Brighter editorial palette: lighter cream background (`#F7F5EC`), deeper ink, lifted subtle text contrast, deeper terracotta for AA compliance.
+  - Typography rhythm: introduced `.h-display` and `.h-section` clamp-based scales for consistent display sizing across sections; tightened heading line-height; bumped Fraunces opsz to 144 for editorial weight.
+  - Visible keyboard focus states: 2px terracotta outline with 3px offset on every focusable element via `:focus-visible`.
+  - Comfortable mobile touch targets: every interactive element guaranteed ≥44 px (`btn-primary`, `btn-ghost`, mobile menu toggle, theme toggle).
+  - Calmer pillar interaction: replaced Plus/Minus icons with a quieter two-line indicator that rotates closed → opens to a horizontal line; smoother bullet stagger inside expanded panels.
+  - Staggered featured-card reveals (per-card `transitionDelay` 0/140/280 ms).
+  - Clearer CTA hierarchy: added primary CTAs at the bottom of FeaturedWork (`featured-cta-all-projects`) and inside the FAQ aside (`faq-cta-contact`).
+  - Better mobile stacking: ProofStrip now uses `divide-x/divide-y` with proper breakpoint switching; sections share consistent `py-24 md:py-36` rhythm.
+  - `prefers-reduced-motion` respected — reveals collapse to a 200 ms opacity transition with no translate.
+  - Tested 100% backend (9/9 pytest) + 100% frontend (full regression + iter-3 specific checks).
 
 ## What's been implemented
 - ✅ Home with all 8 ordered sections
