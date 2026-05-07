@@ -1,0 +1,44 @@
+import { useEffect, useState } from "react";
+import { Sun, Moon } from "lucide-react";
+
+const STORAGE_KEY = "ahmed-theme";
+
+function getInitialTheme() {
+  if (typeof window === "undefined") return "light";
+  const stored = window.localStorage.getItem(STORAGE_KEY);
+  if (stored === "light" || stored === "dark") return stored;
+  return "light"; // light by default per design brief
+}
+
+export default function ThemeToggle() {
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    const initial = getInitialTheme();
+    setTheme(initial);
+    document.documentElement.classList.toggle("dark", initial === "dark");
+  }, []);
+
+  const toggle = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    document.documentElement.classList.toggle("dark", next === "dark");
+    try {
+      window.localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      /* ignore */
+    }
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      data-testid="theme-toggle-button"
+      className="inline-flex h-9 w-9 items-center justify-center text-foreground/80 hover:text-terracotta transition-colors"
+    >
+      {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+    </button>
+  );
+}
