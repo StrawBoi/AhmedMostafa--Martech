@@ -4,69 +4,71 @@
 
 @layer base {
     :root {
-        /* Editorial warm-stone palette — Light (default) */
-        --background: 48 35% 94%;        /* #F5F3E9 warm bone */
-        --surface: 45 28% 91%;           /* #EFECE0 */
-        --foreground: 24 10% 11%;        /* #1E1C1A near-black ink */
-        --ink: 24 10% 11%;
-        --subtle: 30 4% 35%;             /* #595652 secondary text */
+        /* Editorial warm-stone palette — Light (default), brighter & more editorial */
+        --background: 46 38% 96%;        /* #F7F5EC — softer cream, lighter than before */
+        --surface: 44 26% 92%;           /* #EFECDF */
+        --surface-strong: 42 22% 88%;
+        --foreground: 24 12% 9%;         /* #1B1916 deeper ink for stronger contrast */
+        --ink: 24 12% 9%;
+        --subtle: 28 6% 32%;             /* #534F4A — bumped contrast for body */
 
-        --terracotta: 14 60% 49%;        /* #C45532 */
-        --terracotta-hover: 14 64% 40%;  /* #A84525 */
-        --terracotta-soft: 18 55% 88%;   /* tinted bg */
+        --terracotta: 14 62% 47%;        /* #C0532E — slightly deeper for AA */
+        --terracotta-hover: 14 66% 38%;
+        --terracotta-soft: 18 55% 92%;
 
-        --hairline: 40 18% 85%;          /* #E2DFD3 */
+        --hairline: 36 14% 82%;
 
         --card: 0 0% 100%;
-        --card-foreground: 24 10% 11%;
-        --popover: 48 35% 94%;
-        --popover-foreground: 24 10% 11%;
-        --primary: 24 10% 11%;
-        --primary-foreground: 48 35% 96%;
-        --secondary: 45 28% 91%;
-        --secondary-foreground: 24 10% 11%;
-        --muted: 40 18% 88%;
-        --muted-foreground: 30 4% 35%;
-        --accent: 14 60% 49%;
+        --card-foreground: 24 12% 9%;
+        --popover: 46 38% 96%;
+        --popover-foreground: 24 12% 9%;
+        --primary: 24 12% 9%;
+        --primary-foreground: 46 38% 96%;
+        --secondary: 44 26% 92%;
+        --secondary-foreground: 24 12% 9%;
+        --muted: 38 16% 90%;
+        --muted-foreground: 28 6% 32%;
+        --accent: 14 62% 47%;
         --accent-foreground: 0 0% 100%;
-        --destructive: 0 70% 45%;
+        --destructive: 0 70% 42%;
         --destructive-foreground: 0 0% 98%;
-        --border: 40 18% 85%;
-        --input: 40 18% 80%;
-        --ring: 14 60% 49%;
+        --border: 36 14% 82%;
+        --input: 36 14% 78%;
+        --ring: 14 62% 47%;
         --radius: 0.25rem;
     }
 
     .dark {
-        --background: 24 6% 7%;          /* #121110 */
-        --surface: 24 7% 10%;            /* #1C1A19 */
-        --foreground: 42 22% 93%;        /* #F2F0EA */
-        --ink: 42 22% 93%;
-        --subtle: 30 4% 64%;             /* #A6A39E */
+        --background: 24 6% 7%;
+        --surface: 24 7% 10%;
+        --surface-strong: 24 7% 13%;
+        --foreground: 42 22% 94%;
+        --ink: 42 22% 94%;
+        --subtle: 30 6% 70%;             /* lifted for AA on dark */
 
-        --terracotta: 14 64% 53%;        /* slightly brighter on dark */
-        --terracotta-hover: 18 70% 58%;  /* #DF6C48 */
+        --terracotta: 14 70% 58%;
+        --terracotta-hover: 18 78% 64%;
         --terracotta-soft: 14 30% 18%;
 
-        --hairline: 24 6% 18%;           /* #2E2B29 */
+        --hairline: 24 6% 19%;
 
         --card: 24 7% 10%;
-        --card-foreground: 42 22% 93%;
+        --card-foreground: 42 22% 94%;
         --popover: 24 7% 10%;
-        --popover-foreground: 42 22% 93%;
-        --primary: 42 22% 93%;
+        --popover-foreground: 42 22% 94%;
+        --primary: 42 22% 94%;
         --primary-foreground: 24 6% 7%;
         --secondary: 24 7% 14%;
-        --secondary-foreground: 42 22% 93%;
+        --secondary-foreground: 42 22% 94%;
         --muted: 24 7% 14%;
-        --muted-foreground: 30 4% 64%;
-        --accent: 14 64% 53%;
+        --muted-foreground: 30 6% 70%;
+        --accent: 14 70% 58%;
         --accent-foreground: 0 0% 100%;
         --destructive: 0 60% 45%;
         --destructive-foreground: 0 0% 98%;
-        --border: 24 6% 18%;
+        --border: 24 6% 19%;
         --input: 24 6% 22%;
-        --ring: 14 64% 53%;
+        --ring: 14 70% 58%;
     }
 }
 
@@ -78,6 +80,7 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
+        -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -93,52 +96,109 @@
     h1, h2, h3, h4 {
         @apply font-serif font-light tracking-tight;
         font-optical-sizing: auto;
+        font-variation-settings: "opsz" 144;
+    }
+
+    /* Visible, editorial-friendly keyboard focus ring */
+    :focus { outline: none; }
+    :focus-visible {
+        outline: 2px solid hsl(var(--terracotta));
+        outline-offset: 3px;
+        border-radius: 2px;
+    }
+    /* Inputs use a subtle border emphasis instead of a stray ring */
+    input:focus-visible,
+    textarea:focus-visible {
+        outline: none;
+    }
+    a:focus-visible,
+    button:focus-visible,
+    [role="button"]:focus-visible {
+        outline: 2px solid hsl(var(--terracotta));
+        outline-offset: 3px;
     }
 }
 
 @layer components {
     .container-editorial {
-        @apply max-w-[1280px] mx-auto px-6 md:px-10 lg:px-14;
+        @apply max-w-[1280px] mx-auto px-5 sm:px-6 md:px-10 lg:px-14;
     }
 
     .overline {
         @apply text-[11px] uppercase tracking-overline font-medium text-subtle;
     }
 
-    .hairline {
-        @apply border-hairline;
-    }
+    .hairline { @apply border-hairline; }
 
-    /* Editorial buttons */
+    /* Editorial buttons — minimum 44px touch target on mobile */
     .btn-primary {
-        @apply inline-flex items-center justify-center gap-2 bg-terracotta text-white px-6 py-3 text-sm font-medium tracking-wide transition-all duration-300;
+        @apply inline-flex items-center justify-center gap-2 bg-terracotta text-white px-6 py-3.5 text-sm font-medium tracking-wide transition-all duration-300 min-h-[44px];
     }
-    .btn-primary:hover { background-color: hsl(var(--terracotta-hover)); transform: translateY(-1px); }
+    .btn-primary:hover {
+        background-color: hsl(var(--terracotta-hover));
+        transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
 
     .btn-ghost {
-        @apply inline-flex items-center justify-center gap-2 border border-foreground/80 text-foreground px-6 py-3 text-sm font-medium tracking-wide transition-all duration-300;
+        @apply inline-flex items-center justify-center gap-2 border border-foreground/85 text-foreground px-6 py-3.5 text-sm font-medium tracking-wide transition-all duration-300 min-h-[44px];
     }
-    .btn-ghost:hover { background-color: hsl(var(--foreground)); color: hsl(var(--background)); }
+    .btn-ghost:hover {
+        background-color: hsl(var(--foreground));
+        color: hsl(var(--background));
+    }
 
+    /* Tertiary inline link with sliding underline */
     .link-underline {
         @apply relative inline-block;
         background-image: linear-gradient(currentColor, currentColor);
         background-size: 0% 1px;
         background-position: 0 100%;
         background-repeat: no-repeat;
-        transition: background-size 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        transition: background-size 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .link-underline:hover { background-size: 100% 1px; }
 
+    /* Reveal — restrained fade-up, ~700ms, single-shot */
     .reveal {
         opacity: 0;
-        transform: translateY(18px);
-        transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        transform: translateY(14px);
+        transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: opacity, transform;
     }
     .reveal.in-view {
         opacity: 1;
         transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .reveal {
+            transition: opacity 0.2s linear;
+            transform: none;
+        }
+        html { scroll-behavior: auto; }
+    }
+
+    /* Heading rhythm — consistent display sizes */
+    .h-display {
+        @apply font-serif font-light tracking-tight leading-[1.02];
+        font-size: clamp(2.5rem, 6vw + 0.5rem, 5.6rem);
+    }
+    .h-section {
+        @apply font-serif font-light tracking-tight leading-[1.05];
+        font-size: clamp(2rem, 3.5vw + 0.5rem, 3.5rem);
+    }
+
+    /* Subtle ambient hover for project visuals */
+    .img-zoom {
+        @apply overflow-hidden;
+    }
+    .img-zoom > img {
+        transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .group:hover .img-zoom > img {
+        transform: scale(1.025);
     }
 }
 

@@ -96,7 +96,7 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           data-testid="mobile-menu-toggle"
-          className="md:hidden inline-flex items-center justify-center w-9 h-9 text-foreground"
+          className="md:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 text-foreground"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>

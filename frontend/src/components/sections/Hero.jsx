@@ -11,23 +11,23 @@ export default function Hero() {
   return (
     <section
       data-testid="hero-section"
-      className="relative pt-12 md:pt-20 pb-20 md:pb-28 overflow-hidden"
+      className="relative pt-14 md:pt-24 pb-20 md:pb-32 overflow-hidden"
     >
-      <div className="container-editorial grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-end">
+      <div className="container-editorial grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end">
         <div className="lg:col-span-8">
-          <div className="flex items-center gap-3 mb-8 reveal">
-            <span className="relative flex h-2 w-2">
+          <div className="flex items-center gap-3 mb-7 md:mb-10 reveal">
+            <span className="relative flex h-2 w-2" aria-hidden="true">
               <span className="absolute inline-flex h-full w-full rounded-full bg-terracotta opacity-60 animate-ping" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-terracotta" />
             </span>
-            <span className="overline text-foreground/70">
+            <span className="overline text-foreground/80">
               {profile.status}
             </span>
           </div>
 
           <h1
             data-testid="hero-headline"
-            className="font-serif font-light text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[5.6rem] leading-[1.02] tracking-tight reveal"
+            className="h-display reveal"
           >
             Marketing intern with a
             <br />
@@ -36,7 +36,7 @@ export default function Hero() {
 
           <p
             data-testid="hero-subheadline"
-            className="mt-8 max-w-2xl text-base md:text-lg text-foreground/75 leading-relaxed reveal"
+            className="mt-7 md:mt-9 max-w-2xl text-base md:text-lg text-foreground/80 leading-relaxed reveal"
             style={{ transitionDelay: "120ms" }}
           >
             BBA candidate at Odisee, Brussels. I bring an unusual mix to a
@@ -45,7 +45,7 @@ export default function Hero() {
           </p>
 
           <div
-            className="mt-10 flex flex-wrap items-center gap-4 reveal"
+            className="mt-9 md:mt-11 flex flex-wrap items-center gap-3 sm:gap-4 reveal"
             style={{ transitionDelay: "220ms" }}
           >
             <Link
@@ -57,7 +57,7 @@ export default function Hero() {
               View Projects
               <ArrowRight
                 size={16}
-                className="transition-transform group-hover:translate-x-1"
+                className="transition-transform duration-300 group-hover:translate-x-1"
               />
             </Link>
             <CVButton variant="ghost" source="hero" testId="hero-cta-cv" />
@@ -68,7 +68,7 @@ export default function Hero() {
           className="lg:col-span-4 reveal"
           style={{ transitionDelay: "300ms" }}
         >
-          <div className="border-l border-hairline pl-6 md:pl-8 space-y-6">
+          <div className="border-l border-hairline pl-6 md:pl-8 space-y-7">
             <div>
               <p className="overline mb-2">Currently</p>
               <p className="font-serif text-xl leading-snug">
@@ -83,14 +83,14 @@ export default function Hero() {
               </p>
             </div>
             <div className="flex items-center gap-2 text-sm text-subtle">
-              <MapPin size={14} /> Brussels — open across Belgium / Europe
+              <MapPin size={14} aria-hidden="true" /> Brussels — open across Belgium / Europe
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container-editorial mt-20 hidden md:flex items-center gap-4 text-subtle">
-        <span className="h-px w-16 bg-hairline" />
+      <div className="container-editorial mt-16 md:mt-24 hidden md:flex items-center gap-4 text-subtle">
+        <span className="h-px w-16 bg-hairline" aria-hidden="true" />
         <span className="overline">Scroll — recruiter snapshot below</span>
       </div>
     </section>
