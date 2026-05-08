@@ -11,17 +11,20 @@ export default function ContactCTA() {
   return (
     <section
       data-testid="contact-cta"
-      className="py-24 md:py-40 bg-foreground text-background"
+      className="py-24 md:py-40 bg-[hsl(var(--foreground)/0.95)] text-background border-t border-hairline/40"
     >
       <div className="container-editorial">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-end">
           <div className="lg:col-span-8 reveal">
             <p className="overline text-background/60 mb-6">Let's talk</p>
-            <h2 className="font-serif font-light tracking-tight leading-[1.04] text-4xl md:text-6xl lg:text-[5rem]">
-              Hiring a marketing intern{" "}
+            <h2
+              className="font-serif font-light tracking-tight leading-[1.04] text-4xl md:text-6xl lg:text-[5rem] max-w-[17ch]"
+              style={{ textWrap: "balance" }}
+            >
+              Hiring for a marketing internship{" "}
               <span className="italic text-terracotta">in Belgium</span> or{" "}
               <span className="italic text-terracotta">Europe?</span>
-              <br />I'd love to hear about it.
+              <span className="block mt-2 md:mt-3 text-background/95">I'd love to contribute.</span>
             </h2>
             <p className="mt-8 md:mt-10 text-background/75 text-base md:text-lg max-w-xl leading-relaxed">
               The contact form is the fastest way to reach me — I read every

@@ -25,7 +25,7 @@ export const projects = [
     secondaryPillar: "Communication",
     role: "Account Manager",
     shortSummary:
-      "A university campaign strategy designed to reposition Volvo in Belgium through a locally resonant brand narrative built around manufacturing, identity, and market relevance.",
+      "Campaign strategy proposal to reposition Volvo in Belgium through a locally resonant brand narrative built around manufacturing, identity, and market relevance.",
     overview:
       "This university project explored how Volvo could strengthen its relevance in Belgium by connecting its global safety and sustainability image with a more locally meaningful story. The proposal reframed Volvo's Belgian production presence as a strategic communication asset rather than a hidden operational detail.",
     problem:
@@ -64,47 +64,47 @@ export const projects = [
       "SWOT",
       "PESTEL",
     ],
-    heroImage: "/projects/volvo/hero-placeholder.jpg",
+    heroImage: "/projects/volvo/campaign-cover.png",
     gallery: [
       {
         src: "/projects/volvo/cover-placeholder.jpg",
-        alt: "Volvo campaign cover slide placeholder",
+        alt: "Volvo campaign cover slide",
         caption: "Campaign cover",
         category: "cover",
       },
       {
         src: "/projects/volvo/situation-placeholder.jpg",
-        alt: "Volvo situation analysis slide placeholder",
+        alt: "Volvo market situation slide",
         caption: "Situation analysis",
         category: "research",
       },
       {
         src: "/projects/volvo/stp-placeholder.jpg",
-        alt: "Volvo audience segmentation slide placeholder",
+        alt: "Volvo audience segmentation slide",
         caption: "Audience segmentation",
         category: "research",
       },
       {
         src: "/projects/volvo/competition-placeholder.jpg",
-        alt: "Volvo competitive landscape slide placeholder",
+        alt: "Volvo competitive landscape slide",
         caption: "Competitive landscape",
         category: "research",
       },
       {
         src: "/projects/volvo/positioning-placeholder.jpg",
-        alt: "Volvo positioning slide placeholder",
+        alt: "Volvo positioning slide",
         caption: "Brand positioning",
         category: "strategy",
       },
       {
         src: "/projects/volvo/timeline-placeholder.jpg",
-        alt: "Volvo campaign timeline placeholder",
+        alt: "Volvo campaign timeline slide",
         caption: "Campaign timeline",
         category: "planning",
       },
       {
         src: "/projects/volvo/kpi-placeholder.jpg",
-        alt: "Volvo KPI and budget slide placeholder",
+        alt: "Volvo KPI and budget slide",
         caption: "KPIs and budget",
         category: "planning",
       },
@@ -118,11 +118,11 @@ export const projects = [
     title: "CINEMATEK - Decades of Cinema Campaign",
     subtitle: "University project in campaign strategy, audience segmentation, and cultural communication",
     type: "University Project",
-    status: "Strategic Campaign Proposal",
+    status: "Strategic Proposal",
     year: "2025",
     primaryPillar: "Strategizing",
     secondaryPillar: "Communication",
-    role: "Campaign / Account Strategy Support",
+    role: "Strategy Support",
     shortSummary:
       "A cultural campaign concept designed to turn a multi-month cinema programme into a clear, emotionally engaging digital narrative across audiences, platforms, and time.",
     overview:
@@ -160,53 +160,69 @@ export const projects = [
       "Social Media Strategy",
       "Tone of Voice",
     ],
-    heroImage: "/projects/cinematek/hero-placeholder.jpg",
+    audience:
+      "Three distinct audiences: Serious film enthusiasts and cinema connoisseurs, curious cultural explorers seeking accessible entry points, and casual viewers discovering cinema through curated discovery.",
+    narrativeArc:
+      "The campaign moves through four cultural decades (1950s retrospective, 1970s art house, 1990s international, 2020s contemporary), creating emotional rhythm and building investment through time-based progression.",
+    campaignStructure:
+      "Monthly themes tied to each decade with coordinated social content, email editorial, on-site signage, and community events. Each month cycles through awareness, engagement, and attendance-driving phases.",
+    toneOfVoice:
+      "Sophisticated yet inviting, culturally informed without being gatekeeping, informative with narrative flair, celebrating cinema as shared cultural experience rather than exclusive consumption.",
+    deliverables: [
+      "Strategic campaign proposal document with full rationale",
+      "Audience segmentation and targeting framework",
+      "Month-by-month content calendar with themes and messaging",
+      "Platform-specific content templates (Instagram, email, web)",
+      "Tone of voice guidelines and copywriting examples",
+      "Visual production checklist for on-site and digital materials",
+    ],
+    heroImage: "/projects/cinematek/hero-placeholder.svg",
     gallery: [
       {
         src: "/projects/cinematek/cover-placeholder.jpg",
-        alt: "CINEMATEK campaign cover placeholder",
+        alt: "CINEMATEK campaign cover",
         caption: "Campaign cover",
         category: "cover",
       },
       {
         src: "/projects/cinematek/announcement-placeholder.jpg",
-        alt: "Four-decade announcement visual placeholder",
+        alt: "CINEMATEK decade announcement visual",
         caption: "Four-decade announcement visual",
         category: "visual",
       },
       {
         src: "/projects/cinematek/audience-placeholder.jpg",
-        alt: "Audience segmentation slide placeholder",
+        alt: "CINEMATEK audience segmentation slide",
         caption: "Audience segmentation",
         category: "research",
       },
       {
         src: "/projects/cinematek/narrative-placeholder.jpg",
-        alt: "Narrative arc slide placeholder",
+        alt: "CINEMATEK narrative arc slide",
         caption: "Narrative arc",
         category: "strategy",
       },
       {
         src: "/projects/cinematek/platform-placeholder.jpg",
-        alt: "Platform content examples placeholder",
+        alt: "CINEMATEK platform content examples slide",
         caption: "Platform content examples",
         category: "content",
       },
       {
         src: "/projects/cinematek/monthly-placeholder.jpg",
-        alt: "Monthly campaign structure placeholder",
+        alt: "CINEMATEK monthly campaign structure slide",
         caption: "Monthly campaign structure",
         category: "planning",
       },
       {
         src: "/projects/cinematek/tone-placeholder.jpg",
-        alt: "Tone of voice slide placeholder",
+        alt: "CINEMATEK tone of voice slide",
         caption: "Tone of voice",
         category: "strategy",
       },
       {
         src: "/projects/cinematek/checklist-placeholder.jpg",
-        alt: "Visual production checklist placeholder",
+        alt: "CINEMATEK visual production checklist slide",
         caption: "Visual production checklist",
         category: "execution",
       },
@@ -286,11 +302,15 @@ export const journeyChapters = [
 export const recruiterFAQ = [
   {
     q: "What internship roles are you targeting?",
-    a: "Marketing analyst, growth, market research, or content/marketing operations internships — anything that blends customer insight with execution.",
+    a: "Marketing analyst, growth, market research, and marketing operations internships. I can support audience research, campaign planning, content workflows, reporting, and day-to-day execution.",
   },
   {
-    q: "Where are you based and how mobile are you?",
-    a: "Based in Brussels. Open to internships across Belgium and the rest of Europe, on-site, hybrid, or remote.",
+    q: "Are you more strategy, execution, or analytics oriented?",
+    a: "A hybrid profile: strategy-first thinking, strong analytics discipline, and practical execution. I am most useful where teams need someone who can move from insight to shipped work.",
+  },
+  {
+    q: "Where are you based and when are you available?",
+    a: "Based in Brussels. Open across Belgium and Europe (on-site, hybrid, or remote). Available for Summer 2026 internships, with flexibility for earlier part-time collaboration.",
   },
   {
     q: "What kinds of teams fit your profile best?",
@@ -298,11 +318,7 @@ export const recruiterFAQ = [
   },
   {
     q: "What makes your profile different?",
-    a: "Most marketing candidates are strong on either the creative or the analytical side. I bridge both — and add an operations / automation layer that helps small teams move faster.",
-  },
-  {
-    q: "When are you available?",
-    a: "Available for internships during Summer 2026, with flexibility for earlier part-time engagements.",
+    a: "Most marketing candidates lean heavily creative or heavily analytical. I bridge both and add an operations mindset that helps campaigns move faster with clearer measurement.",
   },
 ];
 
@@ -324,7 +340,9 @@ export const proofPoints = [
   },
   {
     label: "Focus",
-    value: "Research-first",
-    detail: "Every recommendation backed by data, insight, and testing.",
+    value: "Research-led",
+    descriptor: "Decision approach",
+    detail: "Insight-backed strategy before channel execution.",
+    kind: "concept",
   },
 ];

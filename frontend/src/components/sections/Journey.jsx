@@ -11,8 +11,8 @@ export default function Journey() {
           <p className="overline mb-4">Selected journey</p>
           <h2 className="h-section">From systems thinking to marketing thinking.</h2>
           <p className="mt-6 text-foreground/75 max-w-md leading-relaxed">
-            Three short chapters — the reason recruiters say I don't read
-            like a typical marketing candidate.
+            Three short chapters that explain internship fit fast: how I connect
+            operational rigor, research, and marketing execution.
           </p>
         </div>
 

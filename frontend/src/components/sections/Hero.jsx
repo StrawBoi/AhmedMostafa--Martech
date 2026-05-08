@@ -68,7 +68,29 @@ export default function Hero() {
           className="lg:col-span-4 reveal"
           style={{ transitionDelay: "300ms" }}
         >
-          <div className="border-l border-hairline pl-6 md:pl-8 space-y-7">
+          <div className="space-y-6">
+            <section
+              aria-label="Profile pillars"
+              className="border border-hairline bg-surface/70 p-5 md:p-6"
+            >
+              <p className="overline mb-3 text-foreground/70">How I contribute</p>
+              <ul className="space-y-3">
+                <li className="flex items-start justify-between gap-3 border-b border-hairline/70 pb-3">
+                  <span className="font-serif text-lg leading-none">Communication</span>
+                  <span className="text-xs text-subtle uppercase tracking-overline text-right">Message clarity</span>
+                </li>
+                <li className="flex items-start justify-between gap-3 border-b border-hairline/70 pb-3">
+                  <span className="font-serif text-lg leading-none">Building</span>
+                  <span className="text-xs text-subtle uppercase tracking-overline text-right">Systems that ship</span>
+                </li>
+                <li className="flex items-start justify-between gap-3">
+                  <span className="font-serif text-lg leading-none">Strategizing</span>
+                  <span className="text-xs text-subtle uppercase tracking-overline text-right">Insight to action</span>
+                </li>
+              </ul>
+            </section>
+
+            <div className="border-l border-hairline pl-6 md:pl-8 space-y-7">
             <div>
               <p className="overline mb-2">Currently</p>
               <p className="font-serif text-xl leading-snug">
@@ -84,6 +106,7 @@ export default function Hero() {
             </div>
             <div className="flex items-center gap-2 text-sm text-subtle">
               <MapPin size={14} aria-hidden="true" /> Brussels — open across Belgium / Europe
+            </div>
             </div>
           </div>
         </div>

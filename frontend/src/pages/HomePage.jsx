@@ -13,9 +13,9 @@ export default function HomePage() {
     <main data-testid="home-page">
       <Hero />
       <ProofStrip />
+      <Journey />
       <FeaturedWork />
       <CapabilityPillars />
-      <Journey />
       <RecruiterFAQ />
       <ContactCTA />
     </main>
