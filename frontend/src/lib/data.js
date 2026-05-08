@@ -231,6 +231,167 @@ export const projects = [
     visibility: "public",
     labels: ["University Project", "Strategic Proposal"],
   },
+  {
+    id: "tackle-pricing-intelligence",
+    title: "Tackle — Pricing Intelligence",
+    subtitle: "A pricing intelligence concept for e-commerce teams to monitor competitors and make faster pricing decisions.",
+    type: "Concept Project",
+    status: "Prototype",
+    year: "2025",
+    primaryPillar: "Building",
+    secondaryPillar: "Strategizing",
+    role: "Designer & Strategist",
+    shortSummary:
+      "A pricing intelligence concept built to help e-commerce teams monitor competitor movement, detect anomalies, and make faster pricing decisions with more confidence.",
+    overview:
+      "Tackle explores a practical problem in e-commerce operations: pricing moves quickly, but many teams still rely on manual competitor checks and fragmented spreadsheets. This project reframes pricing work from passive tracking into active decision support.",
+    problem:
+      "E-commerce teams often need to balance competitiveness with margin protection, yet manual monitoring is slow and reactive. By the time prices are checked, compared, and discussed, the market may already have shifted.",
+    goal:
+      "Build a pricing intelligence workflow that combines real-time product tracking, anomaly detection, and recommendation logic to help teams interpret market changes and act with more confidence.",
+    contribution:
+      "I designed Tackle as a pricing intelligence workflow that combines real-time product tracking, anomaly detection, and recommendation logic in one interface. Instead of only showing competitor prices, the concept focuses on helping teams interpret what changed, why it matters, and what action to consider next.",
+    researchAndStrategy:
+      "The project combined user research with MarTech tooling patterns and financial decision-making logic. The approach prioritized usable insights over raw data volume, recognizing that e-commerce teams need interpretation, not just numbers.",
+    outcomes:
+      "The outcome is a interactive concept demonstrating how pricing work can shift from reactive monitoring to active decision support. It shows my ability to identify operational friction points and design workflows that help teams think strategically.",
+    methods: [
+      "Problem identification in e-commerce operations",
+      "Competitive workflow analysis",
+      "Decision-support interface design",
+      "Anomaly detection logic",
+      "Alert and recommendation systems",
+    ],
+    tools: [
+      "Figma",
+      "Product thinking",
+      "E-commerce research",
+      "Interface design",
+      "Interaction design",
+    ],
+    tags: [
+      "Building",
+      "Strategizing",
+      "E-commerce",
+      "MarTech",
+      "Product Design",
+      "Pricing Intelligence",
+      "Decision Support",
+    ],
+    heroImage: "/projects/tackle/hero.jpg",
+    gallery: [],
+    featured: false,
+    visibility: "public",
+    labels: ["Concept Project", "Prototype"],
+  },
+  {
+    id: "marketing-intelligence-analysis",
+    title: "Marketing Intelligence & Analysis",
+    subtitle: "A strategic analysis concept designed to turn scattered campaign metrics into clearer insight and actionable recommendations.",
+    type: "Concept Project",
+    status: "Prototype",
+    year: "2025",
+    primaryPillar: "Strategizing",
+    secondaryPillar: "Building",
+    role: "Strategist & Designer",
+    shortSummary:
+      "A marketing intelligence concept designed to turn scattered campaign metrics into clearer strategic insight, audience understanding, and actionable recommendations.",
+    overview:
+      "Marketing Intelligence & Analysis was built around a common frustration in performance and growth work: teams can access more data than ever, yet still struggle to explain what is actually driving results. This project focuses on making analytics more interpretable, contextual, and useful for decision-making.",
+    problem:
+      "Modern marketing teams often work across multiple platforms, dashboards, and reporting formats. The result is visibility without clarity: lots of metrics, but limited understanding of which audiences, channels, or messages are influencing performance in a meaningful way.",
+    goal:
+      "Create a strategic analysis framework that connects audience inputs, campaign performance data, and interpretation logic to help marketers move from observation to decision.",
+    contribution:
+      "I framed the project as a strategic analysis tool rather than another reporting dashboard. The goal was to connect audience inputs, campaign performance data, and AI-assisted interpretation in a way that helps marketers move from observation to decision.",
+    researchAndStrategy:
+      "The project combined marketing analytics patterns with strategic frameworks, user research on how marketers actually interpret performance, and systems thinking around data context. The approach prioritized clarity and business relevance over metric volume.",
+    outcomes:
+      "The outcome is an interactive concept showing how analytics interfaces can support strategic thinking, not just reporting. It demonstrates my ability to combine marketing domain knowledge with systems thinking and user-centered design.",
+    methods: [
+      "Marketing analytics research",
+      "Audience segmentation and persona work",
+      "Performance data interpretation",
+      "Strategic recommendation logic",
+      "Interface design for complex data",
+    ],
+    tools: [
+      "Figma",
+      "Marketing strategy",
+      "Analytics frameworks",
+      "Data interpretation",
+      "User research",
+    ],
+    tags: [
+      "Strategizing",
+      "Building",
+      "Marketing Analytics",
+      "Data Interpretation",
+      "Product Design",
+      "Strategic Thinking",
+      "Performance Marketing",
+    ],
+    heroImage: "/projects/marketing-intelligence/hero.jpg",
+    gallery: [],
+    featured: false,
+    visibility: "public",
+    labels: ["Concept Project", "Prototype"],
+  },
+  {
+    id: "brand-identity-transformation",
+    title: "Brand Identity Transformation",
+    subtitle: "A brand identity and creative direction project focused on helping businesses move from inconsistent visuals to a coherent, scalable system.",
+    type: "Concept Project",
+    status: "Framework",
+    year: "2025",
+    primaryPillar: "Communication",
+    secondaryPillar: "Strategizing",
+    role: "Brand Strategist & Designer",
+    shortSummary:
+      "A brand identity and creative direction project focused on helping businesses move from inconsistent visuals to a more coherent and scalable brand system.",
+    overview:
+      "Brand Identity Transformation focuses on a challenge many growing businesses face: they want to look more professional and more consistent, but without becoming generic. This project explores how visual identity, motion, and collateral can work together as a practical business tool rather than decoration alone.",
+    problem:
+      "Brands often struggle with fragmented visual systems, inconsistent assets, and materials that feel disconnected across touchpoints. The problem is not only aesthetic inconsistency, but also weakened recognition, trust, and communication effectiveness.",
+    goal:
+      "Develop a comprehensive brand identity system that is both visually distinctive and scalable across digital and physical formats.",
+    contribution:
+      "I approached the work as both a design and positioning problem. The process starts with understanding the brand's role, audience, and differentiation, then translating that into a clearer identity system that can scale across digital and physical formats.",
+    researchAndStrategy:
+      "The project combined brand positioning research, visual design thinking, and systems design. The approach prioritized consistency and scalability while maintaining flexibility for different applications and touchpoints.",
+    outcomes:
+      "The outcome is a comprehensive brand identity framework demonstrating how visual systems can support business clarity and communication. It shows my ability to connect brand expression with consistency and business relevance.",
+    methods: [
+      "Brand discovery and positioning",
+      "Visual direction development",
+      "Logo design and refinement",
+      "Motion and animation strategy",
+      "System thinking for multi-platform consistency",
+      "Collateral strategy and design",
+    ],
+    tools: [
+      "Figma",
+      "Brand strategy",
+      "Visual design",
+      "Motion design",
+      "Design systems",
+      "Collateral design",
+    ],
+    tags: [
+      "Communication",
+      "Strategizing",
+      "Brand Design",
+      "Visual Identity",
+      "Design Systems",
+      "Brand Strategy",
+      "Creative Direction",
+    ],
+    heroImage: "/projects/brand-identity/hero.jpg",
+    gallery: [],
+    featured: false,
+    visibility: "public",
+    labels: ["Concept Project", "Framework"],
+  },
 ];
 
 // Backwards-compatible exports and aliases
