@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import ProjectImageFallback from "@/components/ProjectImageFallback";
 import { projects as allProjects } from "@/lib/data";
 
 export default function ProjectPage({ project: projectProp, projectId }) {
   const project = projectProp || allProjects.find((p) => p.id === projectId);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [lightboxImageError, setLightboxImageError] = useState(false);
+
+  useEffect(() => {
+    setLightboxImageError(false);
+  }, [currentIndex, lightboxOpen]);
 
   if (!project) return null;
 
@@ -167,7 +173,20 @@ export default function ProjectPage({ project: projectProp, projectId }) {
                         </button>
 
                         <div className="bg-black rounded">
-                          <img src={project.gallery?.[currentIndex]?.src} alt={project.gallery?.[currentIndex]?.alt} className="w-full h-[70vh] object-contain" />
+                          {!lightboxImageError && project.gallery?.[currentIndex]?.src ? (
+                            <img
+                              src={project.gallery[currentIndex].src}
+                              alt={project.gallery?.[currentIndex]?.alt || project.title}
+                              onError={() => setLightboxImageError(true)}
+                              className="w-full h-[70vh] object-contain"
+                            />
+                          ) : (
+                            <ProjectImageFallback
+                              projectId={project.id}
+                              title={project.title}
+                              type={project.type}
+                            />
+                          )}
                           {project.gallery?.[currentIndex]?.caption && (
                             <div className="p-3 text-sm text-subtle bg-background">{project.gallery[currentIndex].caption}</div>
                           )}

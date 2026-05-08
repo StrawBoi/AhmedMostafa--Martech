@@ -3,11 +3,17 @@ import { useState, useEffect } from "react";
 import useReveal from "@/hooks/useReveal";
 import { projects } from "@/lib/data";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import ProjectImageFallback from "@/components/ProjectImageFallback";
 
 export default function ProjectVolvoPage() {
   useReveal();
   const project = projects.find((p) => p.id === "volvo-belgium-campaign");
   const { lightboxOpen, setLightboxOpen, currentIndex, setCurrentIndex } = useLightboxState();
+  const [lightboxImageError, setLightboxImageError] = useState(false);
+
+  useEffect(() => {
+    setLightboxImageError(false);
+  }, [currentIndex, lightboxOpen]);
 
   // Keyboard controls for lightbox: Esc to close, arrows to navigate
   useEffect(() => {
@@ -205,7 +211,21 @@ export default function ProjectVolvoPage() {
                       </button>
 
                       <div className="bg-black rounded">
-                        <img src={project.gallery?.[currentIndex]?.src} alt={project.gallery?.[currentIndex]?.alt} className="w-full h-[70vh] object-contain" />
+                        {!lightboxImageError && project.gallery?.[currentIndex]?.src ? (
+                          <img
+                            src={project.gallery[currentIndex].src}
+                            alt={project.gallery?.[currentIndex]?.alt || project.title}
+                            onError={() => setLightboxImageError(true)}
+                            className="w-full h-[70vh] object-contain"
+                          />
+                        ) : (
+                          <ProjectImageFallback
+                            projectId={project.id}
+                            title={project.title}
+                            type={project.type}
+                          />
+                        )}
+
                         {project.gallery?.[currentIndex]?.caption && (
                           <div className="p-3 text-sm text-subtle bg-background">{project.gallery[currentIndex].caption}</div>
                         )}
