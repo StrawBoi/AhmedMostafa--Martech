@@ -333,7 +333,7 @@ export const projects = [
     ],
     heroImage: "/projects/marketing-intelligence/hero.jpg",
     gallery: [],
-    featured: false,
+    featured: true,
     visibility: "public",
     labels: ["Concept Project", "Prototype"],
   },

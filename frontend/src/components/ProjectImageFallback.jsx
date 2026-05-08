@@ -29,6 +29,21 @@ export default function ProjectImageFallback({
       accentColor: "#6b5b95",
       tagline: "Narrative framing across cultural decades",
     },
+    "tackle-pricing-intelligence": {
+      bgColor: "#0f1419",
+      accentColor: "#4a9eff",
+      tagline: "Real-time pricing intelligence for e-commerce teams",
+    },
+    "marketing-intelligence-analysis": {
+      bgColor: "#f5f7fa",
+      accentColor: "#2563eb",
+      tagline: "Strategic analytics for marketing decisions",
+    },
+    "brand-identity-transformation": {
+      bgColor: "#faf9f7",
+      accentColor: "#c97e47",
+      tagline: "Visual systems for coherent brand expression",
+    },
   };
 
   const themeConfig = projectThemes[projectId] || projectThemes.default;
@@ -72,7 +87,7 @@ export default function ProjectImageFallback({
           className="font-serif text-4xl md:text-5xl leading-tight tracking-tight"
           style={{
             color:
-              projectId === "volvo-belgium-campaign"
+              projectId === "volvo-belgium-campaign" || projectId === "tackle-pricing-intelligence"
                 ? themeConfig.accentColor
                 : "#1a1a1e",
           }}
@@ -85,7 +100,7 @@ export default function ProjectImageFallback({
           className="text-sm md:text-base font-light leading-relaxed"
           style={{
             color:
-              projectId === "volvo-belgium-campaign"
+              projectId === "volvo-belgium-campaign" || projectId === "tackle-pricing-intelligence"
                 ? "rgba(255,255,255,0.6)"
                 : "rgba(0,0,0,0.5)",
           }}
@@ -105,7 +120,7 @@ export default function ProjectImageFallback({
           className="text-xs tracking-overline font-mono"
           style={{
             color:
-              projectId === "volvo-belgium-campaign"
+              projectId === "volvo-belgium-campaign" || projectId === "tackle-pricing-intelligence"
                 ? "rgba(255,255,255,0.4)"
                 : "rgba(0,0,0,0.3)",
           }}
