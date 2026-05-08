@@ -38,30 +38,28 @@ export default function ProjectDetailPage() {
         <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] max-w-5xl reveal">
           {project.title}
         </h1>
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 reveal" style={{ transitionDelay: "120ms" }}>
-          <div>
-            <p className="overline mb-2">Role</p>
-            <p className="text-sm md:text-base text-foreground/85 leading-relaxed">
-              {project.role}
-            </p>
-          </div>
-          <div>
-            <p className="overline mb-2">Status</p>
-            <p className="text-sm md:text-base text-foreground/85">
-              Case study draft — full write-up on request
-            </p>
-          </div>
-          <div>
-            <p className="overline mb-2">Tags</p>
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((t) => (
-                <span key={t} className="text-[11px] uppercase tracking-overline border border-hairline px-2.5 py-1 text-subtle">
-                  {t}
-                </span>
-              ))}
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 reveal" style={{ transitionDelay: "120ms" }}>
+              <div>
+                <p className="overline mb-2">Role</p>
+                <p className="text-sm md:text-base text-foreground/85 leading-relaxed">
+                  {project.role}
+                </p>
+              </div>
+              <div>
+                <p className="overline mb-2">Status</p>
+                <p className="text-sm md:text-base text-foreground/85">{project.status || "Draft"}</p>
+              </div>
+              <div>
+                <p className="overline mb-2">Tags</p>
+                <div className="flex flex-wrap gap-2">
+                  {(project.tags || []).map((t) => (
+                    <span key={t} className="text-[11px] uppercase tracking-overline border border-hairline px-2.5 py-1 text-subtle">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
       </section>
 
       <section className="reveal">
@@ -91,13 +89,24 @@ export default function ProjectDetailPage() {
             </p>
           </div>
           <div className="reveal" style={{ transitionDelay: "100ms" }}>
-            <p className="overline mb-3">Approach</p>
+            <p className="overline mb-3">Overview</p>
             <p className="text-lg leading-relaxed text-foreground/85">
-              I'm finalizing the full write-up — methodology, decisions made,
-              what worked, and what I'd do differently. Happy to walk a
-              recruiter or hiring manager through the long version on a call.
+              {project.overview || project.contribution || "Overview coming soon."}
             </p>
           </div>
+
+          {project.deliverables && project.deliverables.length > 0 && (
+            <div className="reveal" style={{ transitionDelay: "160ms" }}>
+              <p className="overline mb-3">Deliverables</p>
+              <ul className="list-disc pl-5 text-lg leading-relaxed text-foreground/85">
+                {project.deliverables.map((d) => (
+                  <li key={d} className="mb-2">
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <div className="reveal" style={{ transitionDelay: "200ms" }}>
             <p className="overline mb-3">Outcome</p>
             <p className="text-lg leading-relaxed text-foreground/85">

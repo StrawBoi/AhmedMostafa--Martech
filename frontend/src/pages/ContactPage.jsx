@@ -7,8 +7,8 @@ import { profile } from "@/lib/data";
 import CVButton from "@/components/CVButton";
 import { track, Events } from "@/lib/analytics";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
+const API = BACKEND_URL ? `${BACKEND_URL}/api` : "/api";
 
 const initialForm = {
   name: "",

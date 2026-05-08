@@ -1,118 +1,233 @@
 // Centralized portfolio data for Ahmed Mostafa.
-// Email is intentionally NOT exposed publicly — recruiters reach out via the
-// contact form. The address below is used server-side / for fallback only.
-// Replace project image URLs and case-study copy when finalized.
+// Email is intentionally NOT exposed publicly — recruiters reach out via the contact form.
 
 export const profile = {
   name: "Ahmed Mostafa",
   short: "Ahmed",
   role: "Marketing, Research & Analytics Intern",
   location: "Brussels, Belgium",
-  // Private — not rendered as a visible mailto in the UI.
   email: "ahmed.ha.mahmoud@outlook.com",
   linkedin: "https://www.linkedin.com/in/ahmed-mohsen-hanafy/",
-  cvAvailable: false, // Toggle to true when the PDF is uploaded
-  cvUrl: null,        // Will become "/Ahmed-Mostafa-CV.pdf" once available
+  cvAvailable: true,
+  cvUrl: "/Ahmed-Mostafa-CV.pdf",
   status: "Available — Summer 2026 internship",
 };
 
-export const proofPoints = [
+export const projects = [
   {
-    label: "Education",
-    value: "BBA — Business Management & Marketing",
-    detail: "Odisee, expected 2026",
+    id: "volvo-belgium-campaign",
+    title: "Volvo Belgium - Made in Belgium Campaign Strategy",
+    subtitle: "University project in brand positioning, market research, and campaign planning",
+    type: "University Project",
+    status: "Strategic Proposal",
+    year: "2025",
+    primaryPillar: "Strategizing",
+    secondaryPillar: "Communication",
+    role: "Account Manager",
+    shortSummary:
+      "A university campaign strategy designed to reposition Volvo in Belgium through a locally resonant brand narrative built around manufacturing, identity, and market relevance.",
+    overview:
+      "This university project explored how Volvo could strengthen its relevance in Belgium by connecting its global safety and sustainability image with a more locally meaningful story. The proposal reframed Volvo's Belgian production presence as a strategic communication asset rather than a hidden operational detail.",
+    problem:
+      "Volvo was strongly associated with safety and Scandinavian quality, but that positioning risked feeling functional rather than emotionally distinctive in Belgium. The challenge was to create a more locally resonant narrative that could strengthen relevance in a competitive automotive market.",
+    goal:
+      "The goal was to design a campaign strategy that could reposition Volvo as a brand that is trusted, premium, and visibly connected to Belgium through local manufacturing, local jobs, and cultural relevance.",
+    contribution:
+      "As Account Manager, I contributed to the strategic direction of the campaign by helping define the problem, shape the audience logic, and connect research findings to a stronger communication concept. My role focused on aligning insight, positioning, and campaign structure so the proposal remained grounded in market reality.",
+    researchAndStrategy:
+      "The project combined market and industry analysis with audience segmentation, competitive benchmarking, and positioning frameworks such as STP, SWOT, PESTEL, and Porter's Five Forces. The key insight was that Volvo's Belgian manufacturing story could become a meaningful differentiator if it was reframed as part of the brand itself, rather than treated as a background operational fact.",
+    outcomes:
+      "The outcome was a full strategic campaign proposal with audience logic, positioning rationale, communication direction, and campaign planning structure. It shows my ability to connect research, strategy, and communication thinking into one coherent marketing recommendation.",
+    methods: [
+      "Market research",
+      "Audience segmentation",
+      "Competitive landscape analysis",
+      "STP",
+      "SWOT",
+      "PESTEL",
+      "Porter's Five Forces",
+      "Campaign planning",
+    ],
+    tools: [
+      "Canva",
+      "Market research",
+      "Audience research",
+      "Segment research",
+      "Competitive analysis",
+    ],
+    tags: [
+      "Strategizing",
+      "Communication",
+      "Market Research",
+      "Brand Positioning",
+      "STP",
+      "SWOT",
+      "PESTEL",
+    ],
+    heroImage: "/projects/volvo/hero-placeholder.jpg",
+    gallery: [
+      {
+        src: "/projects/volvo/cover-placeholder.jpg",
+        alt: "Volvo campaign cover slide placeholder",
+        caption: "Campaign cover",
+        category: "cover",
+      },
+      {
+        src: "/projects/volvo/situation-placeholder.jpg",
+        alt: "Volvo situation analysis slide placeholder",
+        caption: "Situation analysis",
+        category: "research",
+      },
+      {
+        src: "/projects/volvo/stp-placeholder.jpg",
+        alt: "Volvo audience segmentation slide placeholder",
+        caption: "Audience segmentation",
+        category: "research",
+      },
+      {
+        src: "/projects/volvo/competition-placeholder.jpg",
+        alt: "Volvo competitive landscape slide placeholder",
+        caption: "Competitive landscape",
+        category: "research",
+      },
+      {
+        src: "/projects/volvo/positioning-placeholder.jpg",
+        alt: "Volvo positioning slide placeholder",
+        caption: "Brand positioning",
+        category: "strategy",
+      },
+      {
+        src: "/projects/volvo/timeline-placeholder.jpg",
+        alt: "Volvo campaign timeline placeholder",
+        caption: "Campaign timeline",
+        category: "planning",
+      },
+      {
+        src: "/projects/volvo/kpi-placeholder.jpg",
+        alt: "Volvo KPI and budget slide placeholder",
+        caption: "KPIs and budget",
+        category: "planning",
+      },
+    ],
+    featured: true,
+    visibility: "public",
+    labels: ["University Project", "Strategic Proposal"],
   },
   {
-    label: "Based in",
-    value: "Brussels",
-    detail: "Open to Belgium / Europe internships",
-  },
-  {
-    label: "Strengths",
-    value: "Analytics, automation, digital systems",
-    detail: "Translating data into marketing decisions",
-  },
-  {
-    label: "Experience",
-    value: "Consulting, operations, growth support",
-    detail: "Hands-on across multiple environments",
+    id: "cinematek-decades-of-cinema",
+    title: "CINEMATEK - Decades of Cinema Campaign",
+    subtitle: "University project in campaign strategy, audience segmentation, and cultural communication",
+    type: "University Project",
+    status: "Strategic Campaign Proposal",
+    year: "2025",
+    primaryPillar: "Strategizing",
+    secondaryPillar: "Communication",
+    role: "Campaign / Account Strategy Support",
+    shortSummary:
+      "A cultural campaign concept designed to turn a multi-month cinema programme into a clear, emotionally engaging digital narrative across audiences, platforms, and time.",
+    overview:
+      "This project reimagined how CINEMATEK could present a multi-month film programme to modern audiences through a structured decade-by-decade campaign. Instead of promoting screenings as isolated events, the strategy framed each decade as an emotional and cultural world audiences could step into.",
+    problem:
+      "Classic cinema programming can feel fragmented, niche, or overly academic to broader audiences. The challenge was to create a campaign structure that felt culturally rich and accessible while still speaking to serious film lovers.",
+    goal:
+      "The goal was to design a campaign that increased awareness, built emotional engagement, and turned curatorial programming into a clearer digital and social narrative that encouraged attendance and repeat interest.",
+    contribution:
+      "I contributed to the strategic and communication side of the concept by helping define audience logic, content rhythm, narrative framing, and platform-specific messaging. My role focused on turning cultural insight into a repeatable campaign structure that balanced emotional storytelling with practical conversion.",
+    methods: [
+      "Audience segmentation",
+      "Campaign planning",
+      "Content strategy",
+      "Platform planning",
+      "Tone-of-voice development",
+      "Narrative mapping",
+      "Social media structuring",
+    ],
+    outcomes:
+      "The final outcome was a complete cultural campaign proposal with clear audience targeting, editorial direction, platform adaptation, and a repeatable content system. It demonstrates my ability to shape communication strategy for a cultural institution in a way that is both emotionally engaging and operationally structured.",
+    tools: [
+      "Canva",
+      "Content strategy",
+      "Audience research",
+      "Campaign planning",
+      "Copywriting",
+    ],
+    tags: [
+      "Strategizing",
+      "Communication",
+      "Content Strategy",
+      "Audience Segmentation",
+      "Cultural Marketing",
+      "Social Media Strategy",
+      "Tone of Voice",
+    ],
+    heroImage: "/projects/cinematek/hero-placeholder.jpg",
+    gallery: [
+      {
+        src: "/projects/cinematek/cover-placeholder.jpg",
+        alt: "CINEMATEK campaign cover placeholder",
+        caption: "Campaign cover",
+        category: "cover",
+      },
+      {
+        src: "/projects/cinematek/announcement-placeholder.jpg",
+        alt: "Four-decade announcement visual placeholder",
+        caption: "Four-decade announcement visual",
+        category: "visual",
+      },
+      {
+        src: "/projects/cinematek/audience-placeholder.jpg",
+        alt: "Audience segmentation slide placeholder",
+        caption: "Audience segmentation",
+        category: "research",
+      },
+      {
+        src: "/projects/cinematek/narrative-placeholder.jpg",
+        alt: "Narrative arc slide placeholder",
+        caption: "Narrative arc",
+        category: "strategy",
+      },
+      {
+        src: "/projects/cinematek/platform-placeholder.jpg",
+        alt: "Platform content examples placeholder",
+        caption: "Platform content examples",
+        category: "content",
+      },
+      {
+        src: "/projects/cinematek/monthly-placeholder.jpg",
+        alt: "Monthly campaign structure placeholder",
+        caption: "Monthly campaign structure",
+        category: "planning",
+      },
+      {
+        src: "/projects/cinematek/tone-placeholder.jpg",
+        alt: "Tone of voice slide placeholder",
+        caption: "Tone of voice",
+        category: "strategy",
+      },
+      {
+        src: "/projects/cinematek/checklist-placeholder.jpg",
+        alt: "Visual production checklist placeholder",
+        caption: "Visual production checklist",
+        category: "execution",
+      },
+    ],
+    featured: true,
+    visibility: "public",
+    labels: ["University Project", "Strategic Proposal"],
   },
 ];
 
-export const featuredProjects = [
-  {
-    slug: "campaign-attribution-dashboard",
-    eyebrow: "Marketing analytics",
-    title: "From scattered data to a single growth view",
-    challenge:
-      "A multi-channel campaign was running across LinkedIn, paid search, and content — but stakeholders couldn't agree on which channel was actually working.",
-    role: "Research & analytics — built the attribution model and weekly readout",
-    takeaway:
-      "Surfaced the two channels driving 78% of qualified leads, redirecting spend within one cycle.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
-    tags: ["Attribution", "GA4", "Looker Studio", "Stakeholder readout"],
-    featured: true,
-  },
-  {
-    slug: "market-research-eu-saas",
-    eyebrow: "Market research",
-    title: "EU positioning study for a B2B SaaS",
-    challenge:
-      "Founders wanted to know whether their product framing landed with Belgian and Dutch buyers.",
-    role: "Research lead — interviews, competitive teardown, positioning recs",
-    takeaway:
-      "Reframed the value prop around two underserved buyer pains — picked up by sales and the website hero.",
-    image:
-      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
-    tags: ["Qualitative", "Positioning", "Competitive analysis"],
-    featured: true,
-  },
-  {
-    slug: "content-ops-automation",
-    eyebrow: "Automation & ops",
-    title: "Cutting content ops time in half",
-    challenge:
-      "A small marketing team was spending more time coordinating posts than writing them.",
-    role: "Systems & execution — designed the workflow, built the automations",
-    takeaway:
-      "Editorial calendar, brief templates, and a no-code automation layer removed ~12 hours of weekly busywork.",
-    image:
-      "https://images.unsplash.com/photo-1648912869366-b89a51f52d44?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
-    tags: ["Notion", "Make / Zapier", "Editorial workflow"],
-    featured: true,
-  },
-];
+// Backwards-compatible exports and aliases
+projects.forEach((p) => {
+  p.slug = p.id;
+  p.eyebrow = p.type || p.subtitle;
+  p.challenge = p.problem;
+  p.takeaway = p.outcomes || p.shortSummary;
+  p.image = p.heroImage;
+});
 
-export const allProjects = [
-  ...featuredProjects,
-  {
-    slug: "newsletter-growth-experiment",
-    eyebrow: "Growth experiment",
-    title: "Doubling newsletter signups with a single funnel rewrite",
-    challenge:
-      "A founder-led newsletter had stalled at 1.2k subscribers despite steady traffic.",
-    role: "Conversion thinking — funnel audit and A/B ideas",
-    takeaway:
-      "A new lead magnet + form placement test more than doubled the signup rate within three weeks.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
-    tags: ["Conversion", "A/B test", "Lead magnet"],
-  },
-  {
-    slug: "brand-voice-guidelines",
-    eyebrow: "Brand & content",
-    title: "Brand voice guidelines for a student-led venture",
-    challenge:
-      "A founding team needed a shared way to talk about their product across decks, emails, and social.",
-    role: "Content strategy — voice principles, do / don't examples",
-    takeaway:
-      "A two-page voice guide that the team actually uses — not a 30-slide brand bible.",
-    image:
-      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
-    tags: ["Brand voice", "Content strategy"],
-  },
-];
+export const featuredProjects = projects.filter((p) => p.featured);
+export const allProjects = projects;
 
 export const capabilities = [
   {
@@ -188,5 +303,28 @@ export const recruiterFAQ = [
   {
     q: "When are you available?",
     a: "Available for internships during Summer 2026, with flexibility for earlier part-time engagements.",
+  },
+];
+
+export const proofPoints = [
+  {
+    label: "Experience",
+    value: "3+ years",
+    detail: "Building marketing systems and automation across multiple industries.",
+  },
+  {
+    label: "Projects",
+    value: "12+",
+    detail: "Research, campaign strategy, and execution case studies.",
+  },
+  {
+    label: "Impact",
+    value: "40%+",
+    detail: "Average engagement lift across pilots and campaigns.",
+  },
+  {
+    label: "Focus",
+    value: "Research-first",
+    detail: "Every recommendation backed by data, insight, and testing.",
   },
 ];

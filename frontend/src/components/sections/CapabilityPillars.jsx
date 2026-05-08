@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { capabilities } from "@/lib/data";
+import VolvoProjectModal from "@/components/projects/VolvoProjectModal";
 
 /**
  * Calm, editorial pillar accordion.
@@ -95,6 +96,13 @@ export default function CapabilityPillars() {
                         <p className="text-base text-foreground/85 leading-relaxed mb-6">
                           {c.summary}
                         </p>
+                        {/* If this is the campaign/capability pillar, surface the Volvo modal trigger */}
+                        {c.id === "campaign" && (
+                          <div className="mt-6">
+                            <p className="text-sm text-foreground/75 mb-3">Featured strategic project</p>
+                            <VolvoProjectModal />
+                          </div>
+                        )}
                         <ul className="space-y-3">
                           {c.bullets.map((b, j) => (
                             <li

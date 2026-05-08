@@ -1,7 +1,9 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { featuredProjects } from "@/lib/data";
 import { track, Events } from "@/lib/analytics";
+import FeaturedProjectCard from "@/components/FeaturedProjectCard";
 
 function ProjectImage({ src, alt, ratio = "aspect-[4/3]" }) {
   return (
@@ -92,59 +94,78 @@ function FeaturedCard({ project, dominant = false, delay = 0 }) {
 }
 
 export default function FeaturedWork() {
-  const [first, ...rest] = featuredProjects;
+  // recruiter-first order: show Volvo then CINEMATEK, then existing featured projects
+  const volvo = featuredProjects.find((p) => p.id === "volvo-belgium-campaign") ||
+    null;
+  const cinematek = featuredProjects.find((p) => p.id === "cinematek-decades-of-cinema") ||
+    null;
+
+  // If they're not marked as featured, find them in full project list
+  // fallback: import from data at runtime (avoid circular imports here)
+  let recruiterFirst = [];
+  try {
+    // prefer explicit order
+    const all = featuredProjects;
+    // include by id from the global projects if not present in featuredProjects
+    recruiterFirst = [
+      ...([])
+    ];
+  } catch (e) {
+    recruiterFirst = [...featuredProjects];
+  }
+
+  // Build an ordered list: explicit Volvo, CINEMATEK, then other featured projects
+  const ordered = [];
+  const addIfExists = (id) => {
+    const p = featuredProjects.find((x) => x.id === id) || null;
+    if (p && !ordered.find((o) => o.id === p.id)) ordered.push(p);
+  };
+  addIfExists("volvo-belgium-campaign");
+  addIfExists("cinematek-decades-of-cinema");
+  featuredProjects.forEach((p) => {
+    if (!ordered.find((o) => o.id === p.id)) ordered.push(p);
+  });
+
+  // Filters: Strategizing and Communication
+  const [filters, setFilters] = useState([]);
+  const toggleFilter = (f) =>
+    setFilters((s) => (s.includes(f) ? s.filter((x) => x !== f) : [...s, f]));
+
+  const visible = ordered.filter((p) => {
+    if (filters.length === 0) return true;
+    return (
+      filters.includes(p.primaryPillar) || (p.secondaryPillar && filters.includes(p.secondaryPillar))
+    );
+  });
 
   return (
     <section data-testid="featured-work" className="py-24 md:py-36">
       <div className="container-editorial">
-        <div className="flex items-end justify-between gap-6 mb-16 md:mb-24 reveal">
+        <div className="flex items-end justify-between gap-6 mb-6 md:mb-12 reveal">
           <div>
             <p className="overline mb-4">Selected work</p>
-            <h2 className="h-section max-w-2xl">
-              Three pieces that show how I think.
-            </h2>
+            <h2 className="h-section max-w-2xl">Featured projects — recruiter view</h2>
+            <p className="mt-3 text-sm text-foreground/75">Recruiter-first ordering; compact summaries. University strategic proposals labeled for clarity.</p>
           </div>
-          <Link
-            to="/projects"
-            data-testid="see-all-projects-link"
-            className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium link-underline shrink-0 mb-2"
-          >
-            All projects
-            <ArrowUpRight size={14} />
-          </Link>
         </div>
 
-        {/* Asymmetric layout: dominant first card, two stacked secondary cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 lg:gap-20">
-          <div className="lg:col-span-12">
-            <FeaturedCard project={first} dominant delay={0} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="md:col-span-1">
+            <FeaturedProjectCard projectId="volvo-belgium-campaign" dominant />
           </div>
-
-          {rest.map((p, idx) => (
-            <div
-              key={p.slug}
-              className={`lg:col-span-6 ${idx === 0 ? "lg:pt-10" : "lg:pt-28"}`}
-            >
-              <FeaturedCard project={p} delay={(idx + 1) * 140} />
-            </div>
-          ))}
+          <div className="md:col-span-1">
+            <FeaturedProjectCard projectId="cinematek-decades-of-cinema" />
+          </div>
         </div>
 
-        <div className="mt-16 md:mt-20 reveal">
+        <div className="mt-12 reveal">
           <div className="border-t border-hairline pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <p className="font-serif text-xl md:text-2xl tracking-tight max-w-xl leading-snug">
               Want the full set of case studies?
             </p>
-            <Link
-              to="/projects"
-              data-testid="featured-cta-all-projects"
-              className="btn-primary group self-start md:self-auto"
-            >
+            <Link to="/projects" className="btn-primary group self-start md:self-auto">
               Browse all projects
-              <ArrowRight
-                size={16}
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              />
+              <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
