@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { MetadataBadge } from "@/components/ui/MetadataBadge";
 
 /**
  * ProjectImageFallback
@@ -43,6 +44,11 @@ export default function ProjectImageFallback({
       bgColor: "#faf9f7",
       accentColor: "#c97e47",
       tagline: "Visual systems for coherent brand expression",
+    },
+    default: {
+      bgColor: "#f4f1eb",
+      accentColor: "#6b7280",
+      tagline: "Project cover unavailable",
     },
   };
 

@@ -3,6 +3,17 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { projects } from "@/lib/data";
 import ProjectImageFallback from "@/components/ProjectImageFallback";
+import { MetadataBadge, MetadataInline, PillarBadges } from "@/components/ui/MetadataBadge";
+
+// Helper to detect status semantic type
+function detectStatusType(status) {
+  if (!status) return "complete";
+  const lower = status.toLowerCase();
+  if (lower.includes("concept") || lower.includes("prototype") || lower.includes("framework")) return "concept";
+  if (lower.includes("active") || lower.includes("ongoing")) return "active";
+  if (lower.includes("draft")) return "draft";
+  return "complete";
+}
 
 export default function FeaturedProjectCard({ projectId, project: projectProp, dominant = false }) {
   const project = projectProp || projects.find((p) => p.id === projectId);
@@ -40,7 +51,7 @@ export default function FeaturedProjectCard({ projectId, project: projectProp, d
 
       <div className="p-5 md:p-6">
         <div className="flex items-center justify-between gap-4 mb-3">
-          <p className="text-xs uppercase tracking-overline text-subtle">{project.type}</p>
+          <MetadataBadge variant="type">{project.type}</MetadataBadge>
           <div className="text-sm text-subtle">{project.year}</div>
         </div>
 
@@ -49,9 +60,9 @@ export default function FeaturedProjectCard({ projectId, project: projectProp, d
         </h3>
 
         {project.status ? (
-          <p className="mt-2 text-xs uppercase tracking-overline text-subtle">
+          <MetadataBadge variant="status" statusType={detectStatusType(project.status)} className="mt-2">
             {project.status}
-          </p>
+          </MetadataBadge>
         ) : null}
 
         <p className="mt-4 text-sm md:text-base text-foreground/85 leading-relaxed" style={{display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden'}}>
@@ -60,12 +71,10 @@ export default function FeaturedProjectCard({ projectId, project: projectProp, d
 
         <div className="mt-4 flex items-center justify-between gap-4 text-sm text-subtle">
           <div className="min-w-0 truncate">
-            {project.role ? `Role: ${project.role}` : ""}
+            {project.role ? <MetadataInline label="Role" value={project.role} /> : ""}
           </div>
           {project.primaryPillar ? (
-            <span className="text-[11px] uppercase tracking-overline border border-hairline px-2 py-1 whitespace-nowrap">
-              {project.primaryPillar}
-            </span>
+            <PillarBadges primary={project.primaryPillar} />
           ) : null}
         </div>
 

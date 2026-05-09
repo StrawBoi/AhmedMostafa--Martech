@@ -4,6 +4,7 @@ import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { featuredProjects } from "@/lib/data";
 import { track, Events } from "@/lib/analytics";
 import FeaturedProjectCard from "@/components/FeaturedProjectCard";
+import { TagGroup } from "@/components/ui/MetadataBadge";
 
 function ProjectImage({ src, alt, ratio = "aspect-[4/3]" }) {
   return (
@@ -70,16 +71,7 @@ function FeaturedCard({ project, dominant = false, delay = 0 }) {
         </p>
 
         <div className="mt-7 flex items-center justify-between gap-4">
-          <div className="flex flex-wrap gap-2">
-            {project.tags.slice(0, 3).map((tag) => (
-              <span
-                key={tag}
-                className="text-[11px] uppercase tracking-overline border border-hairline px-2.5 py-1 text-subtle"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+          <TagGroup tags={project.tags} variant="card" />
           <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-terracotta whitespace-nowrap">
             Read case study
             <ArrowUpRight
