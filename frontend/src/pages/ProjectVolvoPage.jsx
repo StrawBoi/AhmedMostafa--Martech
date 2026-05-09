@@ -4,6 +4,17 @@ import useReveal from "@/hooks/useReveal";
 import { projects } from "@/lib/data";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import ProjectImageFallback from "@/components/ProjectImageFallback";
+import { MetadataBadge, MetadataRow, TagGroup, PillarBadges } from "@/components/ui/MetadataBadge";
+
+// Helper to detect status semantic type
+function detectStatusType(status) {
+  if (!status) return "complete";
+  const lower = status.toLowerCase();
+  if (lower.includes("concept") || lower.includes("prototype") || lower.includes("framework")) return "concept";
+  if (lower.includes("active") || lower.includes("ongoing")) return "active";
+  if (lower.includes("draft")) return "draft";
+  return "complete";
+}
 
 export default function ProjectVolvoPage() {
   useReveal();
@@ -45,44 +56,54 @@ export default function ProjectVolvoPage() {
 
   return (
     <main data-testid={`case-study-${project.id}`} className="pt-10 md:pt-16 pb-24">
-      <section className="container-editorial pb-8">
-        <Link to="/projects" className="inline-flex items-center gap-2 text-sm text-subtle hover:text-foreground mb-6">
+      <section className="container-editorial pb-12">
+        <Link to="/projects" className="inline-flex items-center gap-2 text-sm text-subtle hover:text-foreground mb-6 reveal">
           ← All projects
         </Link>
 
-        <p className="overline mb-3">{project.type}</p>
-        <div className="flex items-center gap-3">
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] max-w-4xl">
-            {project.title}
-          </h1>
-          <div className="flex gap-2">
-            {(project.labels || []).map((l) => (
-              <span key={l} className="text-[11px] uppercase tracking-overline border border-hairline px-2 py-1 text-subtle">
-                {l}
-              </span>
+        {/* Type eyebrow */}
+        <p className="overline mb-3 reveal">{project.type}</p>
+
+        {/* Title */}
+        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] max-w-4xl reveal">
+          {project.title}
+        </h1>
+
+        {/* Labels (trust cues) */}
+        {(project.labels || []).length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-4 reveal" style={{ transitionDelay: "80ms" }}>
+            {project.labels.map((l) => (
+              <MetadataBadge key={l} variant="label">{l}</MetadataBadge>
             ))}
           </div>
+        )}
+
+        {/* Metadata row: Role, Status, Year */}
+        <div className="mt-6 reveal" style={{ transitionDelay: "160ms" }}>
+          <MetadataRow
+            items={[
+              { label: "Role", value: project.role, emphasis: true },
+              { label: "Status", value: <MetadataBadge variant="status" statusType={detectStatusType(project.status)}>{project.status}</MetadataBadge> },
+              { label: "Year", value: project.year },
+            ]}
+            containerClassName="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm"
+          />
         </div>
 
-        <p className="mt-6 text-foreground/75 max-w-3xl leading-relaxed">{project.subtitle}</p>
-      </section>
+        {/* Top tags (2-3 high priority) */}
+        {(project.tags || []).length > 0 && (
+          <div className="mt-6 reveal" style={{ transitionDelay: "240ms" }}>
+            <p className="overline mb-3">Focus areas</p>
+            <TagGroup tags={project.tags} variant="card" />
+          </div>
+        )}
 
-      {/* Project facts */}
-      <section className="container-editorial py-8 border-y border-hairline">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 items-start">
-          <div>
-            <p className="overline mb-2">Status</p>
-            <p className="font-serif">{project.status}</p>
-          </div>
-          <div>
-            <p className="overline mb-2">Year</p>
-            <p>{project.year}</p>
-          </div>
-          <div>
-            <p className="overline mb-2">Role</p>
-            <p>{project.role}</p>
-          </div>
-        </div>
+        {/* Short takeaway/value statement */}
+        {project.subtitle && (
+          <p className="mt-6 text-base md:text-lg text-foreground/80 leading-relaxed max-w-3xl font-medium reveal" style={{ transitionDelay: "320ms" }}>
+            {project.subtitle}
+          </p>
+        )}
       </section>
 
       <section className="container-editorial py-12">

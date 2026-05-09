@@ -2,6 +2,17 @@ import { Link } from "react-router-dom";
 import useReveal from "@/hooks/useReveal";
 import { projects } from "@/lib/data";
 import ContentSection from "@/components/ui/ContentSection";
+import { MetadataBadge, MetadataRow, TagGroup, PillarBadges } from "@/components/ui/MetadataBadge";
+
+// Helper to detect status semantic type
+function detectStatusType(status) {
+  if (!status) return "complete";
+  const lower = status.toLowerCase();
+  if (lower.includes("concept") || lower.includes("prototype") || lower.includes("framework")) return "concept";
+  if (lower.includes("active") || lower.includes("ongoing")) return "active";
+  if (lower.includes("draft")) return "draft";
+  return "complete";
+}
 
 export default function ProjectCinematekPage() {
   useReveal();
@@ -21,46 +32,58 @@ export default function ProjectCinematekPage() {
 
   return (
     <main data-testid={`case-study-${project.id}`} className="pt-12 md:pt-16 pb-24">
-      <section className="container-editorial pb-10">
+      <section className="container-editorial pb-10 reveal">
         <Link to="/projects" className="inline-flex items-center gap-2 text-sm text-subtle hover:text-foreground mb-6">
           ← All projects
         </Link>
 
+        {/* Type eyebrow */}
         <p className="overline mb-3">{project.type}</p>
-        <div className="flex items-center gap-3">
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.02] max-w-4xl">
-            {project.title}
-          </h1>
-          <div className="flex gap-2">
-            {(project.labels || []).map((l) => (
-              <span key={l} className="text-[11px] uppercase tracking-overline border border-hairline px-2 py-1 text-subtle">
-                {l}
-              </span>
+
+        {/* Title */}
+        <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.02] max-w-4xl">
+          {project.title}
+        </h1>
+
+        {/* Labels (trust cues) */}
+        {(project.labels || []).length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-4">
+            {project.labels.map((l) => (
+              <MetadataBadge key={l} variant="label">{l}</MetadataBadge>
             ))}
           </div>
+        )}
+
+        {/* Metadata row: Role, Status, Year */}
+        <div className="mt-6">
+          <MetadataRow
+            items={[
+              { label: "Role", value: project.role, emphasis: true },
+              { label: "Status", value: <MetadataBadge variant="status" statusType={detectStatusType(project.status)}>{project.status}</MetadataBadge> },
+              { label: "Year", value: project.year },
+            ]}
+            containerClassName="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm"
+          />
         </div>
 
-        <p className="mt-6 text-foreground/75 max-w-3xl leading-relaxed">{project.shortSummary}</p>
+        {/* Top tags (2-3 high priority) */}
+        {(project.tags || []).length > 0 && (
+          <div className="mt-6">
+            <p className="overline mb-3">Focus areas</p>
+            <TagGroup tags={project.tags} variant="card" />
+          </div>
+        )}
 
+        {/* Short takeaway/value statement */}
+        {project.shortSummary && (
+          <p className="mt-6 text-base md:text-lg text-foreground/80 leading-relaxed max-w-3xl font-medium">
+            {project.shortSummary}
+          </p>
+        )}
+
+        {/* Hero image */}
         <div className="mt-8">
           <img src={project.heroImage} alt={project.title} className="w-full rounded-lg shadow-sm object-cover h-[360px]" />
-        </div>
-      </section>
-
-      <section className="container-editorial py-8 border-y border-hairline">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 items-start">
-          <div>
-            <p className="overline mb-2">Status</p>
-            <p className="font-serif">{project.status}</p>
-          </div>
-          <div>
-            <p className="overline mb-2">Year</p>
-            <p>{project.year}</p>
-          </div>
-          <div>
-            <p className="overline mb-2">Role</p>
-            <p>{project.role}</p>
-          </div>
         </div>
       </section>
 
