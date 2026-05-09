@@ -2,6 +2,17 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import useReveal from "@/hooks/useReveal";
 import { allProjects } from "@/lib/data";
+import { MetadataBadge, PillarBadges } from "@/components/ui/MetadataBadge";
+
+// Helper to detect status semantic type
+function detectStatusType(status) {
+  if (!status) return "complete";
+  const lower = status.toLowerCase();
+  if (lower.includes("concept") || lower.includes("prototype") || lower.includes("framework")) return "concept";
+  if (lower.includes("active") || lower.includes("ongoing")) return "active";
+  if (lower.includes("draft")) return "draft";
+  return "complete";
+}
 
 export default function ProjectsPage() {
   useReveal();
@@ -35,24 +46,58 @@ export default function ProjectsPage() {
             >
               <Link
                 to={`/projects/${p.slug}`}
-                className="grid grid-cols-12 gap-4 md:gap-8 items-center py-7 md:py-10 group"
+                className="group flex flex-col gap-4 py-7 md:py-10 transition-colors"
               >
-                <span className="col-span-2 md:col-span-1 font-mono text-xs text-subtle">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="col-span-10 md:col-span-5">
-                  <p className="overline mb-2">{p.eyebrow}</p>
-                  <h2 className="font-serif text-2xl md:text-3xl tracking-tight leading-tight transition-colors group-hover:text-terracotta">
-                    {p.title}
-                  </h2>
-                </div>
-                <p className="hidden md:block md:col-span-4 text-sm text-foreground/70 leading-relaxed">
-                  {p.takeaway}
-                </p>
-                <div className="col-span-12 md:col-span-2 flex md:justify-end">
-                  <span className="inline-flex items-center gap-1.5 text-sm font-medium">
-                    Read <ArrowUpRight size={14} />
+                {/* Top row: Index, Type, Title, CTA */}
+                <div className="flex items-baseline gap-4 md:gap-6">
+                  <span className="font-mono text-xs text-subtle flex-shrink-0">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
+                  
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                      <MetadataBadge variant="type">{p.type}</MetadataBadge>
+                      {p.status && (
+                        <MetadataBadge 
+                          variant="status" 
+                          statusType={detectStatusType(p.status)}
+                          className="text-[10px]"
+                        >
+                          {p.status}
+                        </MetadataBadge>
+                      )}
+                    </div>
+                    <h2 className="font-serif text-2xl md:text-3xl tracking-tight leading-tight transition-colors group-hover:text-terracotta mb-2">
+                      {p.title}
+                    </h2>
+                    {/* Outcome/value: recruiter-friendly one-liner */}
+                    <p className="text-sm md:text-base text-foreground/80 leading-relaxed max-w-2xl">
+                      {p.takeaway}
+                    </p>
+                  </div>
+
+                  <div className="flex-shrink-0 text-sm font-medium text-foreground/70 group-hover:text-terracotta transition-colors flex items-center gap-1.5 ml-2">
+                    <ArrowUpRight size={14} className="flex-shrink-0" />
+                  </div>
+                </div>
+
+                {/* Bottom row: Supporting metadata */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 ml-10 md:ml-12 text-xs text-subtle">
+                  {p.role && (
+                    <span className="inline-block">
+                      <span className="font-medium">Role:</span> {p.role}
+                    </span>
+                  )}
+                  {p.year && (
+                    <span className="inline-block">
+                      <span className="font-medium">Year:</span> {p.year}
+                    </span>
+                  )}
+                  {p.primaryPillar && (
+                    <div className="inline-block">
+                      <PillarBadges primary={p.primaryPillar} variant="inline" />
+                    </div>
+                  )}
                 </div>
               </Link>
             </li>
