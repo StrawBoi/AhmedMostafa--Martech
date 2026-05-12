@@ -190,6 +190,12 @@
         font-size: clamp(2rem, 3.5vw + 0.5rem, 3.5rem);
     }
 
+    /* Shared section vertical rhythm using clamp() for responsive spacing */
+    .section-vertical {
+        padding-top: clamp(1.25rem, 2.5vw, 3rem);
+        padding-bottom: clamp(1.25rem, 2.5vw, 3rem);
+    }
+
     /* Subtle ambient hover for project visuals */
     .img-zoom {
         @apply overflow-hidden;

@@ -15,6 +15,120 @@ export const profile = {
 
 export const projects = [
   {
+    id: "mosol-horease-profit-intelligence",
+    title: "MOSOL / Horease — Turning POS Data into Profit Intelligence",
+    subtitle: "A strategy-led concept for Belgian horeca teams to convert POS data into clearer margin and menu decisions.",
+    type: "Product Strategy Concept",
+    status: "Strategic Proposal",
+    year: "2025",
+    primaryPillar: "Strategizing",
+    secondaryPillar: "Building",
+    role: "Strategy, market analysis, positioning, and GTM planning",
+    shortSummary:
+      "A premium strategy-board concept reframing POS reporting into fast, practical profit intelligence for independent horeca operators.",
+    overview:
+      "MOSOL/Horease is a concept project focused on helping Belgian horeca operators move from retrospective data reports to confident weekly decisions on pricing, menu performance, and operational profitability.",
+    problem:
+      "Operators have data, but not enough decision clarity. Most POS outputs are backward-looking, fragmented, and difficult to translate into action under day-to-day pressure.",
+    goal:
+      "Design a strategy-led product concept that transforms raw POS data into understandable, high-confidence recommendations for margin improvement.",
+    contribution:
+      "I led problem framing, market logic, product concept architecture, sprint planning, and narrative structuring for a recruiter- and stakeholder-ready strategic proposal.",
+    research:
+      "The work combined horeca operator interviews, workflow mapping, and competitor analysis to identify where decision support could create immediate value.",
+    strategy:
+      "Position the concept as an AI-first profit intelligence layer that turns raw POS data into simple, trustworthy recommendations for owners and operators.",
+    goToMarket:
+      "Validate through a staged rollout: define the core segment, test positioning and pricing assumptions, run a small pilot with horeca operators, and refine the messaging before any broader launch.",
+    deliverables: [
+      "Belgian horeca market opportunity summary",
+      "Competitor map and whitespace analysis",
+      "Positioning logic and value proposition",
+      "Validation plan with pilot assumptions",
+      "Go-to-market sprint roadmap",
+      "Campaign and messaging directions",
+    ],
+    outcomes:
+      "A structured strategic proposal with clear market positioning, concept architecture, and pilot pathway. This is a concept project and not a launched startup.",
+    methods: [
+      "Operator interviews",
+      "Workflow mapping",
+      "Competitor benchmark",
+      "Concept architecture",
+      "Go-to-market sprint planning",
+    ],
+    tools: [
+      "Figma",
+      "Strategy mapping",
+      "Market analysis",
+      "Concept narrative design",
+    ],
+    tags: [
+      "Strategizing",
+      "Building",
+      "Horeca",
+      "POS Intelligence",
+      "Product Strategy",
+      "Go-To-Market",
+    ],
+    heroImage: "/projects/mosol/hero-strategy-board.png",
+    gallery: [
+      {
+        src: "/projects/mosol/placeholders/landscape-strategy-poster.png",
+        alt: "Placeholder landscape strategy poster for the MOSOL case study",
+        caption: "Landscape strategy poster",
+        category: "strategy",
+      },
+      {
+        src: "/projects/mosol/placeholders/market-opportunity-poster.png",
+        alt: "Placeholder market opportunity poster for the MOSOL case study",
+        caption: "Market opportunity poster",
+        category: "research",
+      },
+      {
+        src: "/projects/mosol/placeholders/execution-sprint-poster.png",
+        alt: "Placeholder execution sprint poster for the MOSOL case study",
+        caption: "Execution sprint poster",
+        category: "planning",
+      },
+      {
+        src: "/projects/mosol/placeholders/competitor-map.png",
+        alt: "Placeholder competitor map for the MOSOL case study",
+        caption: "Competitor map",
+        category: "research",
+      },
+      {
+        src: "/projects/mosol/placeholders/dashboard-mockup.png",
+        alt: "Placeholder dashboard mockup for the MOSOL case study",
+        caption: "Dashboard mockup",
+        category: "product",
+      },
+      {
+        src: "/projects/mosol/placeholders/pricing-positioning-visual.png",
+        alt: "Placeholder pricing or positioning visual for the MOSOL case study",
+        caption: "Pricing or positioning visual",
+        category: "strategy",
+      },
+      {
+        src: "/projects/mosol/placeholders/marketing-asset-preview.png",
+        alt: "Placeholder marketing asset preview for the MOSOL case study",
+        caption: "Marketing asset preview",
+        category: "marketing",
+      },
+    ],
+    featured: true,
+    visibility: "public",
+    labels: ["Concept Project", "Strategic Proposal"],
+    projectMeta: {
+      projectType: "Product strategy concept",
+      sector: "Belgian horeca / restaurant tech",
+      focus: "Positioning, market validation, pricing, go-to-market",
+      role: "Strategy, market analysis, messaging, launch planning",
+      keyOutputs: "Competitor map, positioning logic, sprint roadmap, campaign ideas",
+      status: "Concept / strategic proposal",
+    },
+  },
+  {
     id: "volvo-belgium-campaign",
     title: "Volvo Belgium - Made in Belgium Campaign Strategy",
     subtitle: "University project in brand positioning, market research, and campaign planning",
@@ -73,10 +187,10 @@ export const projects = [
         category: "cover",
       },
       {
-        src: "/projects/volvo/situation-analysis.png",
-        alt: "Volvo market situation slide",
-        caption: "Situation analysis",
-        category: "research",
+        src: "/projects/volvo/WhatsApp Image 2026-05-07 at 13.42.54 (39).jpeg",
+        alt: "Volvo team presenting the situation analysis slide",
+        caption: "Situation analysis presentation",
+        category: "presentation",
       },
       {
         src: "/projects/volvo/audience-segmentation.png",
@@ -112,6 +226,32 @@ export const projects = [
     featured: true,
     visibility: "public",
     labels: ["University Project", "Strategic Proposal"],
+    media: [
+      {
+        src: "/projects/volvo/volvo-belgium-campaign-board-mockup.png",
+        alt: "Volvo campaign board mockup",
+        caption: "Campaign board mockup",
+        category: "work",
+      },
+      {
+        src: "/projects/volvo/WhatsApp Image 2026-05-07 at 13.42.54 (39).jpeg",
+        alt: "Volvo team presenting the situation analysis slide",
+        caption: "Situation analysis presentation",
+        category: "presentation",
+      },
+      {
+        src: "/projects/volvo/WhatsApp Image 2026-05-07 at 13.42.54 (39).jpeg",
+        alt: "Volvo team presenting campaign analysis to an audience",
+        caption: "Team presentation moment during the Volvo campaign pitch",
+        category: "presentation",
+      },
+      {
+        src: "/projects/volvo/WhatsApp Image 2026-05-07 at 13.42.54 (37).jpeg",
+        alt: "Volvo team discussion during the campaign presentation session",
+        caption: "Live discussion segment from the final presentation",
+        category: "presentation",
+      },
+    ],
   },
   {
     id: "cinematek-decades-of-cinema",
@@ -185,21 +325,15 @@ export const projects = [
         category: "cover",
       },
       {
-        src: "/projects/cinematek/gallery-1.svg",
-        alt: "CINEMATEK campaign visual one",
-        caption: "Campaign visual one",
+        src: "/projects/cinematek/cinematek-decades-60s-poster.png",
+        alt: "CINEMATEK Decades of Cinema poster for the 60s",
+        caption: "Decades of Cinema - The 60s poster",
         category: "visual",
       },
       {
-        src: "/projects/cinematek/gallery-2.svg",
-        alt: "CINEMATEK campaign visual two",
-        caption: "Campaign visual two",
-        category: "visual",
-      },
-      {
-        src: "/projects/cinematek/gallery-3.svg",
-        alt: "CINEMATEK campaign visual three",
-        caption: "Campaign visual three",
+        src: "/projects/cinematek/cinematek-decades-70s-poster.png",
+        alt: "CINEMATEK Decades of Cinema poster for the 70s",
+        caption: "Decades of Cinema - The 70s poster",
         category: "visual",
       },
     ],

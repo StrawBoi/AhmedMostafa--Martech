@@ -152,6 +152,9 @@ export default function FeaturedWork() {
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="md:col-span-1">
+            <FeaturedProjectCard projectId="mosol-horease-profit-intelligence" />
+          </div>
+          <div className="md:col-span-1">
             <FeaturedProjectCard projectId="marketing-intelligence-analysis" />
           </div>
         </div>

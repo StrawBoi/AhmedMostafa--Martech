@@ -14,6 +14,19 @@ function detectStatusType(status) {
   return "complete";
 }
 
+// Helper to get thumbnail image for project
+function getThumbnailImage(slug) {
+  const imageMap = {
+    "mosol-horease-profit-intelligence": null,
+    "volvo-belgium-campaign": "/projects/volvo/volvo-belgium-campaign-board-mockup.png",
+    "cinematek-decades-of-cinema": "/projects/cinematek/cinematek-campaign-board-mockup.png",
+    "tackle-pricing-intelligence": null,
+    "marketing-intelligence-analysis": "/projects/marketing-intelligence/marketing-intelligence-dashboard-mockup.png",
+    "brand-identity-transformation": null,
+  };
+  return imageMap[slug] || null;
+}
+
 export default function ProjectsPage() {
   useReveal();
   return (
@@ -48,6 +61,21 @@ export default function ProjectsPage() {
                 to={`/projects/${p.slug}`}
                 className="group flex flex-col gap-4 py-7 md:py-10 transition-colors"
               >
+                {/* Thumbnail Image Section */}
+                <div className="mb-2 overflow-hidden rounded-sm bg-foreground/5">
+                  {getThumbnailImage(p.slug) ? (
+                    <img
+                      src={getThumbnailImage(p.slug)}
+                      alt={`${p.title} thumbnail`}
+                      className="w-full h-48 md:h-56 object-cover group-hover:opacity-80 transition-opacity"
+                    />
+                  ) : (
+                    <div className="w-full h-48 md:h-56 bg-gradient-to-br from-foreground/8 to-foreground/12 flex items-center justify-center">
+                      <span className="text-xs font-medium text-foreground/40">No image</span>
+                    </div>
+                  )}
+                </div>
+
                 {/* Top row: Index, Type, Title, CTA */}
                 <div className="flex items-baseline gap-4 md:gap-6">
                   <span className="font-mono text-xs text-subtle flex-shrink-0">
