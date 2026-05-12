@@ -8,11 +8,10 @@ export default function Journey() {
     >
       <div className="container-editorial grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
         <div className="lg:col-span-4 reveal">
-          <p className="overline mb-4">Selected journey</p>
-          <h2 className="h-section">From systems thinking to marketing thinking.</h2>
+          <p className="overline mb-4">SELECTED JOURNEY</p>
+          <h2 className="h-section">How I got here.</h2>
           <p className="mt-6 text-foreground/75 max-w-md leading-relaxed">
-            Three short chapters that explain internship fit fast: how I connect
-            operational rigor, research, and marketing execution.
+            A quick look at the path behind my interest in marketing, strategy, and execution.
           </p>
         </div>
 

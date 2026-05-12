@@ -16,20 +16,14 @@ export default function ContactCTA() {
       <div className="container-editorial">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-end">
           <div className="lg:col-span-8 reveal">
-            <p className="overline text-background/60 mb-6">Let's talk</p>
-            <h2
-              className="font-serif font-light tracking-tight leading-[1.04] text-4xl md:text-6xl lg:text-[5rem] max-w-[17ch]"
-              style={{ textWrap: "balance" }}
-            >
-              Hiring for a marketing internship{" "}
-              <span className="italic text-terracotta">in Belgium</span> or{" "}
-              <span className="italic text-terracotta">Europe?</span>
-              <span className="block mt-2 md:mt-3 text-background/95">I'd love to contribute.</span>
+            <p className="overline text-background/60 mb-6">Contact</p>
+            <h2 className="font-serif font-light tracking-tight leading-[1.04] text-4xl md:text-6xl lg:text-[5rem] max-w-[17ch]" style={{ textWrap: "balance" }}>
+              Interested in working together?
             </h2>
-            <p className="mt-8 md:mt-10 text-background/75 text-base md:text-lg max-w-xl leading-relaxed">
-              The contact form is the fastest way to reach me — I read every
-              message personally and reply within 48 hours.
+            <p className="mt-6 text-background/90 text-base md:text-lg max-w-xl leading-relaxed">
+              If you’re hiring for a marketing internship and think there could be a fit, I’d be glad to hear from you.
             </p>
+            <p className="mt-6 text-background/75 text-sm max-w-xl leading-relaxed">The contact form is the fastest way to reach me. I read every message myself and reply within 48 hours.</p>
           </div>
 
           <div className="lg:col-span-4 reveal" style={{ transitionDelay: "150ms" }}>

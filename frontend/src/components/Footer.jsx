@@ -14,10 +14,9 @@ export default function Footer() {
     >
       <div className="container-editorial py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-10">
         <div className="md:col-span-5">
-          <p className="overline mb-4">Ahmed Mostafa</p>
+          <p className="overline mb-4">AHMED MOHSEN MOSTAFA</p>
           <p className="font-serif text-2xl md:text-3xl tracking-tight max-w-md leading-tight">
-            Open to marketing, research and analytics internships across
-            Belgium and Europe.
+            Marketing student in Brussels, open to internships in marketing, research, and analytics across Belgium and Europe.
           </p>
         </div>
 
@@ -69,10 +68,8 @@ export default function Footer() {
 
       <div className="border-t border-hairline">
         <div className="container-editorial py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-subtle">
-          <p>© {new Date().getFullYear()} Ahmed Mostafa. Built in Brussels.</p>
-          <p className="font-mono uppercase tracking-overline">
-            Available — Summer 2026
-          </p>
+          <p>© 2026 Ahmed Mohsen Mostafa.</p>
+          <p className="font-mono uppercase tracking-overline">Marketing student in Brussels</p>
         </div>
       </div>
     </footer>

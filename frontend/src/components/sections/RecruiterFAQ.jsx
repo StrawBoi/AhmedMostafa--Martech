@@ -19,11 +19,10 @@ export default function RecruiterFAQ() {
     >
       <div className="container-editorial grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
         <div className="lg:col-span-4 reveal">
-          <p className="overline mb-4">Recruiter fit</p>
-          <h2 className="h-section">Quick answers to the questions you'd ask anyway.</h2>
+          <p className="overline mb-4">RECRUITER FIT</p>
+          <h2 className="h-section">A few things you may want to know.</h2>
           <p className="mt-6 text-foreground/75 max-w-md leading-relaxed">
-            Skip the clicks. The three answers most recruiters need first are
-            visible immediately.
+            The basics, up front.
           </p>
           <Link
             to="/contact"

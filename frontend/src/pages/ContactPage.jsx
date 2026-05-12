@@ -78,20 +78,15 @@ export default function ContactPage() {
   return (
     <main data-testid="contact-page" className="pt-12 md:pt-20">
       <section className="container-editorial pb-12 md:pb-16">
-        <p className="overline mb-5 reveal">Contact</p>
+        <p className="overline mb-5 reveal">CONTACT</p>
         <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] max-w-4xl reveal">
-          Tell me about the role —{" "}
-          <span className="italic text-terracotta">
-            I'll tell you if I'm a fit.
-          </span>
+          Tell me about the opportunity.
         </h1>
         <p
-          className="mt-6 max-w-2xl text-base md:text-lg text-foreground/75 leading-relaxed reveal"
+          className="mt-6 max-w-2xl text-base text-foreground/75 leading-relaxed reveal"
           style={{ transitionDelay: "120ms" }}
         >
-          The form below is the fastest way to reach me. A few lines about
-          the team, the timing, and what kind of intern you're looking for is
-          enough — I read everything personally and reply within 48 hours.
+          Use the form below to reach out. A few lines about the role, team, and timing is enough — I read everything personally and reply within 48 hours.
         </p>
       </section>
 

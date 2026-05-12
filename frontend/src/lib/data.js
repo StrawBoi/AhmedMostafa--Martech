@@ -2,15 +2,15 @@
 // Email is intentionally NOT exposed publicly — recruiters reach out via the contact form.
 
 export const profile = {
-  name: "Ahmed Mostafa",
-  short: "Ahmed",
+  name: "Ahmed Mohsen Mostafa",
+  short: "Ahmed Mohsen",
   role: "Marketing, Research & Analytics Intern",
   location: "Brussels, Belgium",
   email: "ahmed.ha.mahmoud@outlook.com",
   linkedin: "https://www.linkedin.com/in/ahmed-mohsen-hanafy/",
   cvAvailable: true,
   cvUrl: "/Ahmed-Mostafa-CV.pdf",
-  status: "Available — Summer 2026 internship",
+  status: "AVAILABLE FOR SUMMER 2026 INTERNSHIPS",
 };
 
 export const projects = [
@@ -521,7 +521,7 @@ export const capabilities = [
     id: "research",
     label: "Research & Insight",
     summary:
-      "Turning interviews, competitive scans, and market data into a clear point of view a team can act on.",
+      "I enjoy turning research, signals, and scattered information into a clearer point of view that people can actually use.",
     bullets: [
       "Customer & competitor interviews (qual + quant blend)",
       "Market sizing, positioning, and segmentation studies",
@@ -532,7 +532,7 @@ export const capabilities = [
     id: "campaign",
     label: "Campaign & Content Thinking",
     summary:
-      "Connecting the dots between message, channel, and audience — with a healthy bias for shipping and learning.",
+      "I like shaping ideas into messages, channels, and content that feel relevant to the audience and realistic for the team.",
     bullets: [
       "Campaign concepts framed around an audience tension",
       "Channel-fit content (LinkedIn, newsletter, landing pages)",
@@ -543,7 +543,7 @@ export const capabilities = [
     id: "data",
     label: "Data, Automation & Execution",
     summary:
-      "Where most marketing teams lose time. I close that gap with simple data layers and lightweight automations.",
+      "I’m also drawn to the operational side of marketing, where better systems, cleaner reporting, and simple automations save time and improve focus.",
     bullets: [
       "GA4, Looker Studio, spreadsheets that don't break",
       "No-code automations (Make, Zapier, Airtable, Notion)",
@@ -555,33 +555,33 @@ export const capabilities = [
 export const journeyChapters = [
   {
     period: "Earlier",
-    title: "Built in technical and operational environments",
-    body: "Years of working close to systems, infrastructure, and operations gave me an instinct for how things actually run — and where they break.",
+    title: "Earlier",
+    body: "I spent years close to systems, infrastructure, and operations. That taught me to notice what holds things together, where friction builds up, and what helps work actually move.",
   },
   {
     period: "Then",
-    title: "Developed strength in analytics, systems, and execution",
-    body: "I leaned into automation, data, and digital execution — the parts of marketing where teams most often hit a ceiling.",
+    title: "Then",
+    body: "Over time, I leaned more into analytics, automation, and execution. I became interested in the point where structure meets action, and where better thinking can improve real outcomes.",
   },
   {
     period: "Now",
-    title: "Applying that to marketing, growth, and customer-focused strategy",
-    body: "Through my BBA in Business Management & Marketing at Odisee, I'm channeling that operational and analytical foundation into research, campaigns, and growth thinking.",
+    title: "Now",
+    body: "Today, I’m building on that foundation through my studies in Business Management and Marketing at Odisee. My focus is on research, campaigns, and practical strategy that can support real teams.",
   },
 ];
 
 export const recruiterFAQ = [
   {
     q: "What internship roles are you targeting?",
-    a: "Marketing analyst, growth, market research, and marketing operations internships. I can support audience research, campaign planning, content workflows, reporting, and day-to-day execution.",
+    a: "I’m looking for internships in marketing, research, growth, or analytics, especially roles where I can support planning, insight gathering, campaign work, and day-to-day execution.",
   },
   {
     q: "Are you more strategy, execution, or analytics oriented?",
-    a: "A hybrid profile: strategy-first thinking, strong analytics discipline, and practical execution. I am most useful where teams need someone who can move from insight to shipped work.",
+    a: "A mix of all three. I naturally lean toward structured thinking and research, but I’m most useful when I can help move an idea into action.",
   },
   {
     q: "Where are you based and when are you available?",
-    a: "Based in Brussels. Open across Belgium and Europe (on-site, hybrid, or remote). Available for Summer 2026 internships, with flexibility for earlier part-time collaboration.",
+    a: "I’m based in Brussels and open to opportunities across Belgium and Europe, whether on-site, hybrid, or remote. I’m available for Summer 2026 and open to earlier part-time collaboration if relevant.",
   },
   {
     q: "What kinds of teams fit your profile best?",

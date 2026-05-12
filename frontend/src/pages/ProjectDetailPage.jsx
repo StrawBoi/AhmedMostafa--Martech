@@ -268,30 +268,28 @@ export default function ProjectDetailPage() {
 
       <section className="container-editorial section-vertical grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
         <div className="lg:col-span-4">
-          <p className="overline mb-3 reveal">The takeaway</p>
+          <p className="overline mb-3 reveal">The work</p>
           <p className="font-serif text-2xl md:text-3xl leading-snug text-terracotta reveal">
             {project.takeaway}
           </p>
         </div>
-          <div className="lg:col-span-8 space-y-10">
+        <div className="lg:col-span-8 space-y-8">
+          {project.challenge && (
             <div className="reveal">
-              <p className="overline mb-3">Challenge</p>
+              <p className="overline mb-3">What the challenge was</p>
               <p className="text-base leading-relaxed text-foreground/85">
                 {project.challenge}
               </p>
             </div>
+          )}
+          {(project.overview || project.contribution) && (
             <div className="reveal" style={{ transitionDelay: "100ms" }}>
-              <p className="overline mb-3">Overview</p>
+              <p className="overline mb-3">What we did</p>
               <p className="text-base leading-relaxed text-foreground/85">
-                {project.overview || project.contribution || "Overview coming soon."}
+                {project.overview || project.contribution}
               </p>
             </div>
-            <div className="reveal" style={{ transitionDelay: "200ms" }}>
-              <p className="overline mb-3">Outcome</p>
-              <p className="text-base leading-relaxed text-foreground/85">
-                {project.takeaway}
-              </p>
-            </div>
+          )}
         </div>
       </section>
 

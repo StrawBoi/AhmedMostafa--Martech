@@ -13,25 +13,20 @@ export default function Hero() {
       data-testid="hero-section"
       className="relative pt-14 md:pt-24 pb-20 md:pb-32 overflow-hidden"
     >
-      <div className="container-editorial grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end">
+      <div className="container-editorial grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
         <div className="lg:col-span-8">
           <div className="flex items-center gap-3 mb-7 md:mb-10 reveal">
             <span className="relative flex h-2 w-2" aria-hidden="true">
               <span className="absolute inline-flex h-full w-full rounded-full bg-terracotta opacity-60 animate-ping" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-terracotta" />
             </span>
-            <span className="overline text-foreground/80">
-              {profile.status}
-            </span>
+            <span className="overline text-foreground/80">AVAILABLE FOR SUMMER 2026 INTERNSHIPS</span>
           </div>
 
-          <h1
-            data-testid="hero-headline"
-            className="h-display reveal"
-          >
-            Marketing intern with a
+          <h1 data-testid="hero-headline" className="h-display reveal">
+            Marketing with structure,
             <br />
-            <span className="italic text-terracotta">systems mind.</span>
+            <span className="italic text-terracotta">curiosity, and intent.</span>
           </h1>
 
           <p
@@ -39,9 +34,13 @@ export default function Hero() {
             className="mt-7 md:mt-9 max-w-2xl text-base md:text-lg text-foreground/80 leading-relaxed reveal"
             style={{ transitionDelay: "120ms" }}
           >
-            BBA candidate at Odisee, Brussels. I bring an unusual mix to a
-            marketing team — research instinct, analytics fluency, and an
-            operations background that makes campaigns actually ship.
+            I'm Ahmed Mohsen Mostafa, a marketing student in Brussels building my path through research, campaigns, and hands-on strategic work.
+          </p>
+          <p
+            className="mt-3 max-w-2xl text-sm text-foreground/60 leading-relaxed reveal"
+            style={{ transitionDelay: "140ms" }}
+          >
+            Drawn to work that starts with clarity, stays curious, and leads to something genuinely useful.
           </p>
 
           <div
@@ -64,52 +63,34 @@ export default function Hero() {
           </div>
         </div>
 
-        <div
-          className="lg:col-span-4 reveal"
-          style={{ transitionDelay: "300ms" }}
-        >
-          <div className="space-y-6">
-            <section
-              aria-label="Profile pillars"
-              className="border border-hairline bg-surface/70 p-5 md:p-6"
-            >
-              <p className="overline mb-3 text-foreground/70">How I contribute</p>
-              <ul className="space-y-3">
-                <li className="flex items-start justify-between gap-3 border-b border-hairline/70 pb-3">
-                  <span className="font-serif text-lg leading-none">Communication</span>
-                  <span className="text-xs text-subtle uppercase tracking-overline text-right">Message clarity</span>
-                </li>
-                <li className="flex items-start justify-between gap-3 border-b border-hairline/70 pb-3">
-                  <span className="font-serif text-lg leading-none">Building</span>
-                  <span className="text-xs text-subtle uppercase tracking-overline text-right">Systems that ship</span>
-                </li>
-                <li className="flex items-start justify-between gap-3">
-                  <span className="font-serif text-lg leading-none">Strategizing</span>
-                  <span className="text-xs text-subtle uppercase tracking-overline text-right">Insight to action</span>
-                </li>
-              </ul>
-            </section>
+          <div className="lg:col-span-4 reveal" style={{ transitionDelay: "300ms" }}>
+            <div className="space-y-4">
+              <section aria-label="Quick profile snapshot" className="border border-hairline bg-surface/70 p-4 md:p-5">
+                <div className="space-y-4">
+                  <div>
+                    <p className="overline text-xs mb-2 text-terracotta font-semibold">AVAILABLE NOW</p>
+                    <p className="text-sm font-medium text-foreground">Summer 2026 Internships</p>
+                  </div>
+                  <div className="border-t border-hairline/50 pt-3">
+                    <p className="overline text-xs mb-1 text-foreground/60">EDUCATION</p>
+                    <p className="text-sm text-foreground/80 leading-snug">Odisee — Business Management & Marketing</p>
+                  </div>
+                  <div className="border-t border-hairline/50 pt-3">
+                    <p className="overline text-xs mb-1 text-foreground/60">LOOKING FOR</p>
+                    <p className="text-sm text-foreground/80 leading-snug">Marketing, research, or analytics roles</p>
+                  </div>
+                  <div className="border-t border-hairline/50 pt-3">
+                    <p className="overline text-xs mb-1 text-foreground/60">STRENGTH</p>
+                    <p className="text-sm text-foreground/80 leading-snug">Research-led strategy + execution</p>
+                  </div>
+                </div>
+              </section>
 
-            <div className="border-l border-hairline pl-6 md:pl-8 space-y-7">
-            <div>
-              <p className="overline mb-2">Currently</p>
-              <p className="font-serif text-xl leading-snug">
-                Studying Business Management & Marketing at Odisee, Brussels.
-              </p>
-            </div>
-            <div>
-              <p className="overline mb-2">Looking for</p>
-              <p className="font-serif text-xl leading-snug">
-                A marketing, growth, research or analytics internship —
-                Summer 2026.
-              </p>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-subtle">
-              <MapPin size={14} aria-hidden="true" /> Brussels — open across Belgium / Europe
-            </div>
+              <div className="flex items-center gap-2 text-xs text-subtle">
+                <MapPin size={13} aria-hidden="true" /> Brussels — Open across Belgium & Europe
+              </div>
             </div>
           </div>
-        </div>
       </div>
 
       <div className="container-editorial mt-16 md:mt-24 hidden md:flex items-center gap-4 text-subtle">

@@ -10,14 +10,21 @@ import ContactCTA from "@/components/sections/ContactCTA";
 export default function HomePage() {
   useReveal();
   return (
-    <main data-testid="home-page">
-      <Hero />
-      <ProofStrip />
-      <Journey />
-      <FeaturedWork />
-      <CapabilityPillars />
-      <RecruiterFAQ />
-      <ContactCTA />
-    </main>
+    <>
+      <title>Ahmed Mostafa — Marketing Intern Brussels | Strategy, Research & Analytics</title>
+      <meta
+        name="description"
+        content="BBA student at Odisee Brussels specializing in marketing management, research, data analysis, and analytics. Available for Summer 2026 internships across Belgium and Europe."
+      />
+      <main data-testid="home-page">
+        <Hero />
+        <ProofStrip />
+        <Journey />
+        <FeaturedWork />
+        <CapabilityPillars />
+        <RecruiterFAQ />
+        <ContactCTA />
+      </main>
+    </>
   );
 }

@@ -18,11 +18,10 @@ export default function CapabilityPillars() {
       <div className="container-editorial">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-4 reveal">
-            <p className="overline mb-4">Capabilities</p>
-            <h2 className="h-section">What a team gets when they hire me.</h2>
+            <p className="overline mb-4">CAPABILITIES</p>
+            <h2 className="h-section">What I bring to a team.</h2>
             <p className="mt-6 text-foreground/75 max-w-md leading-relaxed">
-              Three real ways I show up on a marketing team — not three
-              slides of buzzwords. Click each to expand.
+              Three areas I keep returning to in my work: research, campaign thinking, and execution.
             </p>
           </div>
 
