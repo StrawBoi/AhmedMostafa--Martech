@@ -1,14 +1,16 @@
 import { useState } from "react";
-import axios from "axios";
 import { ArrowUpRight, Loader2, Clock } from "lucide-react";
 import { toast } from "sonner";
 import useReveal from "@/hooks/useReveal";
 import { profile } from "@/lib/data";
 import CVButton from "@/components/CVButton";
 import { track, Events } from "@/lib/analytics";
+import Seo from "@/components/Seo";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
-const API = BACKEND_URL ? `${BACKEND_URL}/api` : "/api";
+// Formspree form endpoint — set your form ID from https://formspree.io/
+// Sign up, create a form, and replace with your form ID (e.g., f_mepwvqj)
+const FORMSPREE_FORM_ID = import.meta.env.VITE_FORMSPREE_FORM_ID || "ahmed.ha.mahmoud@outlook.com";
+const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_FORM_ID}`;
 
 const initialForm = {
   name: "",
@@ -43,33 +45,48 @@ export default function ContactPage() {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
+
+    // Honeypot check — bots often fill hidden fields
+    if (form.website) {
+      // Silently succeed to fool bots
+      toast.success("Message sent — I'll reply within 48 hours.");
+      setForm(initialForm);
+      return;
+    }
+
     track(Events.CONTACT_SUBMIT, {
       has_company: Boolean(form.company),
       role_type: form.role_type || "unspecified",
     });
     setLoading(true);
+
     try {
-      await axios.post(`${API}/contact`, form);
+      // Submit to Formspree (no backend required)
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          company: form.company || "Not provided",
+          role_type: form.role_type || "Not specified",
+          message: form.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Formspree error: ${response.status}`);
+      }
+
       track(Events.CONTACT_SUBMIT_SUCCESS);
       toast.success("Message sent — I'll reply within 48 hours.");
       setForm(initialForm);
     } catch (err) {
-      const status = err?.response?.status;
-      const detail = err?.response?.data?.detail;
-      track(Events.CONTACT_SUBMIT_ERROR, { status });
-      if (status === 429) {
-        toast.error(
-          typeof detail === "string"
-            ? detail
-            : "Too many submissions — please try again later."
-        );
-      } else {
-        toast.error(
-          typeof detail === "string"
-            ? detail
-            : "Something went wrong sending your message. Please try again in a moment."
-        );
-      }
+      console.error("Contact form error:", err);
+      track(Events.CONTACT_SUBMIT_ERROR, { source: "formspree" });
+      toast.error(
+        "Something went wrong sending your message. Please try again in a moment."
+      );
     } finally {
       setLoading(false);
     }
@@ -77,6 +94,18 @@ export default function ContactPage() {
 
   return (
     <main data-testid="contact-page" className="pt-12 md:pt-20">
+      <Seo
+        title="Contact Ahmed Mohsen Mostafa | Internship Opportunities in Belgium & Europe"
+        description="Reach out to Ahmed Mohsen Mostafa about marketing, research, analytics, or growth internship opportunities across Belgium and Europe. Replies within 48 hours."
+        canonicalPath="/contact"
+        image="/og-image.svg"
+        imageAlt="Ahmed Mohsen Mostafa contact page preview"
+        keywords={[
+          "contact marketing intern",
+          "Belgium internship contact",
+          "Europe internship contact",
+        ]}
+      />
       <section className="container-editorial pb-12 md:pb-16">
         <p className="overline mb-5 reveal">CONTACT</p>
         <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] max-w-4xl reveal">

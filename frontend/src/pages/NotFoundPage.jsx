@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import Seo from "@/components/Seo";
 
 export default function NotFoundPage() {
   return (
@@ -7,6 +8,12 @@ export default function NotFoundPage() {
       data-testid="not-found-page"
       className="container-editorial py-32 md:py-40 min-h-[60vh] grid grid-cols-1 lg:grid-cols-12 gap-10 items-end"
     >
+      <Seo
+        title="404 | Ahmed Mohsen Mostafa"
+        description="The requested page could not be found on Ahmed Mohsen Mostafa's portfolio."
+        canonicalPath="/404"
+        noIndex
+      />
       <div className="lg:col-span-8">
         <p className="overline mb-5 text-terracotta">404</p>
         <h1 className="font-serif text-5xl md:text-7xl tracking-tight leading-[1.02]">

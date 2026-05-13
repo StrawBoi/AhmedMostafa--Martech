@@ -11,6 +11,7 @@ import MosolMilestoneGrid from "@/components/sections/MosolMilestoneGrid";
 import MosolDeliverablesGrid from "@/components/sections/MosolDeliverablesGrid";
 import MosolGallery from "@/components/sections/MosolGallery";
 import ClosingNote from "@/components/shared/ClosingNote";
+import Seo from "@/components/Seo";
 
 export default function ProjectMosolHoreasePage() {
   useReveal();
@@ -84,15 +85,32 @@ export default function ProjectMosolHoreasePage() {
 
   if (!project) {
     return (
-      <main className="container-editorial py-32 text-center">
-        <p className="overline mb-4">Not found</p>
-        <h1 className="font-serif text-4xl md:text-5xl">Project not available</h1>
-        <BackLink />
-      </main>
+      <>
+        <Seo
+          title="Project not available"
+          description="The requested project case study is not available."
+          canonicalPath="/projects/mosol-profit-intelligence"
+          noIndex
+        />
+        <main className="container-editorial py-32 text-center">
+          <p className="overline mb-4">Not found</p>
+          <h1 className="font-serif text-4xl md:text-5xl">Project not available</h1>
+          <BackLink />
+        </main>
+      </>
     );
   }
 
   return (
+    <>
+      <Seo
+        title={`${project.title} | Ahmed Mohsen Mostafa`}
+        description={project.shortSummary || project.overview || "Case study and strategic project portfolio entry."}
+        canonicalPath="/projects/mosol-profit-intelligence"
+        image={project.heroImage || "/og-image.svg"}
+        imageAlt={project.title}
+        keywords={project.tags || []}
+      />
     <main
       data-testid="case-study-mosol"
       className="pt-10 md:pt-14 pb-20"
@@ -200,5 +218,6 @@ export default function ProjectMosolHoreasePage() {
         ctaTo="/contact"
       />
     </main>
+    </>
   );
 }

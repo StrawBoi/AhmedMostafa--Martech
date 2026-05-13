@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://ahmedmohsenmostafa.com/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://ahmedmohsenmostafa.com/about</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Projects List -->
+  <url>
+    <loc>https://ahmedmohsenmostafa.com/projects</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Project: Cinematek -->
+  <url>
+    <loc>https://ahmedmohsenmostafa.com/projects/cinematek-decades-of-cinema</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project: Mosol Horease -->
+  <url>
+    <loc>https://ahmedmohsenmostafa.com/projects/mosol-horease-profit-intelligence</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project: Volvo -->
+  <url>
+    <loc>https://ahmedmohsenmostafa.com/projects/volvo-brand-automation</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project: Tackle -->
+  <url>
+    <loc>https://ahmedmohsenmostafa.com/projects/tackle-market-research</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project: Vantier -->
+  <url>
+    <loc>https://ahmedmohsenmostafa.com/projects/vantier-brand-positioning</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project: Marketing Intelligence -->
+  <url>
+    <loc>https://ahmedmohsenmostafa.com/projects/marketing-intelligence</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact Page -->
+  <url>
+    <loc>https://ahmedmohsenmostafa.com/contact</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

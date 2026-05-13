@@ -4,6 +4,7 @@ import BackLink from "@/components/shared/BackLink";
 import SectionIntro from "@/components/shared/SectionIntro";
 import StatsStrip from "@/components/shared/StatsStrip";
 import ClosingNote from "@/components/shared/ClosingNote";
+import Seo from "@/components/Seo";
 import {
   CaseStudyDeliverablesGrid,
   CaseStudyGallery,
@@ -26,11 +27,19 @@ export default function ProjectCinematekPage() {
 
   if (!project) {
     return (
-      <main className="container-editorial py-32 text-center">
-        <p className="overline mb-4">Not found</p>
-        <h1 className="font-serif text-4xl md:text-5xl">Project not available</h1>
-        <BackLink />
-      </main>
+      <>
+        <Seo
+          title="Project not available"
+          description="The requested project case study is not available."
+          canonicalPath="/projects/cinematek-decades-of-cinema"
+          noIndex
+        />
+        <main className="container-editorial py-32 text-center">
+          <p className="overline mb-4">Not found</p>
+          <h1 className="font-serif text-4xl md:text-5xl">Project not available</h1>
+          <BackLink />
+        </main>
+      </>
     );
   }
 
@@ -49,6 +58,15 @@ export default function ProjectCinematekPage() {
   ];
 
   return (
+    <>
+      <Seo
+        title={`${project.title} | Ahmed Mohsen Mostafa`}
+        description={project.shortSummary || project.overview || "Case study and strategic project portfolio entry."}
+        canonicalPath="/projects/cinematek-decades-of-cinema"
+        image={project.heroImage}
+        imageAlt={project.title}
+        keywords={project.tags || []}
+      />
     <main data-testid={`case-study-${project.id}`} className="pt-12 md:pt-16 pb-24">
       <section className="container-editorial section-vertical reveal">
         <SectionIntro project={project} />
@@ -93,5 +111,6 @@ export default function ProjectCinematekPage() {
       <CaseStudyGallery items={project.gallery || []} />
       <ClosingNote title={project.outcomes} body={project.shortSummary} />
     </main>
+    </>
   );
 }

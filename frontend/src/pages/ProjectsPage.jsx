@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import useReveal from "@/hooks/useReveal";
 import { allProjects } from "@/lib/data";
 import { MetadataBadge, PillarBadges } from "@/components/ui/MetadataBadge";
+import Seo from "@/components/Seo";
 
 // Helper to detect status semantic type
 function detectStatusType(status) {
@@ -79,6 +80,18 @@ export default function ProjectsPage() {
 
   return (
     <main data-testid="projects-page" className="pt-12 md:pt-20">
+      <Seo
+        title="Projects | Ahmed Mohsen Mostafa"
+        description="Browse Ahmed Mohsen Mostafa's case studies in campaign strategy, market research, analytics, product thinking, and execution across Belgium and Europe."
+        canonicalPath="/projects"
+        image="/og-image.svg"
+        imageAlt="Ahmed Mohsen Mostafa projects preview"
+        keywords={[
+          "marketing case studies",
+          "campaign strategy portfolio",
+          "market research portfolio",
+        ]}
+      />
       <section className="container-editorial pb-16 md:pb-24">
         <p className="overline mb-5 reveal">PROJECT ARCHIVE</p>
         <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] reveal">

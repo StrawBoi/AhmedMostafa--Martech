@@ -3,6 +3,7 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 import useReveal from "@/hooks/useReveal";
 import { allProjects } from "@/lib/data";
+import Seo from "@/components/Seo";
 import BackLink from "@/components/shared/BackLink";
 import SectionIntro from "@/components/shared/SectionIntro";
 import StatsStrip from "@/components/shared/StatsStrip";
@@ -250,11 +251,19 @@ export default function ProjectDetailPage() {
 
   if (!project) {
     return (
-      <main className="container-editorial py-32 text-center" data-testid="project-not-found">
-        <p className="overline mb-4">404</p>
-        <h1 className="font-serif text-4xl md:text-5xl">That case study isn't published yet.</h1>
-        <BackLink />
-      </main>
+      <>
+        <Seo
+          title="Project not available"
+          description="The requested project case study is not available."
+          canonicalPath={`/projects/${slug || "unknown"}`}
+          noIndex
+        />
+        <main className="container-editorial py-32 text-center" data-testid="project-not-found">
+          <p className="overline mb-4">404</p>
+          <h1 className="font-serif text-4xl md:text-5xl">That case study isn't published yet.</h1>
+          <BackLink />
+        </main>
+      </>
     );
   }
 
@@ -264,6 +273,15 @@ export default function ProjectDetailPage() {
   const deliverableItems = project.deliverables || project.methods || project.tools || [];
 
   return (
+    <>
+      <Seo
+        title={`${project.title} | Ahmed Mohsen Mostafa`}
+        description={project.shortSummary || project.overview || "Case study and strategic project portfolio entry."}
+        canonicalPath={`/projects/${project.slug}`}
+        image={project.heroImage || "/og-image.svg"}
+        imageAlt={project.title}
+        keywords={project.tags || []}
+      />
     <main data-testid={`case-study-${project.slug}`} className="pt-10 md:pt-16">
       <section className="container-editorial section-vertical">
         <SectionIntro project={project} />
@@ -312,5 +330,6 @@ export default function ProjectDetailPage() {
         </div>
       </section>
     </main>
+    </>
   );
 }

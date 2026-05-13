@@ -4,6 +4,7 @@ import useReveal from "@/hooks/useReveal";
 import { capabilities, journeyChapters, profile } from "@/lib/data";
 import CVButton from "@/components/CVButton";
 import { track, Events } from "@/lib/analytics";
+import Seo from "@/components/Seo";
 
 export default function AboutPage() {
   useReveal();
@@ -11,11 +12,35 @@ export default function AboutPage() {
 
   return (
     <main data-testid="about-page" className="pt-12 md:pt-20">
-      <section className="container-editorial pb-20 md:pb-28">
-        <p className="overline mb-5 reveal">ABOUT</p>
-        <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] max-w-4xl reveal">
-          How I think and work.
-        </h1>
+      <Seo
+        title="About Ahmed Mohsen Mostafa | Marketing Student in Brussels"
+        description="Learn how Ahmed Mohsen Mostafa works: a marketing student in Brussels with an operations background, a practical mindset, and experience spanning strategy, research, and digital execution."
+        canonicalPath="/about"
+        image="/ahmed-mostafa-professional.png"
+        imageAlt="Ahmed Mostafa professional headshot"
+        keywords={[
+          "about Ahmed Mohsen Mostafa",
+          "marketing student Brussels",
+          "marketing intern Belgium",
+        ]}
+      />
+      {/* Professional Photo Hero Section */}
+      <section className="container-editorial pb-16 md:pb-20">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+          <div className="lg:w-1/2 reveal">
+            <p className="overline mb-5">ABOUT</p>
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] reveal">
+              How I think and work.
+            </h1>
+          </div>
+          <div className="lg:w-1/2 reveal" style={{ transitionDelay: "100ms" }}>
+            <img
+              src="/ahmed-mostafa-professional.png"
+              alt="Ahmed Mostafa - Professional headshot"
+              className="w-full h-auto rounded-lg shadow-xl object-cover"
+            />
+          </div>
+        </div>
       </section>
 
       <section className="container-editorial pb-24 md:pb-32 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
