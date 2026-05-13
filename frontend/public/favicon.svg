@@ -1,4 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="10" fill="#F5F3E9"/>
-  <text x="32" y="44" font-family="Fraunces, Georgia, serif" font-size="34" font-weight="500" text-anchor="middle" fill="#C45532" letter-spacing="-1.5">AM</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Background circle -->
+  <defs>
+    <style>
+      .favicon-accent { fill: #C87137; }
+      .favicon-bg { fill: #F5F3E9; }
+    </style>
+  </defs>
+  
+  <!-- Outer circle background -->
+  <circle cx="128" cy="128" r="125" class="favicon-bg" stroke="#C87137" stroke-width="3"/>
+  
+  <!-- Inner design: Geometric "A" mark -->
+  <g transform="translate(128, 128)">
+    <!-- Main triangle (A shape) -->
+    <path d="M -45,55 L 0,-65 L 45,55 Z" class="favicon-accent" stroke="#F5F3E9" stroke-width="4" stroke-linejoin="round"/>
+    
+    <!-- Horizontal bar (A crossbar) -->
+    <rect x="-35" y="-10" width="70" height="12" class="favicon-bg" rx="3"/>
+    
+    <!-- Top accent triangle (analytics/growth) -->
+    <polygon points="0,-65 -8,-45 8,-45" class="favicon-accent" opacity="0.8"/>
+  </g>
+  
+  <!-- Corner accent dots (data points) -->
+  <circle cx="32" cy="32" r="5" class="favicon-accent" opacity="0.6"/>
+  <circle cx="224" cy="32" r="5" class="favicon-accent" opacity="0.6"/>
+  <circle cx="224" cy="224" r="5" class="favicon-accent" opacity="0.6"/>
 </svg>
