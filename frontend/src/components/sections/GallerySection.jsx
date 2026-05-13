@@ -10,28 +10,20 @@ function isScreenshotItem(item) {
   return ["product", "ui", "dashboard", "interface", "screen", "screenshot", "cover"].some((term) => category.includes(term));
 }
 
-function getItemTone(item, index) {
+function getItemTone(item) {
   const category = String(item?.category || "").toLowerCase();
   const screenshot = isScreenshotItem(item);
 
-  if (index === 0) {
-    return {
-      tileClass: "md:col-span-2 md:row-span-2",
-      mediaClass: screenshot ? "aspect-[16/10]" : "aspect-[4/5]",
-      imageClass: screenshot ? "object-contain p-4" : "object-cover",
-    };
-  }
-
   if (screenshot) {
     return {
-      tileClass: category.includes("dashboard") ? "md:col-span-2" : "",
+      tileClass: "",
       mediaClass: "aspect-[16/10]",
       imageClass: "object-contain p-4",
     };
   }
 
   return {
-    tileClass: POSTER_CATEGORIES.has(category) && index === 2 ? "md:col-span-2" : "",
+    tileClass: "",
     mediaClass: "aspect-[4/5]",
     imageClass: "object-cover",
   };
@@ -147,7 +139,7 @@ export default function GallerySection({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[1fr]">
           {galleryItems.map((item, index) => {
-            const tone = getItemTone(item, index);
+            const tone = getItemTone(item);
             const hasError = Boolean(imageErrors[index]);
             const itemTitle = item.caption || item.alt || `Visual ${index + 1}`;
             const category = item.category || "visual";
@@ -160,7 +152,7 @@ export default function GallerySection({
                   setCurrentIndex(index);
                   setOpen(true);
                 }}
-                className={`group text-left border border-hairline bg-surface overflow-hidden transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/70 shadow-sm ${tone.tileClass}`}
+                className={`group text-left border border-hairline bg-surface overflow-hidden transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/70 shadow-sm rounded-xl ${tone.tileClass}`}
                 aria-label={`Open ${itemTitle}`}
               >
                 <div className={`${tone.mediaClass} relative bg-background/60`}>

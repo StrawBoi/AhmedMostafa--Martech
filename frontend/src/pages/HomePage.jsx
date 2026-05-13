@@ -11,10 +11,10 @@ export default function HomePage() {
   useReveal();
   return (
     <>
-      <title>Ahmed Mostafa — Marketing Intern Brussels | Strategy, Research & Analytics</title>
+      <title>Ahmed Mohsen Mostafa — Marketing Intern Brussels | Strategy, Research & Analytics</title>
       <meta
         name="description"
-        content="BBA student at Odisee Brussels specializing in marketing management, research, data analysis, and analytics. Available for Summer 2026 internships across Belgium and Europe."
+        content="BBA marketing student at Odisee, Brussels — research-led marketer skilled in campaign strategy, market research, analytics and growth. Open to internships across Belgium & Europe."
       />
       <main data-testid="home-page">
         <Hero />

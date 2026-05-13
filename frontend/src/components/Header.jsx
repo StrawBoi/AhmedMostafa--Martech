@@ -40,8 +40,8 @@ export default function Header() {
           data-testid="header-logo-link"
           className="group"
         >
-          <span className="font-serif text-lg md:text-xl font-medium tracking-tight">
-            Ahmed Mostafa
+            <span className="font-serif text-lg md:text-xl font-medium tracking-tight">
+            Ahmed Mohsen Mostafa
           </span>
         </Link>
 

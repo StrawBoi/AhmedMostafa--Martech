@@ -159,6 +159,9 @@ export default function ProjectMosolHoreasePage() {
 
       <MosolComparison />
 
+      {/* Gallery - moved up for better visual hierarchy */}
+      <MosolGallery items={project.gallery || []} />
+
       <MosolPositioningSummary items={positioningSummaryItems} />
 
       <MosolMilestoneGrid />
@@ -176,8 +179,6 @@ export default function ProjectMosolHoreasePage() {
       </section>
 
       <MosolDeliverablesGrid />
-
-      <MosolGallery items={project.gallery || []} />
 
       {/* Key learnings */}
       <section className="container-editorial section-vertical">
