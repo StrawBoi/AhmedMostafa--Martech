@@ -37,9 +37,9 @@ export default function MosolMilestoneGrid({ phases = defaultPhases }) {
   return (
     <section className="container-editorial section-vertical">
       <div className="reveal mb-4 max-w-3xl">
-        <p className="overline !text-[#c8b89a] mb-3">Go-to-market sprint</p>
-        <p className="text-base leading-relaxed text-[#d8ccb6]">
-          A five-week validation and launch roadmap that moves MOSOL / Horease from identity and positioning into prototype work, market proof, and beta preparation.
+        <p className="overline mb-3">Go-to-market sprint</p>
+        <p className="text-base leading-relaxed text-foreground/80">
+          A five-week validation and launch roadmap that moves MOSOL from identity and positioning into prototype work, market proof, and beta preparation.
         </p>
       </div>
 
@@ -47,26 +47,26 @@ export default function MosolMilestoneGrid({ phases = defaultPhases }) {
         {phases.map((phase, index) => (
           <article
             key={phase.phase}
-            className="relative overflow-hidden rounded-sm border border-[#4a3a24] bg-[#181612] p-5 shadow-[0_0_0_1px_rgba(240,190,104,0.04)]"
+            className="relative overflow-hidden rounded-sm border border-hairline bg-background/50 p-5"
           >
-            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#7a5a25] via-[#f0be68] to-[#7a5a25]" />
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-terracotta/50 via-terracotta to-terracotta/50" />
             <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-[#c8b89a]">{phase.week}</p>
-                <h3 className="mt-2 font-serif text-2xl leading-tight text-[#f5ead6]">{phase.phase}</h3>
+                <p className="text-xs uppercase tracking-[0.18em] text-foreground/60">{phase.week}</p>
+                <h3 className="mt-2 font-serif text-2xl leading-tight text-foreground">{phase.phase}</h3>
               </div>
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#f0be68]/25 bg-[#f0be68]/10 text-xs font-medium text-[#f4cf83]">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-terracotta/25 bg-terracotta/10 text-xs font-medium text-terracotta">
                 {String(index + 1).padStart(2, "0")}
               </span>
             </div>
 
-            <p className="mt-4 text-base leading-relaxed text-[#d7c8ad]">{phase.description}</p>
+            <p className="mt-4 text-base leading-relaxed text-foreground/75">{phase.description}</p>
 
             <div className="mt-5 space-y-2">
               {phase.milestones.map((milestone) => (
                 <div
                   key={milestone}
-                  className="rounded-sm border border-[#35281b] bg-[#1f1a15] px-3 py-2 text-base leading-snug text-[#f4ead0]"
+                  className="rounded-sm border border-hairline bg-background px-3 py-2 text-base leading-snug text-foreground/85"
                 >
                   {milestone}
                 </div>

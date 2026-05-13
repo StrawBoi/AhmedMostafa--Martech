@@ -23,7 +23,7 @@ export default function AboutPage() {
           <div className="reveal">
             <p className="overline mb-3">Profile</p>
             <p className="text-base leading-relaxed text-foreground/85">
-              I'm Ahmed — a Business Management & Marketing student at Odisee with an operations background that taught me how things actually ship. That mix matters: I bring marketing curiosity for customers and storytelling, paired with an operator's instinct for what's measurable and worth doing.
+              I'm Ahmed — a Business Management & Marketing student at Odisee with an operations background that taught me how things actually ship. That mix matters: I bring marketing curiosity for customers and storytelling, paired with an operator's instinct for what's measurable and worth doing. I also have a light software development background, which helps me understand digital products and work comfortably across strategy and execution.
             </p>
           </div>
 

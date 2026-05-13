@@ -14,12 +14,12 @@ import ClosingNote from "@/components/shared/ClosingNote";
 
 export default function ProjectMosolHoreasePage() {
   useReveal();
-  const project = projects.find((item) => item.id === "mosol-horease-profit-intelligence");
+  const project = projects.find((item) => item.id === "mosol-profit-intelligence");
   const projectMeta = project?.projectMeta || {
     projectType: "Product strategy concept",
     sector: "Belgian horeca / restaurant tech",
     focus: "Positioning, market validation, pricing, go-to-market",
-    role: "Strategy, market analysis, messaging, launch planning",
+    role: "Product Strategist",
     keyOutputs: "Competitor map, positioning logic, sprint roadmap, campaign ideas",
     status: "Concept / strategic proposal",
   };
@@ -94,13 +94,13 @@ export default function ProjectMosolHoreasePage() {
 
   return (
     <main
-      data-testid="case-study-mosol-horease"
-      className="bg-[radial-gradient(circle_at_top,rgba(240,190,104,0.06),transparent_28%),linear-gradient(180deg,#0f0f0f_0%,#121212_34%,#0d0d0d_100%)] text-[#f5f5f2] pt-10 md:pt-14 pb-20"
+      data-testid="case-study-mosol"
+      className="pt-10 md:pt-14 pb-20"
     >
       {/* Hero */}
       <section className="container-editorial section-vertical">
-        <SectionIntro project={project} tone="dark" />
-        <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#f0be68]/20 bg-[#141414] px-3 py-1.5 text-xs uppercase tracking-[0.14em] text-[#f0be68] shadow-[0_0_0_1px_rgba(240,190,104,0.05)] reveal" style={{ transitionDelay: "160ms" }}>
+        <SectionIntro project={project} />
+        <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-hairline bg-background px-3 py-1.5 text-xs uppercase tracking-[0.14em] text-terracotta reveal" style={{ transitionDelay: "160ms" }}>
           Concept project for Belgian horeca
         </div>
       </section>
@@ -108,17 +108,16 @@ export default function ProjectMosolHoreasePage() {
       <StatsStrip
         title="Market signals"
         intro="A short read on the market size, pricing range, and whitespace behind the concept."
-        tone="dark"
       />
 
       {/* Project facts strip */}
-      <FactsGrid facts={projectFacts} tone="dark" />
+      <FactsGrid facts={projectFacts} />
 
       {/* Overview */}
       <section className="container-editorial section-vertical">
         <div className="reveal max-w-4xl">
-          <p className="overline !text-[#cdb47b] mb-3">Overview</p>
-          <p className="text-base leading-relaxed text-[#e8e4dc]">
+          <p className="overline mb-3">Overview</p>
+          <p className="text-base leading-relaxed text-foreground/85">
             {project.overview}
           </p>
         </div>
@@ -127,8 +126,8 @@ export default function ProjectMosolHoreasePage() {
       {/* Problem */}
       <section className="container-editorial section-vertical">
         <div className="reveal max-w-4xl">
-          <p className="overline !text-[#cdb47b] mb-3">Problem</p>
-          <p className="text-base leading-relaxed text-[#e8e4dc]">
+          <p className="overline mb-3">Problem</p>
+          <p className="text-base leading-relaxed text-foreground/85">
             {project.problem}
           </p>
         </div>
@@ -137,8 +136,8 @@ export default function ProjectMosolHoreasePage() {
       {/* Research */}
       <section className="container-editorial section-vertical">
         <div className="reveal max-w-4xl">
-          <p className="overline !text-[#cdb47b] mb-3">Research</p>
-          <ul className="space-y-3 text-base text-[#e8e4dc] leading-relaxed list-disc pl-5 marker:text-[#f0be68]">
+          <p className="overline mb-3">Research</p>
+          <ul className="space-y-3 text-base text-foreground/85 leading-relaxed list-disc pl-5 marker:text-terracotta">
             {researchPoints.map((point) => (
               <li key={point}>{point}</li>
             ))}
@@ -149,8 +148,8 @@ export default function ProjectMosolHoreasePage() {
       {/* Strategy */}
       <section className="container-editorial section-vertical">
         <div className="reveal max-w-4xl">
-          <p className="overline !text-[#cdb47b] mb-3">Strategy</p>
-          <ul className="space-y-3 text-base text-[#e8e4dc] leading-relaxed list-disc pl-5 marker:text-[#f0be68]">
+          <p className="overline mb-3">Strategy</p>
+          <ul className="space-y-3 text-base text-foreground/85 leading-relaxed list-disc pl-5 marker:text-terracotta">
             {strategyPoints.map((point) => (
               <li key={point}>{point}</li>
             ))}
@@ -167,8 +166,8 @@ export default function ProjectMosolHoreasePage() {
       {/* What I worked on */}
       <section className="container-editorial section-vertical">
         <div className="reveal max-w-4xl">
-          <p className="overline !text-[#cdb47b] mb-3">What I worked on</p>
-          <ul className="space-y-3 text-base text-[#e8e4dc] leading-relaxed list-disc pl-5 marker:text-[#f0be68]">
+          <p className="overline mb-3">What I worked on</p>
+          <ul className="space-y-3 text-base text-foreground/85 leading-relaxed list-disc pl-5 marker:text-terracotta">
             {whatIWorkedOn.map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -183,8 +182,8 @@ export default function ProjectMosolHoreasePage() {
       {/* Key learnings */}
       <section className="container-editorial section-vertical">
         <div className="reveal max-w-4xl">
-          <p className="overline !text-[#cdb47b] mb-3">Key Learnings</p>
-          <ul className="space-y-3 text-base text-[#e8e4dc] leading-relaxed list-disc pl-5 marker:text-[#f0be68]">
+          <p className="overline mb-3">Key Learnings</p>
+          <ul className="space-y-3 text-base text-foreground/85 leading-relaxed list-disc pl-5 marker:text-terracotta">
             {learnings.map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -194,7 +193,6 @@ export default function ProjectMosolHoreasePage() {
 
       {/* CTA */}
       <ClosingNote
-        tone="dark"
         title="A concise example of how I connect research, positioning, and launch thinking."
         body="This case study shows the kind of strategic thinking I bring to product marketing, market research, strategic communication, and go-to-market planning."
         ctaLabel="Contact if helpful"

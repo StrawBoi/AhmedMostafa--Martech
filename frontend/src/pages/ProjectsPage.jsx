@@ -16,14 +16,16 @@ function detectStatusType(status) {
 
 // Helper to get thumbnail image for project
 function getThumbnailImage(slug) {
+  // Prefer explicit heroImage set on the project data, fallback to known mapping
+  const project = allProjects.find((p) => p.slug === slug);
+  if (project && project.heroImage) return project.heroImage;
+
   const imageMap = {
-    "mosol-horease-profit-intelligence": null,
     "volvo-belgium-campaign": "/projects/volvo/volvo-belgium-campaign-board-mockup.png",
     "cinematek-decades-of-cinema": "/projects/cinematek/cinematek-campaign-board-mockup.png",
-    "tackle-pricing-intelligence": null,
     "marketing-intelligence-analysis": "/projects/marketing-intelligence/marketing-intelligence-dashboard-mockup.png",
-    "brand-identity-transformation": null,
   };
+
   return imageMap[slug] || null;
 }
 
@@ -31,8 +33,8 @@ export default function ProjectsPage() {
   useReveal();
   // Custom display content for page-level rewrites (warmer tone + consistent meta)
   const displayOverrides = {
-    "mosol-horease-profit-intelligence": {
-      title: "MOSOL / Horease — Turning POS Data into Profit Intelligence",
+    "mosol-profit-intelligence": {
+      title: "MOSOL — Turning POS Data into Profit Intelligence",
       description:
         "A product strategy concept for the Belgian horeca market, built around positioning, market analysis, and early go-to-market thinking. The project explored how better visibility into POS data could support clearer decisions around profitability, forecasting, and day-to-day operations.",
       meta: "Research & Positioning • 2025 • Product Thinking",
@@ -67,9 +69,9 @@ export default function ProjectsPage() {
       typeContext: "Concept Project / Applied Concept",
     },
     "brand-identity-transformation": {
-      title: "Brand Identity Transformation",
+      title: "Vantier — Brand Identity Transformation",
       description:
-        "A brand-focused project exploring how identity systems can create more clarity, consistency, and relevance. It looked at how visual direction and communication choices can support a stronger and more usable brand foundation.",
+        "A luxury brand transformation concept built to move Vantier from fragmented visuals to a more cohesive and timeless identity system.",
       meta: "Brand & Communication • 2025 • Strategic Thinking",
       typeContext: "Framework / Self-Initiated",
     },
@@ -106,54 +108,58 @@ export default function ProjectsPage() {
               <li
                 key={p.slug}
                 data-testid={`project-row-${p.slug}`}
-                className="border-b border-hairline reveal"
+                className="reveal py-4 md:py-5"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
                 <Link
                   to={`/projects/${p.slug}`}
                   className="group block transition-colors"
                 >
-                  <div className="bg-background border border-hairline rounded-sm overflow-hidden p-0 md:p-0">
-                    {/* Thumbnail / neutral panel to normalize appearance */}
-                    <div className="relative w-full bg-surface/60">
-                      <div className="aspect-[16/10] w-full overflow-hidden bg-gradient-to-br from-foreground/6 to-foreground/12 flex items-center justify-center">
+                  <div className="overflow-hidden rounded-2xl border border-hairline bg-background shadow-[0_1px_0_rgba(15,23,42,0.02)] transition-shadow group-hover:shadow-sm">
+                    <div className="grid grid-cols-1 md:grid-cols-[13rem_minmax(0,1fr)] lg:grid-cols-[15rem_minmax(0,1fr)]">
+                      <div className="relative w-full bg-surface/60 md:border-r md:border-hairline">
+                        <div className="aspect-[4/5] w-full overflow-hidden bg-gradient-to-br from-foreground/6 to-foreground/12">
                         {getThumbnailImage(p.slug) ? (
                           <img
                             src={getThumbnailImage(p.slug)}
                             alt={`${p.title} thumbnail`}
-                            className="w-full h-full object-cover"
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center">
+                          <div className="flex h-full w-full items-center justify-center">
                             <span className="text-xs font-medium text-foreground/40">Project image</span>
                           </div>
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none" />
-                      </div>
-                    </div>
-
-                    <div className="p-6 md:p-8 flex items-start gap-4 md:gap-6">
-                      <span className="font-mono text-xs text-subtle flex-shrink-0">{String(i + 1).padStart(2, "0")}</span>
-
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-3 mb-2 text-sm text-subtle">
-                          <span className="inline-block bg-foreground/6 px-2 py-1 rounded text-[12px]">{typeContext}</span>
-                        </div>
-
-                        <h2 className="font-serif text-2xl md:text-3xl tracking-tight leading-tight transition-colors group-hover:text-terracotta mb-3">{title}</h2>
-
-                        <p className="text-sm md:text-base text-foreground/80 leading-relaxed max-w-3xl">
-                          {description}
-                        </p>
-
-                        <div className="mt-4 text-sm text-subtle">
-                          <span className="font-medium">{meta}</span>
+                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
                         </div>
                       </div>
 
-                      <div className="flex-shrink-0 text-sm font-medium text-foreground/70 group-hover:text-terracotta transition-colors flex items-center gap-1.5 ml-2">
-                        Read case study
-                        <ArrowUpRight size={14} className="flex-shrink-0" />
+                      <div className="flex items-start gap-4 p-6 md:gap-6 md:p-7 lg:p-8">
+                        <span className="flex-shrink-0 font-mono text-xs text-subtle">{String(i + 1).padStart(2, "0")}</span>
+
+                        <div className="min-w-0 flex-1">
+                          <div className="mb-3 flex flex-wrap items-center gap-2 text-sm text-subtle">
+                            <span className="inline-flex rounded-full border border-hairline bg-foreground/5 px-3 py-1 text-[12px] text-foreground/70">
+                              {typeContext}
+                            </span>
+                            <span className="inline-flex rounded-full border border-hairline bg-background px-3 py-1 text-[12px] text-subtle">
+                              {meta}
+                            </span>
+                          </div>
+
+                          <h2 className="mb-3 font-serif text-2xl leading-tight tracking-tight transition-colors group-hover:text-terracotta md:text-[2rem]">
+                            {title}
+                          </h2>
+
+                          <p className="max-w-3xl text-sm leading-relaxed text-foreground/80 md:text-base">
+                            {description}
+                          </p>
+
+                          <div className="mt-5 flex items-center gap-1.5 text-sm font-medium text-foreground/70 transition-colors group-hover:text-terracotta">
+                            Read case study
+                            <ArrowUpRight size={14} className="flex-shrink-0" />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

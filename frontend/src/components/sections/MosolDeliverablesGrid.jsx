@@ -46,7 +46,6 @@ export default function MosolDeliverablesGrid({ items = defaultDeliverables }) {
       items={items}
       title="Deliverables"
       intro="Each deliverable supports the market story, the positioning logic, or the path to validation."
-      tone="dark"
     />
   );
 }

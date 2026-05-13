@@ -1,3 +1,12 @@
+import tackleMockupImage from "../assets/projects/tackle/tackle-mockup.png";
+import tackleDashboardImage from "../assets/projects/tackle/tackle-dashboard.png";
+import tackleSaleAnalysisImage from "../assets/projects/tackle/sale-analysis.png";
+import marketingIntelligenceDashboardImage from "../assets/projects/marketing-intelligence/marketing-intelligence-dashboard-mockup.png";
+import marketingIntelligenceOverviewImage from "../assets/projects/marketing-intelligence/martech-overview.png";
+import marketingIntelligenceCampaignsImage from "../assets/projects/marketing-intelligence/martech-campaigns.png";
+import vantierCoverImage from "../assets/projects/vantier/vantier-cover.png";
+import vantierDetailImage from "../assets/projects/vantier/vantier-detail.png";
+
 // Centralized portfolio data for Ahmed Mostafa.
 // Email is intentionally NOT exposed publicly — recruiters reach out via the contact form.
 
@@ -15,19 +24,19 @@ export const profile = {
 
 export const projects = [
   {
-    id: "mosol-horease-profit-intelligence",
-    title: "MOSOL / Horease — Turning POS Data into Profit Intelligence",
+    id: "mosol-profit-intelligence",
+    title: "MOSOL — Turning POS Data into Profit Intelligence",
     subtitle: "A strategy-led concept for Belgian horeca teams to convert POS data into clearer margin and menu decisions.",
     type: "Product Strategy Concept",
     status: "Strategic Proposal",
     year: "2025",
     primaryPillar: "Strategizing",
     secondaryPillar: "Building",
-    role: "Strategy, market analysis, positioning, and GTM planning",
+    role: "Product Strategist",
     shortSummary:
       "A premium strategy-board concept reframing POS reporting into fast, practical profit intelligence for independent horeca operators.",
     overview:
-      "MOSOL/Horease is a concept project focused on helping Belgian horeca operators move from retrospective data reports to confident weekly decisions on pricing, menu performance, and operational profitability.",
+      "MOSOL is a concept project focused on helping Belgian horeca operators move from retrospective data reports to confident weekly decisions on pricing, menu performance, and operational profitability.",
     problem:
       "Operators have data, but not enough decision clarity. Most POS outputs are backward-looking, fragmented, and difficult to translate into action under day-to-day pressure.",
     goal:
@@ -71,49 +80,31 @@ export const projects = [
       "Product Strategy",
       "Go-To-Market",
     ],
-    heroImage: "/projects/mosol/hero-strategy-board.png",
+    heroImage: "/projects/Mosol/main-poster-thumbnail.png",
     gallery: [
       {
-        src: "/projects/mosol/placeholders/landscape-strategy-poster.png",
-        alt: "Placeholder landscape strategy poster for the MOSOL case study",
-        caption: "Landscape strategy poster",
+        src: "/projects/Mosol/main-poster-thumbnail.png",
+        alt: "Main poster for the MOSOL case study",
+        caption: "Main poster",
         category: "strategy",
       },
       {
-        src: "/projects/mosol/placeholders/market-opportunity-poster.png",
-        alt: "Placeholder market opportunity poster for the MOSOL case study",
-        caption: "Market opportunity poster",
+        src: "/projects/Mosol/market-opp.png",
+        alt: "Market opportunity visual for the MOSOL case study",
+        caption: "Market opportunity",
         category: "research",
       },
       {
-        src: "/projects/mosol/placeholders/execution-sprint-poster.png",
-        alt: "Placeholder execution sprint poster for the MOSOL case study",
-        caption: "Execution sprint poster",
+        src: "/projects/Mosol/exec-sprint.png",
+        alt: "Execution sprint poster for the MOSOL case study",
+        caption: "Execution sprint",
         category: "planning",
       },
       {
-        src: "/projects/mosol/placeholders/competitor-map.png",
-        alt: "Placeholder competitor map for the MOSOL case study",
-        caption: "Competitor map",
-        category: "research",
-      },
-      {
-        src: "/projects/mosol/placeholders/dashboard-mockup.png",
-        alt: "Placeholder dashboard mockup for the MOSOL case study",
+        src: "/projects/Mosol/dashboard.png",
+        alt: "Dashboard mockup for the MOSOL case study",
         caption: "Dashboard mockup",
         category: "product",
-      },
-      {
-        src: "/projects/mosol/placeholders/pricing-positioning-visual.png",
-        alt: "Placeholder pricing or positioning visual for the MOSOL case study",
-        caption: "Pricing or positioning visual",
-        category: "strategy",
-      },
-      {
-        src: "/projects/mosol/placeholders/marketing-asset-preview.png",
-        alt: "Placeholder marketing asset preview for the MOSOL case study",
-        caption: "Marketing asset preview",
-        category: "marketing",
       },
     ],
     featured: true,
@@ -123,7 +114,7 @@ export const projects = [
       projectType: "Product strategy concept",
       sector: "Belgian horeca / restaurant tech",
       focus: "Positioning, market validation, pricing, go-to-market",
-      role: "Strategy, market analysis, messaging, launch planning",
+      role: "Product Strategist",
       keyOutputs: "Competitor map, positioning logic, sprint roadmap, campaign ideas",
       status: "Concept / strategic proposal",
     },
@@ -187,71 +178,63 @@ export const projects = [
         category: "cover",
       },
       {
-        src: "/projects/volvo/WhatsApp Image 2026-05-07 at 13.42.54 (39).jpeg",
-        alt: "Volvo team presenting the situation analysis slide",
-        caption: "Situation analysis presentation",
+        src: "/projects/volvo/Presenting.png",
+        alt: "Volvo presentation moment during the campaign pitch",
+        caption: "Presentation moment",
         category: "presentation",
       },
       {
-        src: "/projects/volvo/audience-segmentation.png",
-        alt: "Volvo audience segmentation slide",
-        caption: "Audience segmentation",
-        category: "research",
+        src: "/projects/volvo/presenting-2.jpeg",
+        alt: "Volvo presentation image two",
+        caption: "Presentation image 2",
+        category: "presentation",
       },
       {
-        src: "/projects/volvo/competitive-landscape.png",
-        alt: "Volvo competitive landscape slide",
-        caption: "Competitive landscape",
-        category: "research",
+        src: "/projects/volvo/presenting-4.jpeg",
+        alt: "Volvo presentation image four",
+        caption: "Presentation image 4",
+        category: "presentation",
       },
       {
-        src: "/projects/volvo/brand-positioning.png",
-        alt: "Volvo positioning slide",
-        caption: "Brand positioning",
+        src: "/projects/volvo/Sprint.png",
+        alt: "Volvo campaign sprint board",
+        caption: "Sprint board",
+        category: "planning",
+      },
+      {
+        src: "/projects/volvo/Strategy.png",
+        alt: "Volvo strategy board",
+        caption: "Strategy board",
         category: "strategy",
       },
       {
-        src: "/projects/volvo/campaign-timeline.png",
-        alt: "Volvo campaign timeline slide",
-        caption: "Campaign timeline",
+        src: "/projects/volvo/volvo-slides-page1-img2.png",
+        alt: "Volvo slides page 1 image 2",
+        caption: "Slide page 1",
+        category: "research",
+      },
+      {
+        src: "/projects/volvo/volvo-slides-page2-img2.jpeg",
+        alt: "Volvo slides page 2 image 2",
+        caption: "Slide page 2",
+        category: "research",
+      },
+      {
+        src: "/projects/volvo/volvo-slides-page5-img2.png",
+        alt: "Volvo slides page 5 image 2",
+        caption: "Slide page 5",
         category: "planning",
       },
       {
-        src: "/projects/volvo/kpi-budget-slide.jpeg",
-        alt: "Volvo KPI and budget slide",
-        caption: "KPIs and budget",
-        category: "planning",
+        src: "/projects/volvo/volvo-slides-page6-img3.jpeg",
+        alt: "Volvo slides page 6 image 3",
+        caption: "Slide page 6",
+        category: "presentation",
       },
     ],
     featured: true,
     visibility: "public",
     labels: ["University Project", "Strategic Proposal"],
-    media: [
-      {
-        src: "/projects/volvo/volvo-belgium-campaign-board-mockup.png",
-        alt: "Volvo campaign board mockup",
-        caption: "Campaign board mockup",
-        category: "work",
-      },
-      {
-        src: "/projects/volvo/WhatsApp Image 2026-05-07 at 13.42.54 (39).jpeg",
-        alt: "Volvo team presenting the situation analysis slide",
-        caption: "Situation analysis presentation",
-        category: "presentation",
-      },
-      {
-        src: "/projects/volvo/WhatsApp Image 2026-05-07 at 13.42.54 (39).jpeg",
-        alt: "Volvo team presenting campaign analysis to an audience",
-        caption: "Team presentation moment during the Volvo campaign pitch",
-        category: "presentation",
-      },
-      {
-        src: "/projects/volvo/WhatsApp Image 2026-05-07 at 13.42.54 (37).jpeg",
-        alt: "Volvo team discussion during the campaign presentation session",
-        caption: "Live discussion segment from the final presentation",
-        category: "presentation",
-      },
-    ],
   },
   {
     id: "cinematek-decades-of-cinema",
@@ -388,8 +371,27 @@ export const projects = [
       "Pricing Intelligence",
       "Decision Support",
     ],
-    heroImage: "/projects/tackle/hero.jpg",
-    gallery: [],
+    heroImage: tackleMockupImage,
+    gallery: [
+      {
+        src: tackleMockupImage,
+        alt: "Tackle mockup for the pricing intelligence concept",
+        caption: "Mockup",
+        category: "cover",
+      },
+      {
+        src: tackleDashboardImage,
+        alt: "Tackle dashboard view for pricing monitoring",
+        caption: "Dashboard",
+        category: "product",
+      },
+      {
+        src: tackleSaleAnalysisImage,
+        alt: "Tackle sale and analysis board",
+        caption: "Sale analysis",
+        category: "analysis",
+      },
+    ],
     featured: false,
     visibility: "public",
     labels: ["Concept Project", "Prototype"],
@@ -441,16 +443,35 @@ export const projects = [
       "Strategic Thinking",
       "Performance Marketing",
     ],
-    heroImage: "/projects/marketing-intelligence/marketing-intelligence-dashboard-mockup.png",
-    gallery: [],
+    heroImage: marketingIntelligenceDashboardImage,
+    gallery: [
+      {
+        src: marketingIntelligenceDashboardImage,
+        alt: "Marketing Intelligence dashboard mockup",
+        caption: "Dashboard mockup",
+        category: "cover",
+      },
+      {
+        src: marketingIntelligenceOverviewImage,
+        alt: "Marketing Intelligence overview board",
+        caption: "Overview",
+        category: "analysis",
+      },
+      {
+        src: marketingIntelligenceCampaignsImage,
+        alt: "Marketing Intelligence campaigns board",
+        caption: "Campaigns",
+        category: "strategy",
+      },
+    ],
     featured: true,
     visibility: "public",
     labels: ["Concept Project", "Prototype"],
   },
   {
     id: "brand-identity-transformation",
-    title: "Brand Identity Transformation",
-    subtitle: "A brand identity and creative direction project focused on helping businesses move from inconsistent visuals to a coherent, scalable system.",
+    title: "Vantier — Brand Identity Transformation",
+    subtitle: "A brand transformation project focused on helping a luxury identity move from fragmented visuals to a more coherent, scalable system.",
     type: "Concept Project",
     status: "Framework",
     year: "2025",
@@ -458,34 +479,30 @@ export const projects = [
     secondaryPillar: "Strategizing",
     role: "Brand Strategist & Designer",
     shortSummary:
-      "A brand identity and creative direction project focused on helping businesses move from inconsistent visuals to a more coherent and scalable brand system.",
+      "A luxury brand transformation concept built to move Vantier from fragmented visuals to a more cohesive and timeless identity system.",
     overview:
-      "Brand Identity Transformation focuses on a challenge many growing businesses face: they want to look more professional and more consistent, but without becoming generic. This project explores how visual identity, motion, and collateral can work together as a practical business tool rather than decoration alone.",
+      "Vantier explores how a premium brand can communicate elegance, clarity, and consistency across touchpoints. The project focuses on translating a strong aesthetic direction into a structured identity system that feels polished and adaptable.",
     problem:
-      "Brands often struggle with fragmented visual systems, inconsistent assets, and materials that feel disconnected across touchpoints. The problem is not only aesthetic inconsistency, but also weakened recognition, trust, and communication effectiveness.",
+      "Premium and fashion-led brands can lose clarity when their visuals are inconsistent across print, digital, and packaging. That weakens recognition and makes the brand feel less intentional.",
     goal:
-      "Develop a comprehensive brand identity system that is both visually distinctive and scalable across digital and physical formats.",
+      "Create a brand system that feels timeless, distinctive, and adaptable across applications while keeping the identity visually disciplined.",
     contribution:
-      "I approached the work as both a design and positioning problem. The process starts with understanding the brand's role, audience, and differentiation, then translating that into a clearer identity system that can scale across digital and physical formats.",
+      "I approached Vantier as both a brand positioning and visual systems exercise, shaping a clearer identity language around elegance, typography, and consistency across touchpoints.",
     researchAndStrategy:
-      "The project combined brand positioning research, visual design thinking, and systems design. The approach prioritized consistency and scalability while maintaining flexibility for different applications and touchpoints.",
+      "The project combined brand direction thinking, visual hierarchy, and systems design. The process prioritized consistency, legibility, and a premium tone across every application.",
     outcomes:
-      "The outcome is a comprehensive brand identity framework demonstrating how visual systems can support business clarity and communication. It shows my ability to connect brand expression with consistency and business relevance.",
+      "The result is a polished brand identity direction that demonstrates how a luxury aesthetic can be made more cohesive without losing its sense of character.",
     methods: [
-      "Brand discovery and positioning",
-      "Visual direction development",
-      "Logo design and refinement",
-      "Motion and animation strategy",
-      "System thinking for multi-platform consistency",
-      "Collateral strategy and design",
+      "Brand direction and positioning",
+      "Identity system refinement",
+      "Typography and hierarchy development",
+      "Touchpoint consistency planning",
     ],
     tools: [
       "Figma",
       "Brand strategy",
       "Visual design",
-      "Motion design",
       "Design systems",
-      "Collateral design",
     ],
     tags: [
       "Communication",
@@ -493,11 +510,23 @@ export const projects = [
       "Brand Design",
       "Visual Identity",
       "Design Systems",
-      "Brand Strategy",
       "Creative Direction",
     ],
-    heroImage: "/projects/brand-identity/hero.jpg",
-    gallery: [],
+    heroImage: vantierCoverImage,
+    gallery: [
+      {
+        src: vantierCoverImage,
+        alt: "Vantier brand identity transformation board",
+        caption: "Brand board",
+        category: "cover",
+      },
+      {
+        src: vantierDetailImage,
+        alt: "Vantier identity system and applications board",
+        caption: "Identity system",
+        category: "visual",
+      },
+    ],
     featured: false,
     visibility: "public",
     labels: ["Concept Project", "Framework"],
