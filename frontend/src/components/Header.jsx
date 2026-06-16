@@ -60,44 +60,51 @@ export default function Header() {
   return (
     <header
       data-testid="site-header"
-      className={`sticky top-0 z-50 transition-all duration-500 ${
+      className={`sticky top-0 z-50 transition-colors duration-500 ${
         onDarkHero
-          ? scrolled
-            ? "bg-[#0B0A09]/85 backdrop-blur-xl border-b border-[#F2F0EA]/10"
-            : "bg-transparent border-b border-transparent"
+          ? "bg-transparent border-b border-transparent"
           : scrolled
             ? "bg-background/85 backdrop-blur-xl border-b border-hairline"
             : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="container-editorial flex items-center justify-between h-16 md:h-20">
+      {onDarkHero ? (
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-36 md:h-44 header-ambient-glow"
+          aria-hidden="true"
+        >
+          <div className="absolute left-1/2 top-0 h-px w-[min(96vw,72rem)] -translate-x-1/2 bg-gradient-to-r from-transparent via-terracotta/35 to-transparent" />
+        </div>
+      ) : null}
+
+      <div className="container-editorial relative flex items-center justify-between h-16 md:h-20">
         <Link
           to="/"
           data-testid="header-logo-link"
-          className="group"
+          className="group relative z-10"
         >
-            <span
-              data-header-wordmark
-              className={`font-serif font-medium tracking-tight transition-all duration-500 text-lg md:text-xl ${
-                onDarkHero ? "text-[#F2F0EA]" : "text-foreground"
-              }`}
-            >
+          <span
+            data-header-wordmark
+            className={`font-serif font-medium tracking-tight transition-all duration-500 text-lg md:text-xl ${
+              onDarkHero ? "header-spotlight-text" : "text-foreground"
+            }`}
+          >
             Ahmed Mohsen Mostafa
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="relative z-10 hidden md:flex items-center gap-8">
           {NAV.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               data-testid={`nav-link-${item.label.toLowerCase()}`}
               className={({ isActive }) =>
-                `text-sm tracking-wide transition-colors ${
+                `text-sm tracking-wide transition-all duration-300 ${
                   isActive
-                    ? "text-terracotta"
+                    ? "text-terracotta drop-shadow-[0_0_12px_rgba(192,83,46,0.45)]"
                     : onDarkHero
-                      ? "text-[#F2F0EA]/75 hover:text-terracotta"
+                      ? "header-spotlight-text-muted"
                       : "text-foreground/80 hover:text-terracotta"
                 }`
               }
@@ -107,12 +114,16 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="relative z-10 hidden md:flex items-center gap-3">
           <CVButton
-            variant={onDarkHero ? "inverted" : "header"}
+            variant="header"
             source="header"
             testId="header-download-cv"
-            className={onDarkHero ? "!min-h-[40px] !px-4 !py-2 text-sm" : ""}
+            className={
+              onDarkHero
+                ? "header-spotlight-btn !min-h-[40px] !px-4 !py-2 text-sm !border-foreground/0 hover:!bg-transparent hover:!text-[#f7f5ec]"
+                : ""
+            }
           />
         </div>
 
@@ -121,8 +132,8 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           data-testid="mobile-menu-toggle"
-          className={`md:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 ${
-            onDarkHero ? "text-[#F2F0EA]" : "text-foreground"
+          className={`relative z-10 md:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 ${
+            onDarkHero ? "header-spotlight-text" : "text-foreground"
           }`}
         >
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -132,7 +143,11 @@ export default function Header() {
       {open && (
         <div
           data-testid="mobile-menu"
-          className="md:hidden border-t border-hairline bg-background"
+          className={`md:hidden border-t ${
+            onDarkHero
+              ? "border-[#F2F0EA]/10 bg-[#0B0A09]/95 backdrop-blur-xl"
+              : "border-hairline bg-background"
+          }`}
         >
           <div className="container-editorial py-6 flex flex-col gap-5">
             {NAV.map((item) => (
@@ -140,13 +155,20 @@ export default function Header() {
                 key={item.to}
                 to={item.to}
                 data-testid={`mobile-nav-link-${item.label.toLowerCase()}`}
-                className="font-serif text-2xl"
+                className={`font-serif text-2xl ${
+                  onDarkHero ? "header-spotlight-text" : ""
+                }`}
               >
                 {item.label}
               </NavLink>
             ))}
-            <div className="flex items-center flex-wrap gap-3 pt-3 border-t border-hairline">
-              <CVButton variant="header" source="mobile-menu" testId="mobile-download-cv" />
+            <div className="flex items-center flex-wrap gap-3 pt-3 border-t border-hairline/30">
+              <CVButton
+                variant="header"
+                source="mobile-menu"
+                testId="mobile-download-cv"
+                className={onDarkHero ? "header-spotlight-btn !border-foreground/0" : ""}
+              />
             </div>
           </div>
         </div>
