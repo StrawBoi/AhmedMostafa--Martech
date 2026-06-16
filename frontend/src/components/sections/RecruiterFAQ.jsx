@@ -7,18 +7,61 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { recruiterFAQ } from "@/lib/data";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
+import { gsap } from "@/lib/motion/gsap";
+import { prefersReducedMotion } from "@/lib/motion/presets";
 
 export default function RecruiterFAQ() {
   const quickAnswers = recruiterFAQ.slice(0, 3);
   const moreAnswers = recruiterFAQ.slice(3);
 
+  const ref = useScrollAnimation((root) => {
+    const reduced = prefersReducedMotion();
+    const aside = root.querySelector("[data-faq-aside]");
+    const cards = root.querySelectorAll("[data-faq-card]");
+    const accordion = root.querySelector("[data-faq-accordion]");
+
+    if (reduced) {
+      gsap.set([aside, ...cards, accordion], { opacity: 1, y: 0, clearProps: "all" });
+      return;
+    }
+
+    gsap.fromTo(aside, { opacity: 0, y: 28 }, {
+      opacity: 1,
+      y: 0,
+      duration: 0.75,
+      ease: "power2.out",
+      scrollTrigger: { trigger: aside, start: "top 85%", once: true },
+    });
+
+    gsap.fromTo(cards, { opacity: 0, y: 24 }, {
+      opacity: 1,
+      y: 0,
+      duration: 0.65,
+      stagger: 0.1,
+      ease: "power2.out",
+      scrollTrigger: { trigger: root.querySelector("[data-faq-cards]"), start: "top 88%", once: true },
+    });
+
+    if (accordion) {
+      gsap.fromTo(accordion, { opacity: 0, y: 20 }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: { trigger: accordion, start: "top 90%", once: true },
+      });
+    }
+  }, []);
+
   return (
     <section
+      ref={ref}
       data-testid="recruiter-fit"
       className="py-24 md:py-36 bg-surface/40 border-y border-hairline"
     >
       <div className="container-editorial grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-        <div className="lg:col-span-4 reveal">
+        <div data-faq-aside className="lg:col-span-4">
           <p className="overline mb-4">RECRUITER FIT</p>
           <h2 className="h-section">A few things you may want to know.</h2>
           <p className="mt-6 text-foreground/75 max-w-md leading-relaxed">
@@ -37,11 +80,12 @@ export default function RecruiterFAQ() {
           </Link>
         </div>
 
-        <div className="lg:col-span-8 reveal" style={{ transitionDelay: "120ms" }}>
-          <div className="grid grid-cols-1 gap-4 md:gap-5">
+        <div className="lg:col-span-8">
+          <div data-faq-cards className="grid grid-cols-1 gap-4 md:gap-5">
             {quickAnswers.map((item, i) => (
               <article
                 key={item.q}
+                data-faq-card
                 data-testid={`faq-quick-item-${i}`}
                 className="border border-hairline bg-background/80 p-5 md:p-6"
               >
@@ -57,7 +101,7 @@ export default function RecruiterFAQ() {
           </div>
 
           {moreAnswers.length > 0 ? (
-            <div className="mt-8 border-t border-hairline pt-6">
+            <div data-faq-accordion className="mt-8 border-t border-hairline pt-6">
               <p className="overline text-subtle mb-2">More context</p>
               <Accordion
                 type="single"

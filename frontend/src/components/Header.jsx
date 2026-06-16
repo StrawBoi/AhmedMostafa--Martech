@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import CVButton from "@/components/CVButton";
+import { ScrollTrigger } from "@/lib/motion/gsap";
 
 const NAV = [
   { to: "/projects", label: "Projects" },
@@ -11,6 +12,7 @@ const NAV = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [heroPassed, setHeroPassed] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
@@ -20,6 +22,31 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setHeroPassed(true);
+      return undefined;
+    }
+
+    const hero = document.querySelector("[data-testid='hero-section']");
+    if (!hero) return undefined;
+
+    const trigger = ScrollTrigger.create({
+      trigger: hero,
+      start: "bottom top+=80",
+      onEnter: () => setHeroPassed(true),
+      onLeaveBack: () => setHeroPassed(false),
+    });
+
+    return () => trigger.kill();
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (open) {
+      requestAnimationFrame(() => ScrollTrigger.refresh());
+    }
+  }, [open]);
 
   useEffect(() => {
     setOpen(false);
@@ -40,7 +67,14 @@ export default function Header() {
           data-testid="header-logo-link"
           className="group"
         >
-            <span className="font-serif text-lg md:text-xl font-medium tracking-tight">
+            <span
+              data-header-wordmark
+              className={`font-serif font-medium tracking-tight transition-all duration-500 ${
+                heroPassed
+                  ? "text-lg md:text-xl text-foreground"
+                  : "text-base md:text-lg text-foreground/55"
+              }`}
+            >
             Ahmed Mohsen Mostafa
           </span>
         </Link>

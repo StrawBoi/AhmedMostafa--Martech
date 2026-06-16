@@ -206,6 +206,26 @@
     .group:hover .img-zoom > img {
         transform: scale(1.025);
     }
+
+    /* Cinematic hero grain — transform/opacity only */
+    .motion-grain {
+        background-image:
+            linear-gradient(rgba(27, 25, 22, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(27, 25, 22, 0.03) 1px, transparent 1px);
+        background-size: 4px 4px;
+        mask-image: radial-gradient(ellipse at 30% 20%, black 0%, transparent 70%);
+    }
+
+    /* GSAP motion targets — hidden only when motion system is active */
+    html.motion-ready [data-proof-item],
+    html.motion-ready [data-journey-chapter],
+    html.motion-ready [data-featured-card],
+    html.motion-ready [data-featured-cta],
+    html.motion-ready [data-pillar-row],
+    html.motion-ready [data-faq-card],
+    html.motion-ready [data-faq-accordion] {
+        opacity: 0;
+    }
 }
 
 @layer base {

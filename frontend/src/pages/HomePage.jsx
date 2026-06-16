@@ -1,4 +1,3 @@
-import useReveal from "@/hooks/useReveal";
 import Hero from "@/components/sections/Hero";
 import ProofStrip from "@/components/sections/ProofStrip";
 import FeaturedWork from "@/components/sections/FeaturedWork";
@@ -9,7 +8,6 @@ import ContactCTA from "@/components/sections/ContactCTA";
 import Seo from "@/components/Seo";
 
 export default function HomePage() {
-  useReveal();
   return (
     <>
       <Seo
