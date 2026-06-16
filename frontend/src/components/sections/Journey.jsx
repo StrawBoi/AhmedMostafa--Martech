@@ -7,10 +7,14 @@ export default function Journey() {
       className="py-24 md:py-36"
     >
       <div className="container-editorial grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-        <div className="lg:col-span-4 reveal">
-          <p className="overline mb-4">SELECTED JOURNEY</p>
-          <h2 className="h-section">How I got here.</h2>
-          <p className="mt-6 text-foreground/75 max-w-md leading-relaxed">
+        <div className="lg:col-span-4">
+          <p className="overline mb-4 reveal">SELECTED JOURNEY</p>
+          <h2 className="h-section">
+            <span className="reveal-mask-wrap">
+              <span className="reveal reveal-mask inline-block">How I got here.</span>
+            </span>
+          </h2>
+          <p className="mt-6 text-foreground/75 max-w-md leading-relaxed reveal" style={{ transitionDelay: "120ms" }}>
             A quick look at the path behind my interest in marketing, strategy, and execution.
           </p>
         </div>

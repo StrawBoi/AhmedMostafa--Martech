@@ -62,7 +62,7 @@ export default function ProofStrip() {
     >
       <div className="hero-grain pointer-events-none absolute inset-0 opacity-[0.05]" aria-hidden="true" />
 
-      <div className="container-editorial relative z-10 pt-20 md:pt-28 pb-28 md:pb-40">
+      <div className="container-editorial relative z-10 pt-20 md:pt-28 pb-16 md:pb-24">
         <div className="mb-10 flex items-center gap-3 md:mb-14">
           <span className="h-px w-8 bg-terracotta" aria-hidden="true" />
           <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#F2F0EA]/55">
@@ -116,12 +116,6 @@ export default function ProofStrip() {
           })}
         </div>
       </div>
-
-      {/* Deliberate transition: dark signal band → warm editorial body */}
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background"
-        aria-hidden="true"
-      />
     </section>
   );
 }
