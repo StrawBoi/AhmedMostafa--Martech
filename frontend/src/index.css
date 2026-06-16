@@ -85,7 +85,10 @@
 
     body {
         @apply bg-background text-foreground font-sans;
-        font-feature-settings: "ss01", "cv11";
+        font-feature-settings: normal;
+        letter-spacing: -0.006em;
+        font-size: 1.0625rem;
+        line-height: 1.6;
     }
 
     ::selection {
@@ -172,11 +175,57 @@
         transform: translateY(0);
     }
 
+    /* Layered reveal primitives — composable storytelling motion.
+       All share the existing IntersectionObserver (.in-view toggle). */
+
+    /* Line mask: a heading line wipes up from behind a clipping edge. */
+    .reveal-mask-wrap {
+        display: block;
+        overflow: hidden;
+        padding-bottom: 0.08em;
+    }
+    .reveal.reveal-mask {
+        opacity: 1;
+        transform: translateY(115%);
+        transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.reveal-mask.in-view {
+        transform: translateY(0);
+    }
+
+    /* Clip reveal: an image/visual unveils from one edge while easing scale. */
+    .reveal.reveal-clip {
+        opacity: 1;
+        transform: none;
+        clip-path: inset(0 100% 0 0);
+        transition: clip-path 1s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    .reveal.reveal-clip.in-view {
+        clip-path: inset(0 0 0 0);
+    }
+
+    /* Soft focus: fade in from a slight blur — good for supporting layers. */
+    .reveal.reveal-soft {
+        opacity: 0;
+        transform: translateY(10px);
+        filter: blur(8px);
+        transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+            filter 0.9s ease;
+    }
+    .reveal.reveal-soft.in-view {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+
     @media (prefers-reduced-motion: reduce) {
         .reveal {
             transition: opacity 0.2s linear;
             transform: none;
         }
+        .reveal.reveal-mask { transform: none; }
+        .reveal.reveal-clip { clip-path: none; }
+        .reveal.reveal-soft { filter: none; transform: none; }
         html { scroll-behavior: auto; }
     }
 
@@ -205,6 +254,47 @@
     }
     .group:hover .img-zoom > img {
         transform: scale(1.025);
+    }
+
+    /* Hero magical entrance — WebGL fallback (no WebGL2 support) */
+    @keyframes hero-shader-drift {
+        0% { background-position: 50% 40%, 50% 50%; }
+        100% { background-position: 60% 55%, 45% 45%; }
+    }
+
+    .hero-shader-fallback {
+        background-color: #0b0a09;
+        background-image:
+            radial-gradient(60% 50% at 50% 32%, hsl(var(--terracotta) / 0.55), transparent 70%),
+            radial-gradient(120% 80% at 50% 0%, rgba(70, 40, 22, 0.6), transparent 65%);
+        background-size: 140% 140%, 160% 160%;
+        animation: hero-shader-drift 18s ease-in-out infinite alternate;
+        filter: blur(6px);
+    }
+
+    /* Hero scroll cue — terracotta pulse travelling down a hairline */
+    @keyframes hero-scroll-pulse {
+        0% { transform: translateY(-12px); opacity: 0; }
+        30% { opacity: 1; }
+        100% { transform: translateY(40px); opacity: 0; }
+    }
+
+    .hero-scroll-line__pulse {
+        animation: hero-scroll-pulse 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+
+    /* Hero film grain texture */
+    .hero-grain {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 180px 180px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-shader-fallback,
+        .hero-scroll-line__pulse {
+            animation: none;
+        }
     }
 }
 

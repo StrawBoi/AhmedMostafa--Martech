@@ -135,9 +135,13 @@ export default function FeaturedWork() {
       <div className="container-editorial">
         <div className="flex items-end justify-between gap-6 mb-6 md:mb-12 reveal">
           <div>
-            <p className="overline mb-4">SELECTED WORK</p>
-            <h2 className="h-section max-w-2xl">A few projects that show how I think.</h2>
-            <p className="mt-3 text-sm text-foreground/75">These projects reflect the kind of work I enjoy most: understanding a problem, shaping a clear direction, and turning it into something concrete.</p>
+            <p className="overline mb-4 reveal">SELECTED WORK</p>
+            <h2 className="h-section max-w-2xl">
+              <span className="reveal-mask-wrap">
+                <span className="reveal reveal-mask inline-block">A few projects that show how I think.</span>
+              </span>
+            </h2>
+            <p className="mt-3 text-sm text-foreground/75 reveal" style={{ transitionDelay: "120ms" }}>These projects reflect the kind of work I enjoy most: understanding a problem, shaping a clear direction, and turning it into something concrete.</p>
           </div>
         </div>
 

@@ -1,101 +1,124 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, MapPin } from "lucide-react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 import { profile } from "@/lib/data";
-import CVButton from "@/components/CVButton";
-import { track, Events } from "@/lib/analytics";
+import HeroShaderCanvas from "@/components/sections/HeroShaderCanvas";
+import HeroSignalLayer from "@/components/sections/HeroSignalLayer";
+
+const NAME_WORDS = profile.name.split(" ");
 
 export default function Hero() {
-  const onViewProjects = () =>
-    track(Events.HERO_VIEW_PROJECTS, { source: "hero" });
+  const sectionRef = useRef(null);
+  const scanRef = useRef(null);
+  const signalRef = useRef(null);
+  const scrollCueRef = useRef(null);
+  const wordRefs = useRef([]);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const ctx = gsap.context(() => {
+      const words = wordRefs.current.filter(Boolean);
+      const scan = scanRef.current;
+      const signal = signalRef.current;
+      const scrollCue = scrollCueRef.current;
+
+      if (reducedMotion) {
+        gsap.set([words, signal, scrollCue], {
+          opacity: 1,
+          y: 0,
+          clearProps: "transform",
+        });
+        gsap.set(scan, { opacity: 0 });
+        return;
+      }
+
+      gsap.set(words, { opacity: 0, y: 52, rotateX: -32, transformOrigin: "50% 100%" });
+      gsap.set(signal, { opacity: 0, letterSpacing: "0.4em" });
+      gsap.set(scrollCue, { opacity: 0, y: 8 });
+      gsap.set(scan, { top: "0%", opacity: 0 });
+
+      // Let the shader resolve out of black first, then lock in the identity.
+      const tl = gsap.timeline({ delay: 0.7, defaults: { ease: "power3.out" } });
+
+      tl.to(scan, { opacity: 0.85, duration: 0.25 })
+        .to(scan, { top: "100%", duration: 1.2, ease: "power2.inOut" })
+        .to(scan, { opacity: 0, duration: 0.2 }, "-=0.15")
+        .to(
+          words,
+          {
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            stagger: 0.22,
+            duration: 1.05,
+            ease: "power4.out",
+          },
+          "-=0.85"
+        )
+        .to(
+          signal,
+          {
+            opacity: 1,
+            letterSpacing: "0.22em",
+            duration: 0.9,
+            ease: "power2.out",
+          },
+          "-=0.3"
+        )
+        .to(scrollCue, { opacity: 1, y: 0, duration: 0.7 }, "-=0.4");
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
+      ref={sectionRef}
       data-testid="hero-section"
-      className="relative pt-14 md:pt-24 pb-20 md:pb-32 overflow-hidden"
+      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#0B0A09]"
     >
-      <div className="container-editorial grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-        <div className="lg:col-span-8">
-          <div className="flex items-center gap-3 mb-7 md:mb-10 reveal">
-            <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-terracotta opacity-60 animate-ping" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-terracotta" />
+      <HeroShaderCanvas />
+      <HeroSignalLayer scanRef={scanRef} signalRef={signalRef} />
+
+      <div className="relative z-10 px-5 text-center">
+        <h1
+          data-testid="hero-headline"
+          className="font-serif font-light tracking-tight leading-[1.02] text-[clamp(2.75rem,8vw,6.5rem)] [text-shadow:0_2px_40px_rgba(0,0,0,0.55)]"
+          style={{ perspective: "900px" }}
+        >
+          {NAME_WORDS.map((word, i) => (
+            <span key={word} className="inline-block overflow-hidden px-[0.08em]">
+              <span
+                ref={(el) => {
+                  wordRefs.current[i] = el;
+                }}
+                className={`inline-block ${
+                  word === "Mohsen"
+                    ? "italic text-terracotta"
+                    : "bg-gradient-to-br from-[#F7F5EC] via-[#E8E4D8] to-[#9C9890] bg-clip-text text-transparent"
+                }`}
+              >
+                {word}
+                {i < NAME_WORDS.length - 1 ? "\u00A0" : ""}
+              </span>
             </span>
-            <span className="overline text-foreground/80">AVAILABLE FOR SUMMER 2026 INTERNSHIPS</span>
-          </div>
-
-          <h1 data-testid="hero-headline" className="h-display reveal">
-            Marketing with structure,
-            <br />
-            <span className="italic text-terracotta">curiosity, and intent.</span>
-          </h1>
-
-          <p
-            data-testid="hero-subheadline"
-            className="mt-7 md:mt-9 max-w-2xl text-base md:text-lg text-foreground/80 leading-relaxed reveal"
-            style={{ transitionDelay: "120ms" }}
-          >
-            I'm Ahmed Mohsen Mostafa, a marketing student in Brussels building my path through research, campaigns, and hands-on strategic work.
-          </p>
-          <p
-            className="mt-3 max-w-2xl text-sm text-foreground/60 leading-relaxed reveal"
-            style={{ transitionDelay: "140ms" }}
-          >
-            Drawn to work that starts with clarity, stays curious, and leads to something genuinely useful.
-          </p>
-
-          <div
-            className="mt-9 md:mt-11 flex flex-wrap items-center gap-3 sm:gap-4 reveal"
-            style={{ transitionDelay: "220ms" }}
-          >
-            <Link
-              to="/projects"
-              onClick={onViewProjects}
-              data-testid="hero-cta-projects"
-              className="btn-primary group"
-            >
-              View Projects
-              <ArrowRight
-                size={16}
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </Link>
-            <CVButton variant="ghost" source="hero" testId="hero-cta-cv" />
-          </div>
-        </div>
-
-          <div className="lg:col-span-4 reveal" style={{ transitionDelay: "300ms" }}>
-            <div className="space-y-4">
-              <section aria-label="Quick profile snapshot" className="border border-hairline bg-surface/70 p-4 md:p-5">
-                <div className="space-y-4">
-                  <div>
-                    <p className="overline text-xs mb-2 text-terracotta font-semibold">AVAILABLE NOW</p>
-                    <p className="text-sm font-medium text-foreground">Summer 2026 Internships</p>
-                  </div>
-                  <div className="border-t border-hairline/50 pt-3">
-                    <p className="overline text-xs mb-1 text-foreground/60">EDUCATION</p>
-                    <p className="text-sm text-foreground/80 leading-snug">Odisee — Business Management & Marketing</p>
-                  </div>
-                  <div className="border-t border-hairline/50 pt-3">
-                    <p className="overline text-xs mb-1 text-foreground/60">LOOKING FOR</p>
-                    <p className="text-sm text-foreground/80 leading-snug">Marketing, research, or analytics roles</p>
-                  </div>
-                  <div className="border-t border-hairline/50 pt-3">
-                    <p className="overline text-xs mb-1 text-foreground/60">STRENGTH</p>
-                    <p className="text-sm text-foreground/80 leading-snug">Research-led strategy + execution</p>
-                  </div>
-                </div>
-              </section>
-
-              <div className="flex items-center gap-2 text-xs text-subtle">
-                <MapPin size={13} aria-hidden="true" /> Brussels — Open across Belgium & Europe
-              </div>
-            </div>
-          </div>
+          ))}
+        </h1>
       </div>
 
-      <div className="container-editorial mt-16 md:mt-24 hidden md:flex items-center gap-4 text-subtle">
-        <span className="h-px w-16 bg-hairline" aria-hidden="true" />
-        <span className="overline">Scroll — recruiter snapshot below</span>
+      <div
+        ref={scrollCueRef}
+        className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2"
+        aria-hidden="true"
+      >
+        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#F2F0EA]/45">
+          Scroll
+        </span>
+        <span className="hero-scroll-line h-10 w-px overflow-hidden bg-[#F2F0EA]/15">
+          <span className="hero-scroll-line__pulse block h-3 w-px bg-terracotta" />
+        </span>
       </div>
     </section>
   );

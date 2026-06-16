@@ -6,8 +6,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
-                sans: ['"DM Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-                mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+                sans: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                mono: ['"Space Mono"', 'ui-monospace', 'monospace'],
             },
             borderRadius: {
                 lg: 'var(--radius)',
