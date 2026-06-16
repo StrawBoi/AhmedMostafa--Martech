@@ -60,9 +60,10 @@ export default function Header() {
   return (
     <header
       data-testid="site-header"
-      className={`sticky top-0 z-50 transition-colors duration-500 ${
+      style={onDarkHero ? { backgroundColor: "transparent" } : undefined}
+      className={`fixed top-0 left-0 right-0 w-full z-50 transition-colors duration-500 ${
         onDarkHero
-          ? "bg-transparent border-b border-transparent"
+          ? "!bg-transparent border-b border-transparent"
           : scrolled
             ? "bg-background/85 backdrop-blur-xl border-b border-hairline"
             : "bg-transparent border-b border-transparent"

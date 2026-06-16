@@ -113,7 +113,7 @@ export default function ProjectMosolHoreasePage() {
       />
     <main
       data-testid="case-study-mosol"
-      className="pt-10 md:pt-14 pb-20"
+      className="pt-16 md:pt-20 pb-20"
     >
       {/* Hero */}
       <section className="container-editorial section-vertical">

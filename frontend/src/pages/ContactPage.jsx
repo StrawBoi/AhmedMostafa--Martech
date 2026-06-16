@@ -93,7 +93,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main data-testid="contact-page" className="pt-12 md:pt-20">
+    <main data-testid="contact-page" className="pt-16 md:pt-20">
       <Seo
         title="Contact Ahmed Mohsen Mostafa | Internship Opportunities in Belgium & Europe"
         description="Reach out to Ahmed Mohsen Mostafa about marketing, research, analytics, or growth internship opportunities across Belgium and Europe. Replies within 48 hours."

@@ -86,7 +86,7 @@ export function LampContainer({ children, className }) {
         <div className="absolute inset-auto z-40 h-52 w-full -translate-y-[14rem] bg-[#0B0A09]" />
       </div>
 
-      <div className="relative z-50 flex -translate-y-72 md:-translate-y-80 flex-col items-center px-5 w-full max-w-5xl">
+      <div className="relative z-50 flex -translate-y-72 md:-translate-y-80 flex-col items-center px-5 w-full max-w-5xl pt-16 md:pt-20">
         {children}
       </div>
     </div>

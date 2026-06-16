@@ -11,7 +11,7 @@ export default function AboutPage() {
   const onLinkedIn = () => track(Events.LINKEDIN_CLICKED, { source: "about" });
 
   return (
-    <main data-testid="about-page" className="pt-12 md:pt-20">
+    <main data-testid="about-page" className="pt-16 md:pt-20">
       <Seo
         title="About Ahmed Mohsen Mostafa | Marketing Student in Brussels"
         description="Learn how Ahmed Mohsen Mostafa works: a marketing student in Brussels with an operations background, a practical mindset, and experience spanning strategy, research, and digital execution."

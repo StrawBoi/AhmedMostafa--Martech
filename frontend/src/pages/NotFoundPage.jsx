@@ -6,7 +6,7 @@ export default function NotFoundPage() {
   return (
     <main
       data-testid="not-found-page"
-      className="container-editorial py-32 md:py-40 min-h-[60vh] grid grid-cols-1 lg:grid-cols-12 gap-10 items-end"
+      className="container-editorial pt-24 md:pt-28 pb-32 md:pb-40 min-h-[60vh] grid grid-cols-1 lg:grid-cols-12 gap-10 items-end"
     >
       <Seo
         title="404 | Ahmed Mohsen Mostafa"

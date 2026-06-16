@@ -67,7 +67,7 @@ export default function ProjectCinematekPage() {
         imageAlt={project.title}
         keywords={project.tags || []}
       />
-    <main data-testid={`case-study-${project.id}`} className="pt-12 md:pt-16 pb-24">
+    <main data-testid={`case-study-${project.id}`} className="pt-16 md:pt-20 pb-24">
       <section className="container-editorial section-vertical reveal">
         <SectionIntro project={project} />
       </section>

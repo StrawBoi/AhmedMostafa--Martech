@@ -23,8 +23,8 @@ export default function Hero() {
     track(Events.HERO_VIEW_PROJECTS, { source: "hero" });
 
   return (
-    <section data-testid="hero-section" className="relative w-full">
-      <LampContainer>
+    <section data-testid="hero-section" className="relative w-full -mt-0">
+      <LampContainer className="min-h-[100svh]">
         <motion.p
           {...fadeUp(reducedMotion, 0.15)}
           data-hero-wordmark

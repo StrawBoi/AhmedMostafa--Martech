@@ -23,7 +23,7 @@ export default function HomePage() {
           "Europe marketing internship",
         ]}
       />
-      <main data-testid="home-page">
+      <main data-testid="home-page" className="relative">
         <Hero />
         <ProofStrip />
         <Journey />
