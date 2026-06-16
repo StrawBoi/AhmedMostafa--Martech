@@ -206,6 +206,94 @@
     .group:hover .img-zoom > img {
         transform: scale(1.025);
     }
+
+    /* Cinematic hero grain — transform/opacity only */
+    .motion-grain {
+        background-image:
+            linear-gradient(rgba(27, 25, 22, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(27, 25, 22, 0.03) 1px, transparent 1px);
+        background-size: 4px 4px;
+        mask-image: radial-gradient(ellipse at 30% 20%, black 0%, transparent 70%);
+    }
+
+    /* GSAP motion targets — hidden only when motion system is active */
+    html.motion-ready [data-proof-item],
+    html.motion-ready [data-journey-chapter],
+    html.motion-ready [data-featured-card],
+    html.motion-ready [data-featured-cta],
+    html.motion-ready [data-pillar-row],
+    html.motion-ready [data-faq-card],
+    html.motion-ready [data-faq-accordion] {
+        opacity: 0;
+    }
+
+    /* Header ambient spotlight — text lit by gradient, not flat white */
+    .header-ambient-glow {
+        background: radial-gradient(
+            ellipse 140% 120% at 50% -20%,
+            rgba(192, 83, 46, 0.2) 0%,
+            rgba(247, 245, 236, 0.07) 38%,
+            transparent 72%
+        );
+    }
+
+    .header-spotlight-text {
+        background: linear-gradient(
+            105deg,
+            rgba(247, 245, 236, 0.42) 0%,
+            rgba(247, 245, 236, 0.92) 22%,
+            #f7f5ec 50%,
+            rgba(247, 245, 236, 0.92) 78%,
+            rgba(247, 245, 236, 0.42) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 0 18px rgba(247, 245, 236, 0.12));
+    }
+
+    .header-spotlight-text-muted {
+        background: linear-gradient(
+            105deg,
+            rgba(247, 245, 236, 0.18) 0%,
+            rgba(247, 245, 236, 0.62) 50%,
+            rgba(247, 245, 236, 0.18) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .header-spotlight-text-muted:hover {
+        background: linear-gradient(
+            105deg,
+            rgba(247, 245, 236, 0.42) 0%,
+            rgba(247, 245, 236, 0.92) 22%,
+            #f7f5ec 50%,
+            rgba(247, 245, 236, 0.92) 78%,
+            rgba(247, 245, 236, 0.42) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        filter: drop-shadow(0 0 14px rgba(247, 245, 236, 0.1));
+    }
+
+    .header-spotlight-btn {
+        border: 1px solid rgba(192, 83, 46, 0.35);
+        background: linear-gradient(
+            180deg,
+            rgba(247, 245, 236, 0.06) 0%,
+            rgba(192, 83, 46, 0.04) 100%
+        );
+        color: rgba(247, 245, 236, 0.88);
+        box-shadow: 0 0 28px rgba(192, 83, 46, 0.12);
+    }
+
+    .header-spotlight-btn:hover {
+        border-color: rgba(192, 83, 46, 0.55);
+        color: #f7f5ec;
+        box-shadow: 0 0 36px rgba(192, 83, 46, 0.2);
+    }
 }
 
 @layer base {

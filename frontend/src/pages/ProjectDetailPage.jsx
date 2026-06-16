@@ -282,7 +282,7 @@ export default function ProjectDetailPage() {
         imageAlt={project.title}
         keywords={project.tags || []}
       />
-    <main data-testid={`case-study-${project.slug}`} className="pt-10 md:pt-16">
+    <main data-testid={`case-study-${project.slug}`} className="pt-16 md:pt-20">
       <section className="container-editorial section-vertical">
         <SectionIntro project={project} />
       </section>

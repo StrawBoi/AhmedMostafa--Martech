@@ -79,7 +79,10 @@ module.exports = {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
                 'fade-up': 'fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both',
-            }
+            },
+            backgroundImage: {
+                'gradient-conic': 'conic-gradient(var(--tw-gradient-stops))',
+            },
         }
     },
     plugins: [require("tailwindcss-animate")],

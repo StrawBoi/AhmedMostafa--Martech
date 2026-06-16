@@ -1,102 +1,139 @@
 import { Link } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
 import { profile } from "@/lib/data";
 import CVButton from "@/components/CVButton";
 import { track, Events } from "@/lib/analytics";
+import { LampContainer } from "@/components/ui/lamp";
+
+const fadeUp = (reducedMotion, delay = 0.3) =>
+  reducedMotion
+    ? {}
+    : {
+        initial: { opacity: 0.5, y: 80 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true },
+        transition: { delay, duration: 0.8, ease: [0.42, 0, 0.58, 1] },
+      };
 
 export default function Hero() {
+  const reducedMotion = useReducedMotion();
+
   const onViewProjects = () =>
     track(Events.HERO_VIEW_PROJECTS, { source: "hero" });
 
   return (
-    <section
-      data-testid="hero-section"
-      className="relative pt-14 md:pt-24 pb-20 md:pb-32 overflow-hidden"
-    >
-      <div className="container-editorial grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-        <div className="lg:col-span-8">
-          <div className="flex items-center gap-3 mb-7 md:mb-10 reveal">
-            <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-terracotta opacity-60 animate-ping" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-terracotta" />
-            </span>
-            <span className="overline text-foreground/80">AVAILABLE FOR SUMMER 2026 INTERNSHIPS</span>
-          </div>
+    <section data-testid="hero-section" className="relative w-full -mt-0">
+      <LampContainer className="min-h-[100svh]">
+        <motion.p
+          {...fadeUp(reducedMotion, 0.15)}
+          data-hero-wordmark
+          className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#F2F0EA]/55"
+        >
+          {profile.name}
+        </motion.p>
 
-          <h1 data-testid="hero-headline" className="h-display reveal">
+        <motion.div
+          {...fadeUp(reducedMotion, 0.2)}
+          data-hero-status
+          className="mt-5 flex items-center gap-3"
+        >
+          <span className="relative flex h-2 w-2" aria-hidden="true">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-terracotta opacity-60 animate-ping" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-terracotta" />
+          </span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#F2F0EA]/70">
+            {profile.status}
+          </span>
+        </motion.div>
+
+        <motion.h1
+          {...fadeUp(reducedMotion, 0.3)}
+          data-testid="hero-headline"
+          className="mt-8 text-center font-serif font-light tracking-tight leading-[1.02] text-[clamp(2.5rem,7vw,5.5rem)]"
+        >
+          <span className="block bg-gradient-to-br from-[#F7F5EC] via-[#E8E4D8] to-[#9C9890] bg-clip-text text-transparent">
             Marketing with structure,
-            <br />
-            <span className="italic text-terracotta">curiosity, and intent.</span>
-          </h1>
+          </span>
+          <span className="mt-1 block italic text-terracotta">
+            curiosity, and intent.
+          </span>
+        </motion.h1>
 
-          <p
-            data-testid="hero-subheadline"
-            className="mt-7 md:mt-9 max-w-2xl text-base md:text-lg text-foreground/80 leading-relaxed reveal"
-            style={{ transitionDelay: "120ms" }}
-          >
-            I'm Ahmed Mohsen Mostafa, a marketing student in Brussels building my path through research, campaigns, and hands-on strategic work.
-          </p>
-          <p
-            className="mt-3 max-w-2xl text-sm text-foreground/60 leading-relaxed reveal"
-            style={{ transitionDelay: "140ms" }}
-          >
-            Drawn to work that starts with clarity, stays curious, and leads to something genuinely useful.
-          </p>
+        <motion.p
+          {...fadeUp(reducedMotion, 0.42)}
+          data-testid="hero-subheadline"
+          className="mt-7 max-w-2xl text-center text-base md:text-lg leading-relaxed text-[#F2F0EA]/75"
+        >
+          I'm Ahmed Mohsen Mostafa, a marketing student in Brussels building my path through research, campaigns, and hands-on strategic work.
+        </motion.p>
 
-          <div
-            className="mt-9 md:mt-11 flex flex-wrap items-center gap-3 sm:gap-4 reveal"
-            style={{ transitionDelay: "220ms" }}
+        <motion.p
+          {...fadeUp(reducedMotion, 0.48)}
+          className="mt-3 max-w-xl text-center text-sm leading-relaxed text-[#F2F0EA]/50"
+        >
+          Drawn to work that starts with clarity, stays curious, and leads to something genuinely useful.
+        </motion.p>
+
+        <motion.div
+          {...fadeUp(reducedMotion, 0.55)}
+          data-hero-ctas
+          className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+        >
+          <Link
+            to="/projects"
+            onClick={onViewProjects}
+            data-testid="hero-cta-projects"
+            className="btn-primary group"
           >
-            <Link
-              to="/projects"
-              onClick={onViewProjects}
-              data-testid="hero-cta-projects"
-              className="btn-primary group"
+            View Projects
+            <ArrowRight
+              size={16}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </Link>
+          <CVButton
+            variant="inverted"
+            source="hero"
+            testId="hero-cta-cv"
+            className="!min-h-[48px] !px-6 !py-3.5 text-sm"
+          />
+        </motion.div>
+
+        <motion.div
+          {...fadeUp(reducedMotion, 0.62)}
+          data-hero-snapshot
+          className="mt-10 grid w-full max-w-2xl grid-cols-2 gap-px border border-[#F2F0EA]/10 bg-[#F2F0EA]/10 text-left sm:grid-cols-4"
+        >
+          {[
+            { label: "Location", value: "Brussels, BE" },
+            { label: "Focus", value: "Research-led" },
+            { label: "Education", value: "Odisee BBA" },
+            { label: "Open to", value: "EU internships" },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="bg-[#0B0A09]/90 px-4 py-3 backdrop-blur-sm"
             >
-              View Projects
-              <ArrowRight
-                size={16}
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </Link>
-            <CVButton variant="ghost" source="hero" testId="hero-cta-cv" />
-          </div>
-        </div>
-
-          <div className="lg:col-span-4 reveal" style={{ transitionDelay: "300ms" }}>
-            <div className="space-y-4">
-              <section aria-label="Quick profile snapshot" className="border border-hairline bg-surface/70 p-4 md:p-5">
-                <div className="space-y-4">
-                  <div>
-                    <p className="overline text-xs mb-2 text-terracotta font-semibold">AVAILABLE NOW</p>
-                    <p className="text-sm font-medium text-foreground">Summer 2026 Internships</p>
-                  </div>
-                  <div className="border-t border-hairline/50 pt-3">
-                    <p className="overline text-xs mb-1 text-foreground/60">EDUCATION</p>
-                    <p className="text-sm text-foreground/80 leading-snug">Odisee — Business Management & Marketing</p>
-                  </div>
-                  <div className="border-t border-hairline/50 pt-3">
-                    <p className="overline text-xs mb-1 text-foreground/60">LOOKING FOR</p>
-                    <p className="text-sm text-foreground/80 leading-snug">Marketing, research, or analytics roles</p>
-                  </div>
-                  <div className="border-t border-hairline/50 pt-3">
-                    <p className="overline text-xs mb-1 text-foreground/60">STRENGTH</p>
-                    <p className="text-sm text-foreground/80 leading-snug">Research-led strategy + execution</p>
-                  </div>
-                </div>
-              </section>
-
-              <div className="flex items-center gap-2 text-xs text-subtle">
-                <MapPin size={13} aria-hidden="true" /> Brussels — Open across Belgium & Europe
-              </div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-terracotta/80">
+                {item.label}
+              </p>
+              <p className="mt-1 text-sm text-[#F2F0EA]/85">{item.value}</p>
             </div>
-          </div>
-      </div>
+          ))}
+        </motion.div>
 
-      <div className="container-editorial mt-16 md:mt-24 hidden md:flex items-center gap-4 text-subtle">
-        <span className="h-px w-16 bg-hairline" aria-hidden="true" />
-        <span className="overline">Scroll — recruiter snapshot below</span>
-      </div>
+        <motion.div
+          {...fadeUp(reducedMotion, 0.7)}
+          data-hero-scroll-cue
+          className="mt-12 flex items-center gap-3 text-[#F2F0EA]/40"
+        >
+          <MapPin size={13} aria-hidden="true" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.16em]">
+            Scroll — signal below
+          </span>
+        </motion.div>
+      </LampContainer>
     </section>
   );
 }

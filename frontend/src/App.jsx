@@ -11,6 +11,7 @@ import ProjectMosolHoreasePage from "@/pages/ProjectMosolHoreasePage";
 import AboutPage from "@/pages/AboutPage";
 import ContactPage from "@/pages/ContactPage";
 import NotFoundPage from "@/pages/NotFoundPage";
+import MotionProvider from "@/components/motion/MotionProvider";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -24,6 +25,7 @@ function App() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <BrowserRouter>
+        <MotionProvider>
         <ScrollToTop />
         <Header />
         <Routes>
@@ -38,6 +40,7 @@ function App() {
         </Routes>
         <Footer />
         <Toaster position="bottom-right" />
+        </MotionProvider>
       </BrowserRouter>
     </div>
   );

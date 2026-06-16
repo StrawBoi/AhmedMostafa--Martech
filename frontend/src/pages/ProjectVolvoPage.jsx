@@ -61,7 +61,7 @@ export default function ProjectVolvoPage() {
         imageAlt={project.title}
         keywords={project.tags || []}
       />
-    <main data-testid={`case-study-${project.id}`} className="pt-10 md:pt-16 pb-24">
+    <main data-testid={`case-study-${project.id}`} className="pt-16 md:pt-20 pb-24">
       <section className="container-editorial section-vertical">
         <SectionIntro project={project} />
       </section>

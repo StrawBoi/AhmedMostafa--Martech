@@ -79,7 +79,7 @@ export default function ProjectsPage() {
   };
 
   return (
-    <main data-testid="projects-page" className="pt-12 md:pt-20">
+    <main data-testid="projects-page" className="pt-16 md:pt-20">
       <Seo
         title="Projects | Ahmed Mohsen Mostafa"
         description="Browse Ahmed Mohsen Mostafa's case studies in campaign strategy, market research, analytics, product thinking, and execution across Belgium and Europe."

@@ -15,7 +15,7 @@ function detectStatusType(status) {
   return "complete";
 }
 
-export default function FeaturedProjectCard({ projectId, project: projectProp, dominant = false }) {
+export default function FeaturedProjectCard({ projectId, project: projectProp, dominant = false, imageDataAttr }) {
   const project = projectProp || projects.find((p) => p.id === projectId);
   const [imageError, setImageError] = useState(false);
 
@@ -39,13 +39,16 @@ export default function FeaturedProjectCard({ projectId, project: projectProp, d
             alt={project.title}
             className="w-full h-44 object-cover"
             onError={handleImageError}
+            {...(imageDataAttr ? { [imageDataAttr]: true } : {})}
           />
         ) : (
-          <ProjectImageFallback
-            projectId={project.id}
-            title={project.title}
-            type={project.type}
-          />
+          <div {...(imageDataAttr ? { [imageDataAttr]: true } : {})}>
+            <ProjectImageFallback
+              projectId={project.id}
+              title={project.title}
+              type={project.type}
+            />
+          </div>
         )}
       </div>
 
@@ -96,4 +99,5 @@ FeaturedProjectCard.propTypes = {
   projectId: PropTypes.string,
   project: PropTypes.object,
   dominant: PropTypes.bool,
+  imageDataAttr: PropTypes.string,
 };
