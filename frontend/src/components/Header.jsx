@@ -54,13 +54,20 @@ export default function Header() {
     setOpen(false);
   }, [location.pathname]);
 
+  const onHome = location.pathname === "/";
+  const onDarkHero = onHome && !heroPassed;
+
   return (
     <header
       data-testid="site-header"
       className={`sticky top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/85 backdrop-blur-xl border-b border-hairline"
-          : "bg-transparent border-b border-transparent"
+        onDarkHero
+          ? scrolled
+            ? "bg-[#0B0A09]/85 backdrop-blur-xl border-b border-[#F2F0EA]/10"
+            : "bg-transparent border-b border-transparent"
+          : scrolled
+            ? "bg-background/85 backdrop-blur-xl border-b border-hairline"
+            : "bg-transparent border-b border-transparent"
       }`}
     >
       <div className="container-editorial flex items-center justify-between h-16 md:h-20">
@@ -71,10 +78,8 @@ export default function Header() {
         >
             <span
               data-header-wordmark
-              className={`font-serif font-medium tracking-tight transition-all duration-500 ${
-                heroPassed
-                  ? "text-lg md:text-xl text-foreground"
-                  : "text-base md:text-lg text-foreground/55"
+              className={`font-serif font-medium tracking-tight transition-all duration-500 text-lg md:text-xl ${
+                onDarkHero ? "text-[#F2F0EA]" : "text-foreground"
               }`}
             >
             Ahmed Mohsen Mostafa
@@ -91,7 +96,9 @@ export default function Header() {
                 `text-sm tracking-wide transition-colors ${
                   isActive
                     ? "text-terracotta"
-                    : "text-foreground/80 hover:text-terracotta"
+                    : onDarkHero
+                      ? "text-[#F2F0EA]/75 hover:text-terracotta"
+                      : "text-foreground/80 hover:text-terracotta"
                 }`
               }
             >
@@ -102,9 +109,10 @@ export default function Header() {
 
         <div className="hidden md:flex items-center gap-3">
           <CVButton
-            variant="header"
+            variant={onDarkHero ? "inverted" : "header"}
             source="header"
             testId="header-download-cv"
+            className={onDarkHero ? "!min-h-[40px] !px-4 !py-2 text-sm" : ""}
           />
         </div>
 
@@ -113,7 +121,9 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           data-testid="mobile-menu-toggle"
-          className="md:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 text-foreground"
+          className={`md:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 ${
+            onDarkHero ? "text-[#F2F0EA]" : "text-foreground"
+          }`}
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
