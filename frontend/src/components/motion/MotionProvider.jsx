@@ -22,7 +22,6 @@ export default function MotionProvider({ children }) {
       cancelAnimationFrame(rafId);
       destroyLenis();
       document.documentElement.classList.remove("motion-ready");
-      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 

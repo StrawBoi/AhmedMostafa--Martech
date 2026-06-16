@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import CVButton from "@/components/CVButton";
-import { ScrollTrigger } from "@/lib/motion/gsap";
+import { registerGsap, ScrollTrigger } from "@/lib/motion/gsap";
 
 const NAV = [
   { to: "/projects", label: "Projects" },
@@ -29,6 +29,7 @@ export default function Header() {
       return undefined;
     }
 
+    registerGsap();
     const hero = document.querySelector("[data-testid='hero-section']");
     if (!hero) return undefined;
 
@@ -44,6 +45,7 @@ export default function Header() {
 
   useEffect(() => {
     if (open) {
+      registerGsap();
       requestAnimationFrame(() => ScrollTrigger.refresh());
     }
   }, [open]);

@@ -15,4 +15,8 @@ export function registerGsap() {
   return gsap;
 }
 
+if (typeof window !== "undefined") {
+  registerGsap();
+}
+
 export { gsap, ScrollTrigger };
