@@ -14,7 +14,7 @@ export default function HeroSignalLayer({ scanRef, signalRef }) {
 
       <p
         ref={signalRef}
-        className="hero-signal absolute bottom-[18%] left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.22em] text-subtle/0 opacity-0 sm:text-[11px]"
+        className="hero-signal absolute bottom-[16%] left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.22em] text-[#F2F0EA]/55 opacity-0 sm:text-[11px]"
       >
         50.8503°N · 4.3517°E · Brussels · Signal locked
       </p>
