@@ -223,6 +223,17 @@
         filter: blur(6px);
     }
 
+    /* Hero scroll cue — terracotta pulse travelling down a hairline */
+    @keyframes hero-scroll-pulse {
+        0% { transform: translateY(-12px); opacity: 0; }
+        30% { opacity: 1; }
+        100% { transform: translateY(40px); opacity: 0; }
+    }
+
+    .hero-scroll-line__pulse {
+        animation: hero-scroll-pulse 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+
     /* Hero film grain texture */
     .hero-grain {
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -231,7 +242,8 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        .hero-shader-fallback {
+        .hero-shader-fallback,
+        .hero-scroll-line__pulse {
             animation: none;
         }
     }

@@ -260,7 +260,7 @@ export default function HeroShaderCanvas() {
       ) : (
         <div className="hero-shader-fallback h-full w-full" />
       )}
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-[#0B0A09]" />
     </div>
   );
 }

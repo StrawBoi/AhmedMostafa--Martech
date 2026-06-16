@@ -10,6 +10,7 @@ export default function Hero() {
   const sectionRef = useRef(null);
   const scanRef = useRef(null);
   const signalRef = useRef(null);
+  const scrollCueRef = useRef(null);
   const wordRefs = useRef([]);
 
   useEffect(() => {
@@ -21,22 +22,28 @@ export default function Hero() {
       const words = wordRefs.current.filter(Boolean);
       const scan = scanRef.current;
       const signal = signalRef.current;
+      const scrollCue = scrollCueRef.current;
 
       if (reducedMotion) {
-        gsap.set([words, signal], { opacity: 1, y: 0, clearProps: "transform" });
+        gsap.set([words, signal, scrollCue], {
+          opacity: 1,
+          y: 0,
+          clearProps: "transform",
+        });
         gsap.set(scan, { opacity: 0 });
         return;
       }
 
       gsap.set(words, { opacity: 0, y: 52, rotateX: -32, transformOrigin: "50% 100%" });
       gsap.set(signal, { opacity: 0, letterSpacing: "0.4em" });
+      gsap.set(scrollCue, { opacity: 0, y: 8 });
       gsap.set(scan, { top: "0%", opacity: 0 });
 
       // Let the shader resolve out of black first, then lock in the identity.
-      const tl = gsap.timeline({ delay: 1.1, defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline({ delay: 0.7, defaults: { ease: "power3.out" } });
 
       tl.to(scan, { opacity: 0.85, duration: 0.25 })
-        .to(scan, { top: "100%", duration: 1.4, ease: "power2.inOut" })
+        .to(scan, { top: "100%", duration: 1.2, ease: "power2.inOut" })
         .to(scan, { opacity: 0, duration: 0.2 }, "-=0.15")
         .to(
           words,
@@ -44,11 +51,11 @@ export default function Hero() {
             opacity: 1,
             y: 0,
             rotateX: 0,
-            stagger: 0.24,
-            duration: 1.1,
+            stagger: 0.22,
+            duration: 1.05,
             ease: "power4.out",
           },
-          "-=0.95"
+          "-=0.85"
         )
         .to(
           signal,
@@ -59,7 +66,8 @@ export default function Hero() {
             ease: "power2.out",
           },
           "-=0.3"
-        );
+        )
+        .to(scrollCue, { opacity: 1, y: 0, duration: 0.7 }, "-=0.4");
     }, sectionRef);
 
     return () => ctx.revert();
@@ -98,6 +106,19 @@ export default function Hero() {
             </span>
           ))}
         </h1>
+      </div>
+
+      <div
+        ref={scrollCueRef}
+        className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2"
+        aria-hidden="true"
+      >
+        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#F2F0EA]/45">
+          Scroll
+        </span>
+        <span className="hero-scroll-line h-10 w-px overflow-hidden bg-[#F2F0EA]/15">
+          <span className="hero-scroll-line__pulse block h-3 w-px bg-terracotta" />
+        </span>
       </div>
     </section>
   );

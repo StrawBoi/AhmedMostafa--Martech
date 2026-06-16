@@ -25,6 +25,10 @@ export default function Header() {
     setOpen(false);
   }, [location.pathname]);
 
+  // The homepage hero is a dark, full-bleed scene. While the transparent header
+  // sits over it (home route, not yet scrolled, menu closed), invert to light ink.
+  const overHero = location.pathname === "/" && !scrolled && !open;
+
   return (
     <header
       data-testid="site-header"
@@ -40,7 +44,11 @@ export default function Header() {
           data-testid="header-logo-link"
           className="group"
         >
-            <span className="font-serif text-lg md:text-xl font-medium tracking-tight">
+            <span
+              className={`font-serif text-lg md:text-xl font-medium tracking-tight transition-colors duration-500 ${
+                overHero ? "text-[#F2F0EA]" : "text-foreground"
+              }`}
+            >
             Ahmed Mohsen Mostafa
           </span>
         </Link>
@@ -52,9 +60,11 @@ export default function Header() {
               to={item.to}
               data-testid={`nav-link-${item.label.toLowerCase()}`}
               className={({ isActive }) =>
-                `text-sm tracking-wide transition-colors ${
+                `text-sm tracking-wide transition-colors duration-500 ${
                   isActive
                     ? "text-terracotta"
+                    : overHero
+                    ? "text-[#F2F0EA]/75 hover:text-[#F2F0EA]"
                     : "text-foreground/80 hover:text-terracotta"
                 }`
               }
@@ -69,6 +79,11 @@ export default function Header() {
             variant="header"
             source="header"
             testId="header-download-cv"
+            className={
+              overHero
+                ? "!border-[#F2F0EA]/35 !text-[#F2F0EA]/90 hover:!bg-[#F2F0EA] hover:!text-[#0B0A09] hover:!border-[#F2F0EA]"
+                : ""
+            }
           />
         </div>
 
@@ -77,7 +92,9 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           data-testid="mobile-menu-toggle"
-          className="md:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 text-foreground"
+          className={`md:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 transition-colors duration-500 ${
+            overHero ? "text-[#F2F0EA]" : "text-foreground"
+          }`}
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
